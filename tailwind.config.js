@@ -13,6 +13,8 @@ module.exports = {
     extend: {
       fontFamily: {
         Urbanist: ["Urbanist", "sans-serif"],
+        inter: ["Inter', sans-serif"],
+
       },
     },
   },
