@@ -185,8 +185,9 @@ function Challenges() {
                   height={50}
                 />
               </div>
-              <div className="px-6 py-4 mr-10 ml-4">
-                <p className="text-black-700 text-lg font-semibold">
+
+              <div className="px-6 py-4 mr-10 ml-4 text-gray-600 body-font font-urbanist ">
+                <p className="text-black-700 text-lg font-semibold ">
                   {challenge.publisher}
                 </p>
                 <section className="text-gray-600 body-font font-urbanist"></section>
