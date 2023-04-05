@@ -189,6 +189,7 @@ function Challenges() {
                 <p className="text-black-700 text-lg font-semibold">
                   {challenge.publisher}
                 </p>
+                <section className="text-gray-600 body-font font-urbanist"></section>
                 <p className="text-purp text-xl font-extrabold">
                   {challenge.title}
                 </p>

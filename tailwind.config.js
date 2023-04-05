@@ -10,7 +10,11 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        Urbanist: ["Urbanist", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 }
