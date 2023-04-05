@@ -84,7 +84,7 @@ function Challenges() {
         <link rel="icon" href="/Activeicon.ico" />
       </Head>
       <main className="">
-        <div className=" flex justify-center items-center">
+        <div className=" flex justify-center items-center ">
           <Image
             src={"/activelogga.png"}
             alt={"#"}
@@ -224,13 +224,13 @@ function Challenges() {
                 />
               </div>
               <div className="px-6 py-4 mr-10 ml-4 ">
-                <p className=" text-urbanist text-black-700 text-lg  body-font font-Urbanist">
+                <p className="text-black-700 text-lg  body-font font-Urbanist">
                   {challenge.publisher}
                 </p>
                 <p className="text-purp text-xl font-extrabold body-font font-Inter">
                   {challenge.title}
                 </p>
-                <p>
+                <p className="font-Urbanist">
                   <span className="inline-flex mr-2">
                     <Image
                       src="/location-pin.png"
@@ -241,14 +241,15 @@ function Challenges() {
                   </span>
                   {challenge.location}
                 </p>
-                <p>{challenge.time}</p>
+                <p className="font-Urbanist">{challenge.time}</p>
               </div>
             </div>
           </div>
         ))}
-        <div className="flex justify-center items-center">
+
+        <div>
           <button
-            className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline fixed bottom-4 z-50 w-4/5"
+            className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
             id="show-form-btn"
             onClick={hideForm}
