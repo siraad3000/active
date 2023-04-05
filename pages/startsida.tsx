@@ -65,7 +65,10 @@ function Challenges() {
     const showForm = document.getElementById("show-form-btn");
 
     if (challengeForm && showForm) {
-      if (challengeForm.style.display === "none") {
+      if (
+        challengeForm.style.display === "none" ||
+        challengeForm.style.display === ""
+      ) {
         window.scrollTo({
           top: 0,
           behavior: "smooth",
