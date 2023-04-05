@@ -35,7 +35,10 @@ function Challenges() {
         .value,
       category: (document.getElementById("category") as HTMLInputElement).value,
       location: (document.getElementById("location") as HTMLInputElement).value,
-      time: (document.getElementById("time") as HTMLInputElement).value,
+      time:
+        (document.getElementById("time") as HTMLInputElement).value +
+        "-" +
+        (document.getElementById("finished_time") as HTMLInputElement).value,
     }
     const res = await fetch("/api/challenges", {
       method: "POST",
@@ -58,16 +61,23 @@ function Challenges() {
   }, [])
 
   function hideForm() {
-    const addForm = document.getElementById("addForm")
-    const addBtnForm = document.getElementById("add-btn-form")
+    const challengeForm = document.getElementById("challengeForm")
+    const showForm = document.getElementById("show-form-btn")
 
-    if (addForm != null && addBtnForm != null) {
-      if (addForm.style.display == "none") {
-        addForm.style.display = "block"
-        addBtnForm.style.display = "none"
+    if (challengeForm && showForm) {
+      if (
+        challengeForm.style.display === "none" ||
+        challengeForm.style.display === ""
+      ) {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        })
+        challengeForm.style.display = "block"
+        showForm.style.display = "none"
       } else {
-        addForm.style.display = "none"
-        addBtnForm.style.display = "block"
+        challengeForm.style.display = "none"
+        showForm.style.display = "block"
       }
     }
   }
@@ -81,7 +91,7 @@ function Challenges() {
         <link rel="icon" href="/Activeicon.ico" />
       </Head>
       <main className="">
-        <div className=" flex justify-center items-center ">
+        <div className=" flex justify-center items-center">
           <Image
             src={"/activelogga.png"}
             alt={"#"}
@@ -90,7 +100,7 @@ function Challenges() {
           ></Image>
         </div>
         <form
-          id="addForm"
+          id="challengeForm"
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 hidden"
         >
           <div className="mb-4">
@@ -170,12 +180,21 @@ function Challenges() {
             >
               Time
             </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="time"
-              type="time"
-              placeholder="Time"
-            />
+            <div className="flex">
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="time"
+                type="time"
+                placeholder="Time"
+              />
+              _
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="finished_time"
+                type="time"
+                placeholder="Time"
+              />
+            </div>
           </div>
 
           <div className="flex items-center justify-between">
@@ -185,13 +204,12 @@ function Challenges() {
               id="button"
               onClick={() => handleSubmit(challenge)}
             >
-              Create challenge
+              Submit challenge
             </button>
-
             <button
               className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline block"
               type="button"
-              id="close-form-btn"
+              id="hide-form-btn"
               onClick={hideForm}
             >
               X
@@ -213,15 +231,13 @@ function Challenges() {
                 />
               </div>
               <div className="px-6 py-4 mr-10 ml-4 ">
-
-                <p className="text-black-700 text-lg  body-font font-Urbanist">
-
+                <p className=" text-urbanist text-black-700 text-lg  body-font font-Urbanist">
                   {challenge.publisher}
                 </p>
                 <p className="text-purp text-xl font-extrabold body-font font-Inter">
                   {challenge.title}
                 </p>
-                <p className="font-Urbanist">
+                <p>
                   <span className="inline-flex mr-2">
                     <Image
                       src="/location-pin.png"
@@ -232,7 +248,7 @@ function Challenges() {
                   </span>
                   {challenge.location}
                 </p>
-                <p className="font-Urbanist">{challenge.time}</p>
+                <p>{challenge.time}</p>
               </div>
             </div>
           </div>
@@ -240,12 +256,12 @@ function Challenges() {
 
         <div className="w-full flex justify-center items-center fixed bottom-10">
           <button
-            className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-11/12 rounded-lg max-w-sm"
+            className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline fixed bottom-4 z-50 w-4/5"
             type="button"
-            id="add-btn-form"
+            id="show-form-btn"
             onClick={hideForm}
           >
-            +
+            Create a new challenge
           </button>
         </div>
       </main>
