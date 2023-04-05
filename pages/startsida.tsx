@@ -66,9 +66,14 @@ function Challenges() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="">
-        <h1 className=" text-gray-700 flex justify-center items-center m-5 font-extrabold">
-          ACTIVE
-        </h1>
+        <div className=" flex justify-center items-center">
+          <Image
+            src={"/activelogga.png"}
+            alt={"#"}
+            width={"300"}
+            height={"300"}
+          ></Image>
+        </div>
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <div className="mb-4">
             <label
@@ -159,6 +164,7 @@ function Challenges() {
             <button
               className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="button"
+              id="button"
               onClick={() => handleSubmit(challenge)}
             >
               Create challenge

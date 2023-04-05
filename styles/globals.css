@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+#button {
+  background: #611087;
+}
+
 .cards-size-color {
   width: 100%;
   background-color: #c09cbc;
