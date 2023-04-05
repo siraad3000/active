@@ -213,7 +213,9 @@ function Challenges() {
                 />
               </div>
               <div className="px-6 py-4 mr-10 ml-4 ">
+
                 <p className="text-black-700 text-lg  body-font font-Urbanist">
+
                   {challenge.publisher}
                 </p>
                 <p className="text-purp text-xl font-extrabold body-font font-Inter">
