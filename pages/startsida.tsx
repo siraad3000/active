@@ -1,22 +1,22 @@
-import Head from "next/head"
-import Image from "next/image"
-import { Inter } from "next/font/google"
-import { useEffect, useState } from "react"
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import { useEffect, useState } from "react";
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"] });
 
 interface Challenge {
-  _id?: string
-  publisher: string
-  title: string
-  description: string
-  category: string
-  location: string
-  time: string
+  _id?: string;
+  publisher: string;
+  title: string;
+  description: string;
+  category: string;
+  location: string;
+  time: string;
 }
 
 function Challenges() {
-  const [challenges, setChallenges] = useState<Challenge[]>([])
+  const [challenges, setChallenges] = useState<Challenge[]>([]);
   const challenge = {
     publisher: "",
     title: "",
@@ -24,7 +24,7 @@ function Challenges() {
     category: "",
     location: "",
     time: "",
-  }
+  };
   const handleSubmit = async () => {
     const challenge = {
       publisher: (document.getElementById("publisher") as HTMLInputElement)
@@ -35,39 +35,42 @@ function Challenges() {
         .value,
       category: (document.getElementById("category") as HTMLInputElement).value,
       location: (document.getElementById("location") as HTMLInputElement).value,
-      time: (document.getElementById("time") as HTMLInputElement).value,
-    }
+      time:
+        (document.getElementById("time") as HTMLInputElement).value +
+        "-" +
+        (document.getElementById("finished_time") as HTMLInputElement).value,
+    };
     const res = await fetch("/api/challenges", {
       method: "POST",
       body: JSON.stringify(challenge),
       headers: {
         "Content-Type": "application/json",
       },
-    })
-    const data = await res.json()
-    setChallenges([challenge, ...challenges])
-  }
+    });
+    const data = await res.json();
+    setChallenges([challenge, ...challenges]);
+  };
 
   useEffect(() => {
     async function fetchChallenges() {
-      const res = await fetch("/api/challenges")
-      const data = await res.json()
-      setChallenges(data)
+      const res = await fetch("/api/challenges");
+      const data = await res.json();
+      setChallenges(data);
     }
-    fetchChallenges()
-  }, [])
+    fetchChallenges();
+  }, []);
 
   function hideForm() {
-    const addForm = document.getElementById("addForm")
-    const addBtnForm = document.getElementById("add-btn-form")
+    const challengeForm = document.getElementById("challengeForm");
+    const showForm = document.getElementById("show-form-btn");
 
-    if (addForm != null && addBtnForm != null) {
-      if (addForm.style.display == "none") {
-        addForm.style.display = "block"
-        addBtnForm.style.display = "none"
+    if (challengeForm && showForm) {
+      if (challengeForm.style.display == "none") {
+        challengeForm.style.display = "block";
+        showForm.style.display = "none";
       } else {
-        addForm.style.display = "none"
-        addBtnForm.style.display = "block"
+        challengeForm.style.display = "none";
+        showForm.style.display = "block";
       }
     }
   }
@@ -90,7 +93,7 @@ function Challenges() {
           ></Image>
         </div>
         <form
-          id="addForm"
+          id="challengeForm"
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 hidden"
         >
           <div className="mb-4">
@@ -170,12 +173,21 @@ function Challenges() {
             >
               Time
             </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="time"
-              type="time"
-              placeholder="Time"
-            />
+            <div className="flex">
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="time"
+                type="time"
+                placeholder="Time"
+              />
+              _
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="finished_time"
+                type="time"
+                placeholder="Time"
+              />
+            </div>
           </div>
 
           <div className="flex items-center justify-between">
@@ -185,13 +197,12 @@ function Challenges() {
               id="button"
               onClick={() => handleSubmit(challenge)}
             >
-              Create challenge
+              Submit challenge
             </button>
-
             <button
               className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline block"
               type="button"
-              id="close-form-btn"
+              id="hide-form-btn"
               onClick={hideForm}
             >
               X
@@ -235,19 +246,18 @@ function Challenges() {
             </div>
           </div>
         ))}
-
-        <div>
+        <div className="flex justify-center items-center">
           <button
-            className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline fixed bottom-4 z-50 w-4/5"
             type="button"
-            id="add-btn-form"
+            id="show-form-btn"
             onClick={hideForm}
           >
-            +
+            Create a new challenge
           </button>
         </div>
       </main>
     </div>
-  )
+  );
 }
-export default Challenges
+export default Challenges;
