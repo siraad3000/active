@@ -1,7 +1,7 @@
 import { ObjectId } from "mongodb";
 
 export type challenge = {
-  _id: ObjectId;
+  _id?: ObjectId;
   publisher: string;
   title: string;
   description: string;
