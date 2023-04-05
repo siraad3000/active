@@ -57,6 +57,21 @@ function Challenges() {
     fetchChallenges()
   }, [])
 
+  function hideForm() {
+    const addForm = document.getElementById("addForm")
+    const addBtnForm = document.getElementById("add-btn-form")
+
+    if (addForm != null && addBtnForm != null) {
+      if (addForm.style.display == "none") {
+        addForm.style.display = "block"
+        addBtnForm.style.display = "none"
+      } else {
+        addForm.style.display = "none"
+        addBtnForm.style.display = "block"
+      }
+    }
+  }
+
   return (
     <div className=" bg-white">
       <Head>
@@ -74,7 +89,10 @@ function Challenges() {
             height={"300"}
           ></Image>
         </div>
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <form
+          id="addForm"
+          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 hidden"
+        >
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
@@ -169,6 +187,15 @@ function Challenges() {
             >
               Create challenge
             </button>
+
+            <button
+              className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline block"
+              type="button"
+              id="close-form-btn"
+              onClick={hideForm}
+            >
+              X
+            </button>
           </div>
         </form>
         {challenges.map((challenge) => (
@@ -208,6 +235,17 @@ function Challenges() {
             </div>
           </div>
         ))}
+
+        <div>
+          <button
+            className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="button"
+            id="add-btn-form"
+            onClick={hideForm}
+          >
+            +
+          </button>
+        </div>
       </main>
     </div>
   )
