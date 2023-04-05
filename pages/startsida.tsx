@@ -1,22 +1,22 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import { useEffect, useState } from "react";
+import Head from "next/head"
+import Image from "next/image"
+import { Inter } from "next/font/google"
+import { useEffect, useState } from "react"
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] })
 
 interface Challenge {
-  _id?: string;
-  publisher: string;
-  title: string;
-  description: string;
-  category: string;
-  location: string;
-  time: string;
+  _id?: string
+  publisher: string
+  title: string
+  description: string
+  category: string
+  location: string
+  time: string
 }
 
 function Challenges() {
-  const [challenges, setChallenges] = useState<Challenge[]>([]);
+  const [challenges, setChallenges] = useState<Challenge[]>([])
   const challenge = {
     publisher: "",
     title: "",
@@ -24,7 +24,7 @@ function Challenges() {
     category: "",
     location: "",
     time: "",
-  };
+  }
   const handleSubmit = async () => {
     const challenge = {
       publisher: (document.getElementById("publisher") as HTMLInputElement)
@@ -36,26 +36,26 @@ function Challenges() {
       category: (document.getElementById("category") as HTMLInputElement).value,
       location: (document.getElementById("location") as HTMLInputElement).value,
       time: (document.getElementById("time") as HTMLInputElement).value,
-    };
+    }
     const res = await fetch("/api/challenges", {
       method: "POST",
       body: JSON.stringify(challenge),
       headers: {
         "Content-Type": "application/json",
       },
-    });
-    const data = await res.json();
-    setChallenges([challenge, ...challenges]);
-  };
+    })
+    const data = await res.json()
+    setChallenges([challenge, ...challenges])
+  }
 
   useEffect(() => {
     async function fetchChallenges() {
-      const res = await fetch("/api/challenges");
-      const data = await res.json();
-      setChallenges(data);
+      const res = await fetch("/api/challenges")
+      const data = await res.json()
+      setChallenges(data)
     }
-    fetchChallenges();
-  }, []);
+    fetchChallenges()
+  }, [])
 
   return (
     <div className=" bg-white">
@@ -159,6 +159,7 @@ function Challenges() {
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="button"
+              id="button"
               onClick={() => handleSubmit(challenge)}
             >
               Create challenge
@@ -204,6 +205,6 @@ function Challenges() {
         ))}
       </main>
     </div>
-  );
+  )
 }
-export default Challenges;
+export default Challenges
