@@ -171,7 +171,7 @@ function Challenges() {
             className="flex justify-center items-center m-5"
             key={challenge._id}
           >
-            <div className="max-w-sm rounded-lg overflow-hidden shadow-lg flex">
+            <div className="max-w-sm rounded-lg overflow-hidden shadow-lg flex w-2/5">
               <div className="w-16 flex-shrink-0 m-2">
                 <Image
                   src="/user-avatar.png"
