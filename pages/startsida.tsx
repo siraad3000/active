@@ -1,22 +1,22 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import { useEffect, useState } from "react";
+import Head from "next/head"
+import Image from "next/image"
+import { Inter } from "next/font/google"
+import { useEffect, useState } from "react"
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] })
 
 interface Challenge {
-  _id?: string;
-  publisher: string;
-  title: string;
-  description: string;
-  category: string;
-  location: string;
-  time: string;
+  _id?: string
+  publisher: string
+  title: string
+  description: string
+  category: string
+  location: string
+  time: string
 }
 
 function Challenges() {
-  const [challenges, setChallenges] = useState<Challenge[]>([]);
+  const [challenges, setChallenges] = useState<Challenge[]>([])
   const challenge = {
     publisher: "",
     title: "",
@@ -24,7 +24,7 @@ function Challenges() {
     category: "",
     location: "",
     time: "",
-  };
+  }
   const handleSubmit = async () => {
     const challenge = {
       publisher: (document.getElementById("publisher") as HTMLInputElement)
@@ -36,26 +36,26 @@ function Challenges() {
       category: (document.getElementById("category") as HTMLInputElement).value,
       location: (document.getElementById("location") as HTMLInputElement).value,
       time: (document.getElementById("time") as HTMLInputElement).value,
-    };
+    }
     const res = await fetch("/api/challenges", {
       method: "POST",
       body: JSON.stringify(challenge),
       headers: {
         "Content-Type": "application/json",
       },
-    });
-    const data = await res.json();
-    setChallenges([challenge, ...challenges]);
-  };
+    })
+    const data = await res.json()
+    setChallenges([challenge, ...challenges])
+  }
 
   useEffect(() => {
     async function fetchChallenges() {
-      const res = await fetch("/api/challenges");
-      const data = await res.json();
-      setChallenges(data);
+      const res = await fetch("/api/challenges")
+      const data = await res.json()
+      setChallenges(data)
     }
-    fetchChallenges();
-  }, []);
+    fetchChallenges()
+  }, [])
 
   return (
     <div className=" bg-white">
@@ -157,7 +157,7 @@ function Challenges() {
 
           <div className="flex items-center justify-between">
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="button"
               onClick={() => handleSubmit(challenge)}
             >
@@ -170,7 +170,7 @@ function Challenges() {
             className="flex justify-center items-center m-5"
             key={challenge._id}
           >
-            <div className="max-w-sm rounded-lg overflow-hidden shadow-lg flex">
+            <div className="max-w-sm rounded-lg overflow-hidden shadow-lg flex cards-size-color">
               <div className="w-16 flex-shrink-0 m-2">
                 <Image
                   src="/user-avatar.png"
@@ -180,10 +180,10 @@ function Challenges() {
                 />
               </div>
               <div className="px-6 py-4 mr-10 ml-4">
-                <p className="text-gray-700 text-lg font-semibold">
+                <p className="text-black-700 text-lg font-semibold">
                   {challenge.publisher}
                 </p>
-                <p className="text-gray-700 text-xl font-extrabold">
+                <p className="text-purp text-xl font-extrabold">
                   {challenge.title}
                 </p>
                 <p>
@@ -204,6 +204,6 @@ function Challenges() {
         ))}
       </main>
     </div>
-  );
+  )
 }
-export default Challenges;
+export default Challenges

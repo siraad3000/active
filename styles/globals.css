@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cards-size-color {
+  width: 100%;
+  background-color: #c09cbc;
+}
+
+.purple1 {
+  background-color: #611087;
+}
+
+.text-purp {
+  color: #611087;
+}
