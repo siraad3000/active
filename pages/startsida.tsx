@@ -256,7 +256,7 @@ function Challenges() {
 
         <div className="w-full flex justify-center items-center fixed bottom-10">
           <button
-            className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline fixed bottom-4 z-50 w-4/5"
+            className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline fixed bottom-4 z-50 w-4/5 max-w-sm"
             type="button"
             id="show-form-btn"
             onClick={hideForm}
