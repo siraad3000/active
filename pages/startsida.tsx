@@ -236,7 +236,7 @@ function Challenges() {
           </div>
         ))}
 
-        <div className="w-full flex justify-center items-center">
+        <div className="w-full flex justify-center items-center fixed bottom-10">
           <button
             className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-11/12 rounded-lg max-w-sm"
             type="button"
