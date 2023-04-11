@@ -63,8 +63,9 @@ function Challenges() {
   function hideForm() {
     const challengeForm = document.getElementById("challengeForm")
     const showForm = document.getElementById("show-form-btn")
+    const cards = document.getElementById("cards")
 
-    if (challengeForm && showForm) {
+    if (challengeForm && showForm && cards) {
       if (
         challengeForm.style.display === "none" ||
         challengeForm.style.display === ""
@@ -75,9 +76,11 @@ function Challenges() {
         })
         challengeForm.style.display = "block"
         showForm.style.display = "none"
+        cards.style.display = "none"
       } else {
         challengeForm.style.display = "none"
         showForm.style.display = "block"
+        cards.style.display = "blockn"
       }
     }
   }
@@ -216,44 +219,45 @@ function Challenges() {
             </button>
           </div>
         </form>
-        {challenges.map((challenge) => (
-          <div
-            className="flex justify-center items-center m-5"
-            key={challenge._id}
-          >
-            <div className="max-w-sm rounded-lg overflow-hidden shadow-lg flex cards-size-color">
-              <div className="w-16 flex-shrink-0 m-2">
-                <Image
-                  src="/user-avatar.png"
-                  alt="Avatar"
-                  width={50}
-                  height={50}
-                />
-              </div>
-              <div className="px-6 py-4 mr-10 ml-4 ">
-                <p className=" text-urbanist text-black-700 text-lg  body-font font-Urbanist">
-                  {challenge.publisher}
-                </p>
-                <p className="text-purp text-xl font-extrabold body-font font-Inter">
-                  {challenge.title}
-                </p>
-                <p>
-                  <span className="inline-flex mr-2">
-                    <Image
-                      src="/location-pin.png"
-                      alt="Avatar"
-                      width={10}
-                      height={10}
-                    />
-                  </span>
-                  {challenge.location}
-                </p>
-                <p>{challenge.time}</p>
+        <div id="cards" className="block">
+          {challenges.map((challenge) => (
+            <div
+              className="flex justify-center items-center m-5"
+              key={challenge._id}
+            >
+              <div className="max-w-sm rounded-lg overflow-hidden shadow-lg flex cards-size-color">
+                <div className="w-16 flex-shrink-0 m-2">
+                  <Image
+                    src="/user-avatar.png"
+                    alt="Avatar"
+                    width={50}
+                    height={50}
+                  />
+                </div>
+                <div className="px-6 py-4 mr-10 ml-4 ">
+                  <p className=" text-urbanist text-black-700 text-lg  body-font font-Urbanist">
+                    {challenge.publisher}
+                  </p>
+                  <p className="text-purp text-xl font-extrabold body-font font-Inter">
+                    {challenge.title}
+                  </p>
+                  <p>
+                    <span className="inline-flex mr-2">
+                      <Image
+                        src="/location-pin.png"
+                        alt="Avatar"
+                        width={10}
+                        height={10}
+                      />
+                    </span>
+                    {challenge.location}
+                  </p>
+                  <p>{challenge.time}</p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-
+          ))}
+        </div>
         <div className="w-full flex justify-center items-center fixed bottom-10">
           <button
             className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline fixed bottom-4 z-50 w-4/5 max-w-sm"
