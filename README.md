@@ -1,3 +1,6 @@
+This Branch (Adam) is to be romoved was a test to push in a new way
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
