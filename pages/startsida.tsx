@@ -64,7 +64,6 @@ function Challenges() {
     const challengeForm = document.getElementById("challengeForm")
     const showForm = document.getElementById("show-form-btn")
     const cards = document.getElementById("cards")
-
     if (challengeForm && showForm && cards) {
       if (
         challengeForm.style.display === "none" ||
@@ -80,7 +79,7 @@ function Challenges() {
       } else {
         challengeForm.style.display = "none"
         showForm.style.display = "block"
-        cards.style.display = "blockn"
+        cards.style.display = "block"
       }
     }
   }
@@ -215,7 +214,16 @@ function Challenges() {
               id="hide-form-btn"
               onClick={hideForm}
             >
-              X
+              return
+            </button>
+
+            <button
+              className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline block"
+              type="reset"
+              id="hide-form-btn"
+              onClick={hideForm}
+            >
+              exit
             </button>
           </div>
         </form>
