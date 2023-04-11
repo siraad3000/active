@@ -2,6 +2,7 @@ import Head from "next/head"
 import Image from "next/image"
 import { Inter } from "next/font/google"
 import { useEffect, useState } from "react"
+import { log } from "console"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -202,9 +203,12 @@ function Challenges() {
           <div className="flex items-center justify-between">
             <button
               className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
+              type="reset"
               id="button"
-              onClick={() => handleSubmit(challenge)}
+              onClick={() => {
+                handleSubmit(challenge)
+                hideForm()
+              }}
             >
               Submit challenge
             </button>
