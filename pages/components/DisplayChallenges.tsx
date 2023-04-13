@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function DisplayChallenges() {
   const challenges = FetchChallenges();
   return (
-    <div id="cards" className="">
+    <div id="cards" className=" mb-20">
       {challenges.map((challenge) => (
         <div
           className="flex justify-center items-center m-5 relative w-auto"
