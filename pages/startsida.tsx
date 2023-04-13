@@ -1,23 +1,23 @@
-import Head from "next/head"
-import Image from "next/image"
-import { Inter } from "next/font/google"
-import { useEffect, useState } from "react"
-import { log } from "console"
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import { useEffect, useState } from "react";
+import { log } from "console";
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"] });
 
 interface Challenge {
-  _id?: string
-  publisher: string
-  title: string
-  description: string
-  category: string
-  location: string
-  time: string
+  _id?: string;
+  publisher: string;
+  title: string;
+  description: string;
+  category: string;
+  location: string;
+  time: string;
 }
 
 function Challenges() {
-  const [challenges, setChallenges] = useState<Challenge[]>([])
+  const [challenges, setChallenges] = useState<Challenge[]>([]);
   const challenge = {
     publisher: "",
     title: "",
@@ -25,7 +25,7 @@ function Challenges() {
     category: "",
     location: "",
     time: "",
-  }
+  };
   const handleSubmit = async () => {
     const challenge = {
       publisher: (document.getElementById("publisher") as HTMLInputElement)
@@ -40,31 +40,30 @@ function Challenges() {
         (document.getElementById("time") as HTMLInputElement).value +
         "-" +
         (document.getElementById("finished_time") as HTMLInputElement).value,
-    }
+    };
     const res = await fetch("/api/challenges", {
       method: "POST",
       body: JSON.stringify(challenge),
       headers: {
         "Content-Type": "application/json",
       },
-    })
-    const data = await res.json()
-    setChallenges([challenge, ...challenges])
-  }
+    });
+    const data = await res.json();
+    setChallenges([challenge, ...challenges]);
+  };
 
   useEffect(() => {
     async function fetchChallenges() {
-      const res = await fetch("/api/challenges")
-      const data = await res.json()
-      setChallenges(data)
+      const res = await fetch("/api/challenges");
+      const data = await res.json();
+      setChallenges(data);
     }
-    fetchChallenges()
-  }, [])
-
+    fetchChallenges();
+  }, []);
   function hideForm() {
-    const challengeForm = document.getElementById("challengeForm")
-    const showForm = document.getElementById("show-form-btn")
-    const cards = document.getElementById("cards")
+    const challengeForm = document.getElementById("challengeForm");
+    const showForm = document.getElementById("show-form-btn");
+    const cards = document.getElementById("cards");
     if (challengeForm && showForm && cards) {
       if (
         challengeForm.style.display === "none" ||
@@ -73,14 +72,14 @@ function Challenges() {
         window.scrollTo({
           top: 0,
           behavior: "smooth",
-        })
-        challengeForm.style.display = "block"
-        showForm.style.display = "none"
-        cards.style.display = "none"
+        });
+        challengeForm.style.display = "block";
+        showForm.style.display = "none";
+        cards.style.display = "none";
       } else {
-        challengeForm.style.display = "none"
-        showForm.style.display = "block"
-        cards.style.display = "block"
+        challengeForm.style.display = "none";
+        showForm.style.display = "block";
+        cards.style.display = "block";
       }
     }
   }
@@ -206,8 +205,8 @@ function Challenges() {
               type="reset"
               id="button"
               onClick={() => {
-                handleSubmit(challenge)
-                hideForm()
+                handleSubmit();
+                hideForm();
               }}
             >
               Submit challenge
@@ -231,13 +230,34 @@ function Challenges() {
             </button>
           </div>
         </form>
-        <div id="cards" className="block">
+        <div id="cards" className="">
           {challenges.map((challenge) => (
             <div
-              className="flex justify-center items-center m-5"
+              className="flex justify-center items-center m-5 relative w-auto" // add relative class
               key={challenge._id}
             >
-              <div className="max-w-sm rounded-lg overflow-hidden shadow-lg flex cards-size-color">
+              <div
+                id={`challengeCard_${challenge._id}`}
+                onClick={() => {
+                  const challengeCard = document.getElementById(
+                    `challengeCard_${challenge._id}`
+                  );
+                  const description = document.getElementById(
+                    `description_${challenge._id}`
+                  );
+                  const arrowIcon = document.getElementById(
+                    `arrowIcon_${challenge._id}`
+                  );
+                  if (description && challengeCard) {
+                    if ((description.style.display = "none")) {
+                      description.style.display = "block";
+                      challengeCard.style.cursor = "auto";
+                      arrowIcon?.classList.toggle("rotate-180");
+                    }
+                  }
+                }}
+                className="max-w-sm rounded-lg overflow-hidden shadow-lg flex cards-size cursor-pointer"
+              >
                 <div className="w-16 flex-shrink-0 m-2">
                   <Image
                     src="/user-avatar.png"
@@ -246,8 +266,8 @@ function Challenges() {
                     height={50}
                   />
                 </div>
-                <div className="px-6 py-4 mr-10 ml-4 ">
-                  <p className=" text-urbanist text-black-700 text-lg  body-font font-Urbanist">
+                <div className="px-6 py-4 mr-10 ml-4 w-10/12">
+                  <p className="text-urbanist text-black-700 text-lg body-font font-Urbanist">
                     {challenge.publisher}
                   </p>
                   <p className="text-purp text-xl font-extrabold body-font font-Inter">
@@ -265,6 +285,38 @@ function Challenges() {
                     {challenge.location}
                   </p>
                   <p>{challenge.time}</p>
+                  <div id={`description_${challenge._id}`} className="hidden">
+                    <p>{challenge.description}</p>
+                  </div>
+                </div>
+                <div className=" w-1/6 right-0 cursor-pointer">
+                  <div
+                    className="absolute bottom-2 "
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const description = document.getElementById(
+                        `description_${challenge._id}`
+                      );
+                      const challengeCard = document.getElementById(
+                        `challengeCard_${challenge._id}`
+                      );
+                      const arrowIcon = document.getElementById(
+                        `arrowIcon_${challenge._id}`
+                      );
+                      if (description && challengeCard) {
+                        description.style.display = "none";
+                        challengeCard.style.cursor = "pointer";
+                      }
+                    }}
+                  >
+                    <Image
+                      id={`arrowIcon_${challenge._id}`}
+                      src="/down-arrow.png"
+                      alt="Avatar"
+                      width={17}
+                      height={17}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -282,6 +334,6 @@ function Challenges() {
         </div>
       </main>
     </div>
-  )
+  );
 }
-export default Challenges
+export default Challenges;
