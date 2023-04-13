@@ -7,7 +7,7 @@ import FooterNavbar from "./components/FooterNavbar"
 function Challenges() {
   const [selectedOption, setSelectedOption] = useState("")
   const [selectedFor, setSelectedFor] = useState("")
-  const [challenges, setChallenges] = useState<Challenge[]>([])
+  const [challenges, setChallenges] = useState<challenge[]>([])
   const challenge = {
     publisher: "",
     title: "",
@@ -24,7 +24,6 @@ function Challenges() {
   function handleForChange(event) {
     setSelectedFor(event.target.value)
   }
-  const [challenges, setChallenges] = useState<challenge[]>([])
 
   const handleSubmit = async () => {
     const challenge = {
