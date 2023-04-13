@@ -4,19 +4,44 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Urbanist&display=swap%27");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap");
+
+main {
+  background-color: #f0f0f0;
+}
 #button {
   background: #611087;
 }
-
-.cards-size-color {
+.cards-size {
   width: 100%;
-  background-color: #c09cbc;
 }
-
 .purple1 {
   background-color: #611087;
 }
 
 .text-purp {
   color: #611087;
+}
+.active {
+  position: fixed;
+  width: 30%;
+  justify-items: center;
+  left: 35%;
+  height: 80;
+}
+.head {
+  height: auto;
+  width: 100%;
+  height: 4.3em;
+}
+
+.profil {
+  position: sticky;
+  width: 25px;
+  height: 25px;
+  left: 355px;
+  top: 35px;
+}
+
+.fil {
+  background-color: #f0f0f0;
 }
