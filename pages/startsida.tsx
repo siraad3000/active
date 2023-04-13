@@ -73,13 +73,29 @@ function Challenges() {
         <link rel="icon" href="/Activeicon.ico" />
       </Head>
       <main className="">
-        <div className=" flex justify-center items-center">
-          <Image
-            src={"/activelogga.png"}
-            alt={"#"}
-            width={"300"}
-            height={"300"}
-          ></Image>
+        <div>
+          <header className="fixed top-0 flex justify-center w-full h-30 bg-white border-t ">
+            <div className="active flex items-center">
+              <Image
+                src={"/activelogga.png"}
+                alt={"#"}
+                width={"170"}
+                height={"170"}
+              ></Image>
+            </div>
+            <div className="profil">
+              <Image
+                src="/user-avatar.png"
+                alt="Avatar"
+                width={35}
+                height={35}
+              />
+            </div>
+          </header>
+        </div>
+        ¨
+        <div className="fil">
+          <p>för filtering av dagar och vänner</p>
         </div>
         <form
           id="challengeForm"
