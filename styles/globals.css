@@ -4,6 +4,10 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Urbanist&display=swap%27");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap");
+
+main {
+  background-color: #f0f0f0;
+}
 #button {
   background: #611087;
 }
@@ -19,4 +23,20 @@
 
 .text-purp {
   color: #611087;
+}
+.active {
+  width: 28%;
+  justify-items: center;
+}
+
+.profil {
+  position: sticky;
+  width: 28px;
+  height: 38px;
+  left: 345px;
+  top: 80px;
+}
+
+.fil {
+  background-color: #f0f0f0;
 }
