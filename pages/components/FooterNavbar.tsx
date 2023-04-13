@@ -2,7 +2,7 @@ export default function FooterNavbar() {
   return (
     <div>
       <footer>
-        <div className=" fixed inset-x-0 bottom-0 flex justify-center w-full h-16 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+        <div className=" fixed inset-x-0 bottom-0 flex justify-center w-full h-[calc(100%_-_650px)] bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
           <div className="grid h-full max-w-lg grid-cols-3 mx-auto font-medium">
             <button
               type="button"
