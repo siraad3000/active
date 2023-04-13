@@ -228,7 +228,7 @@ function Challenges() {
         </form>
         {/* Fetch challenges component */}
         <DisplayChallenges />
-        <div className="w-full flex justify-end items-center fixed bottom-20">
+        <div className="w-full flex justify-end items-center relative bottom-16 right-0">
           <button
             className="purple1 hover:bg-purple-700 text-white w-28 h-28 rounded-full "
             type="button"
