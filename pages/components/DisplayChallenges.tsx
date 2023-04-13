@@ -1,4 +1,4 @@
-import { FetchChallenges } from "./fetchChallenges";
+import { FetchChallenges } from "./FetchChallenges";
 import Image from "next/image";
 
 export default function DisplayChallenges() {

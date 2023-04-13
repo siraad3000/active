@@ -1,31 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "next/font/google";
 import { useEffect, useState } from "react";
-import { log } from "console";
-
-const inter = Inter({ subsets: ["latin"] });
-
-interface Challenge {
-  _id?: string;
-  publisher: string;
-  title: string;
-  description: string;
-  category: string;
-  location: string;
-  time: string;
-}
-
+import { challenge } from "@/types/challengeTemp";
+import DisplayChallenges from "./components/DisplayChallenges";
+import FooterNavbar from "./components/FooterNavbar";
 function Challenges() {
-  const [challenges, setChallenges] = useState<Challenge[]>([]);
-  const challenge = {
-    publisher: "",
-    title: "",
-    description: "",
-    category: "",
-    location: "",
-    time: "",
-  };
+  const [challenges, setChallenges] = useState<challenge[]>([]);
+
   const handleSubmit = async () => {
     const challenge = {
       publisher: (document.getElementById("publisher") as HTMLInputElement)
@@ -40,30 +21,30 @@ function Challenges() {
         (document.getElementById("time") as HTMLInputElement).value +
         "-" +
         (document.getElementById("finished_time") as HTMLInputElement).value,
-    }
+    };
     const res = await fetch("/api/challenges", {
       method: "POST",
       body: JSON.stringify(challenge),
       headers: {
         "Content-Type": "application/json",
       },
-    })
-    const data = await res.json()
-    setChallenges([challenge, ...challenges])
-  }
+    });
+    const data = await res.json();
+    setChallenges([challenge, ...challenges]);
+  };
 
   useEffect(() => {
     async function fetchChallenges() {
-      const res = await fetch("/api/challenges")
-      const data = await res.json()
-      setChallenges(data)
+      const res = await fetch("/api/challenges");
+      const data = await res.json();
+      setChallenges(data);
     }
-    fetchChallenges()
-  }, [])
+    fetchChallenges();
+  }, []);
   function hideForm() {
-    const challengeForm = document.getElementById("challengeForm")
-    const showForm = document.getElementById("show-form-btn")
-    const cards = document.getElementById("cards")
+    const challengeForm = document.getElementById("challengeForm");
+    const showForm = document.getElementById("show-form-btn");
+    const cards = document.getElementById("cards");
     if (challengeForm && showForm && cards) {
       if (
         challengeForm.style.display === "none" ||
@@ -72,14 +53,14 @@ function Challenges() {
         window.scrollTo({
           top: 0,
           behavior: "smooth",
-        })
-        challengeForm.style.display = "block"
-        showForm.style.display = "none"
-        cards.style.display = "none"
+        });
+        challengeForm.style.display = "block";
+        showForm.style.display = "none";
+        cards.style.display = "none";
       } else {
-        challengeForm.style.display = "none"
-        showForm.style.display = "block"
-        cards.style.display = "block"
+        challengeForm.style.display = "none";
+        showForm.style.display = "block";
+        cards.style.display = "block";
       }
     }
   }
@@ -93,67 +74,15 @@ function Challenges() {
         <link rel="icon" href="/Activeicon.ico" />
       </Head>
       <main className="">
-        <div className="header">
-          <header className="head fixed top-0 flex justify-center w-full h-100  bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+        <div>
+          <header className="fixed top-0 flex justify-center w-full h-30 bg-white border-t ">
             <div className="active flex items-center">
-              <svg
-                width="200"
-                height="80"
-                viewBox="0 0 296 80"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M28.4417 0H42.02L70.4617 78.5414H58.1686L52.7485 63.6185H17.7132L12.349 78.5414H0L28.4417 0ZM22.0158 51.9495H48.4459L35.2029 15.4839L22.0158 51.9495Z"
-                  fill="#030303"
-                />
-                <path
-                  d="M112.608 62.6087L123.002 68.2749C120.468 71.828 117.246 74.6704 113.335 76.8022C109.461 78.9341 105.251 80 100.706 80C95.5656 80 90.8719 78.6723 86.6252 76.0168C82.4158 73.3614 79.0445 69.8083 76.5114 65.3576C74.0155 60.8696 72.7675 55.914 72.7675 50.4909C72.7675 46.3768 73.494 42.5432 74.9468 38.9902C76.3996 35.3997 78.3926 32.2581 80.9257 29.5652C83.4961 26.835 86.4762 24.7031 89.8661 23.1697C93.256 21.6363 96.8694 20.8696 100.706 20.8696C105.251 20.8696 109.461 21.9355 113.335 24.0673C117.246 26.1992 120.468 29.0603 123.002 32.6508L112.608 38.317C111.044 36.4469 109.218 35.0257 107.132 34.0533C105.046 33.0435 102.904 32.5386 100.706 32.5386C97.6517 32.5386 94.8765 33.3801 92.3806 35.0631C89.922 36.7087 87.9663 38.8967 86.5135 41.6269C85.0979 44.3198 84.3901 47.2744 84.3901 50.4909C84.3901 53.6699 85.1165 56.6246 86.5693 59.3548C88.0222 62.0477 89.9779 64.2169 92.4365 65.8626C94.9324 67.5082 97.689 68.331 100.706 68.331C103.016 68.331 105.214 67.8074 107.3 66.7602C109.386 65.713 111.156 64.3291 112.608 62.6087Z"
-                  fill="#030303"
-                />
-                <path
-                  d="M219.908 78.5414H204.989L184.594 22.3282H196.998L212.421 65.0771L227.899 22.3282H240.248L219.908 78.5414Z"
-                  fill="#030303"
-                />
-                <path
-                  d="M268.187 78.5414C263.046 78.5414 258.352 77.2137 254.105 74.5582C249.896 71.9028 246.525 68.3497 243.992 63.899C241.496 59.4109 240.248 54.4554 240.248 49.0323C240.248 44.9182 240.974 41.0846 242.427 37.5316C243.88 33.9411 245.873 30.7994 248.406 28.1066C250.976 25.3763 253.956 23.2445 257.346 21.7111C260.736 20.1777 264.35 19.4109 268.187 19.4109C272.471 19.4109 276.401 20.3086 279.977 22.1038C283.553 23.8616 286.608 26.3114 289.141 29.453C291.674 32.5573 293.536 36.1477 294.728 40.2244C295.921 44.2637 296.274 48.5648 295.79 53.1276H252.708C253.193 55.7083 254.124 58.0458 255.502 60.1403C256.918 62.1973 258.706 63.8242 260.867 65.021C263.064 66.2179 265.504 66.835 268.187 66.8724C271.018 66.8724 273.588 66.1618 275.898 64.7405C278.245 63.3193 280.163 61.3558 281.653 58.8499L293.443 61.5989C291.208 66.5732 287.837 70.6498 283.329 73.8289C278.822 76.9706 273.774 78.5414 268.187 78.5414ZM252.317 44.2076H284.056C283.683 41.5147 282.733 39.0837 281.206 36.9144C279.716 34.7078 277.835 32.9687 275.562 31.6971C273.327 30.388 270.869 29.7335 268.187 29.7335C265.542 29.7335 263.083 30.3693 260.811 31.641C258.576 32.9126 256.713 34.6517 255.223 36.8583C253.77 39.0276 252.802 41.4773 252.317 44.2076Z"
-                  fill="#030303"
-                />
-                <path
-                  d="M164.448 22.5378H176.065V78.6388H164.448V22.5378Z"
-                  fill="#A15AB6"
-                />
-                <ellipse
-                  cx="170.303"
-                  cy="9.66191"
-                  rx="5.8982"
-                  ry="5.92177"
-                  fill="#A15AB6"
-                />
-                <path
-                  d="M127.277 22.4404H147.399L164.424 22.5378V34.1353H127.277V22.4404Z"
-                  fill="#611087"
-                />
-                <path
-                  d="M139.238 34.1281H150.855V78.5414H139.238V34.1281Z"
-                  fill="#611087"
-                />
-                <path
-                  d="M139.856 29.1025L145.004 22.4418L133.157 22.4418L139.856 29.1025Z"
-                  fill="#A15AB6"
-                />
-                <path
-                  d="M176.068 22.5488H172.476L169.371 27.1155L176.068 33.3489V22.5488Z"
-                  fill="#611087"
-                />
-                <ellipse
-                  cx="145.779"
-                  cy="12.7786"
-                  rx="5.8982"
-                  ry="5.92177"
-                  fill="#611087"
-                />
-              </svg>
+              <Image
+                src={"/activelogga.png"}
+                alt={"#"}
+                width={"170"}
+                height={"170"}
+              ></Image>
             </div>
             <div className="profil">
               <Image
@@ -165,10 +94,9 @@ function Challenges() {
             </div>
           </header>
         </div>
-        <br />
-        <div>
-          <br />
-          <img src="Search Icon.svg" alt="search " />
+        ¨
+        <div className="fil">
+          <p>för filtering av dagar och vänner</p>
         </div>
         <form
           id="challengeForm"
@@ -274,8 +202,8 @@ function Challenges() {
               type="reset"
               id="button"
               onClick={() => {
-                handleSubmit()
-                hideForm()
+                handleSubmit();
+                hideForm();
               }}
             >
               Submit challenge
@@ -298,101 +226,8 @@ function Challenges() {
             </button>
           </div>
         </form>
-        <div id="cards" className="">
-          {challenges.map((challenge) => (
-            <div
-              className="flex justify-center items-center m-5 relative w-auto" // add relative class
-              key={challenge._id}
-            >
-              <div
-                id={`challengeCard_${challenge._id}`}
-                onClick={() => {
-                  const challengeCard = document.getElementById(
-                    `challengeCard_${challenge._id}`
-                  );
-                  const description = document.getElementById(
-                    `description_${challenge._id}`
-                  );
-                  const arrowIcon = document.getElementById(
-                    `arrowIcon_${challenge._id}`
-                  );
-                  if (description && challengeCard && arrowIcon) {
-                    if ((description.style.display = "none")) {
-                      description.style.display = "block";
-                      challengeCard.style.cursor = "auto";
-                      arrowIcon.classList.add("rotate-180");
-                    }
-                  }
-                }}
-                className="max-w-sm rounded-lg overflow-hidden shadow-lg flex cards-size cursor-pointer"
-              >
-                <div className="w-16 flex-shrink-0 m-2">
-                  <Image
-                    src="/user-avatar.png"
-                    alt="Avatar"
-                    width={50}
-                    height={50}
-                  />
-                </div>
-                <div className="px-6 py-4 mr-10 ml-4 w-10/12">
-                  <p className="text-urbanist text-black-700 text-lg body-font font-Urbanist">
-                    {challenge.publisher}
-                  </p>
-                  <p className="text-purp text-xl font-extrabold body-font font-Inter">
-                    {challenge.title}
-                  </p>
-                  <p>
-                    <span className="inline-flex mr-2">
-                      <Image
-                        src="/location-pin.png"
-                        alt="Avatar"
-                        width={10}
-                        height={10}
-                      />
-                    </span>
-                    {challenge.location}
-                  </p>
-                  <p>{challenge.time}</p>
-                  <div id={`description_${challenge._id}`} className="hidden">
-                    <p>{challenge.description}</p>
-                  </div>
-                </div>
-                <div className=" w-1/6 right-0 cursor-pointer">
-                  <div
-                    className="absolute bottom-2 "
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      const description = document.getElementById(
-                        `description_${challenge._id}`
-                      );
-                      const challengeCard = document.getElementById(
-                        `challengeCard_${challenge._id}`
-                      );
-                      const arrowIcon = document.getElementById(
-                        `arrowIcon_${challenge._id}`
-                      );
-                      if (description && challengeCard && arrowIcon) {
-                        if ((description.style.display = "block")) {
-                          description.style.display = "none";
-                          challengeCard.style.cursor = "pointer";
-                          arrowIcon.classList.remove("rotate-180");
-                        }
-                      }
-                    }}
-                  >
-                    <Image
-                      id={`arrowIcon_${challenge._id}`}
-                      src="/down-arrow.png"
-                      alt="Avatar"
-                      width={17}
-                      height={17}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Fetch challenges component */}
+        <DisplayChallenges />
         <div className="w-full flex justify-end items-center fixed bottom-20">
           <button
             className="purple1 hover:bg-purple-700 text-white w-28 h-28 rounded-full "
@@ -406,6 +241,6 @@ function Challenges() {
         <FooterNavbar />
       </main>
     </div>
-  )
+  );
 }
-export default Challenges
+export default Challenges;
