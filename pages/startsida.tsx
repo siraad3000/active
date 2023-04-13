@@ -1,11 +1,11 @@
-import Head from "next/head";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import { challenge } from "@/types/challengeTemp";
-import DisplayChallenges from "./components/DisplayChallenges";
-import FooterNavbar from "./components/FooterNavbar";
+import Head from "next/head"
+import Image from "next/image"
+import { useEffect, useState } from "react"
+import { challenge } from "@/types/challengeTemp"
+import DisplayChallenges from "./components/DisplayChallenges"
+import FooterNavbar from "./components/FooterNavbar"
 function Challenges() {
-  const [challenges, setChallenges] = useState<challenge[]>([]);
+  const [challenges, setChallenges] = useState<challenge[]>([])
 
   const handleSubmit = async () => {
     const challenge = {
@@ -21,30 +21,30 @@ function Challenges() {
         (document.getElementById("time") as HTMLInputElement).value +
         "-" +
         (document.getElementById("finished_time") as HTMLInputElement).value,
-    };
+    }
     const res = await fetch("/api/challenges", {
       method: "POST",
       body: JSON.stringify(challenge),
       headers: {
         "Content-Type": "application/json",
       },
-    });
-    const data = await res.json();
-    setChallenges([challenge, ...challenges]);
-  };
+    })
+    const data = await res.json()
+    setChallenges([challenge, ...challenges])
+  }
 
   useEffect(() => {
     async function fetchChallenges() {
-      const res = await fetch("/api/challenges");
-      const data = await res.json();
-      setChallenges(data);
+      const res = await fetch("/api/challenges")
+      const data = await res.json()
+      setChallenges(data)
     }
-    fetchChallenges();
-  }, []);
+    fetchChallenges()
+  }, [])
   function hideForm() {
-    const challengeForm = document.getElementById("challengeForm");
-    const showForm = document.getElementById("show-form-btn");
-    const cards = document.getElementById("cards");
+    const challengeForm = document.getElementById("challengeForm")
+    const showForm = document.getElementById("show-form-btn")
+    const cards = document.getElementById("cards")
     if (challengeForm && showForm && cards) {
       if (
         challengeForm.style.display === "none" ||
@@ -53,14 +53,14 @@ function Challenges() {
         window.scrollTo({
           top: 0,
           behavior: "smooth",
-        });
-        challengeForm.style.display = "block";
-        showForm.style.display = "none";
-        cards.style.display = "none";
+        })
+        challengeForm.style.display = "block"
+        showForm.style.display = "none"
+        cards.style.display = "none"
       } else {
-        challengeForm.style.display = "none";
-        showForm.style.display = "block";
-        cards.style.display = "block";
+        challengeForm.style.display = "none"
+        showForm.style.display = "block"
+        cards.style.display = "block"
       }
     }
   }
@@ -75,7 +75,7 @@ function Challenges() {
       </Head>
       <main className="">
         <div>
-          <header className="fixed top-0 flex justify-center w-full h-30 bg-white border-t ">
+          <header className=" head fixed top-0 flex justify-center w-full h-30 bg-white border-t ">
             <div className="active flex items-center">
               <Image
                 src={"/activelogga.png"}
@@ -84,6 +84,7 @@ function Challenges() {
                 height={"170"}
               ></Image>
             </div>
+        
             <div className="profil">
               <Image
                 src="/user-avatar.png"
@@ -93,11 +94,10 @@ function Challenges() {
               />
             </div>
           </header>
+          <br />
         </div>
-        ¨
-        <div className="fil">
-          <p>för filtering av dagar och vänner</p>
-        </div>
+        
+        <br />
         <form
           id="challengeForm"
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 hidden"
@@ -202,8 +202,8 @@ function Challenges() {
               type="reset"
               id="button"
               onClick={() => {
-                handleSubmit();
-                hideForm();
+                handleSubmit()
+                hideForm()
               }}
             >
               Submit challenge
@@ -228,7 +228,7 @@ function Challenges() {
         </form>
         {/* Fetch challenges component */}
         <DisplayChallenges />
-        <div className="w-full flex justify-end items-center fixed bottom-20">
+        <div className="w-full flex justify-end items-center relative bottom-16 right-0">
           <button
             className="purple1 hover:bg-purple-700 text-white w-28 h-28 rounded-full "
             type="button"
@@ -241,6 +241,6 @@ function Challenges() {
         <FooterNavbar />
       </main>
     </div>
-  );
+  )
 }
-export default Challenges;
+export default Challenges

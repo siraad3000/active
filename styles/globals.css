@@ -22,13 +22,16 @@ main {
   color: #611087;
 }
 .active {
+  position: fixed;
   width: 30%;
   justify-items: center;
-  left: 100px;
+  left: 35%;
   height: 80;
 }
 .head {
   height: auto;
+  width: 100%;
+  height: 4.3em;
 }
 
 .profil {
@@ -36,8 +39,7 @@ main {
   width: 25px;
   height: 25px;
   left: 355px;
-  top: 45px;
- 
+  top: 35px;
 }
 
 .fil {
