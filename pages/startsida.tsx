@@ -9,10 +9,9 @@ function Challenges() {
   const [selectedFor, setSelectedFor] = useState("")
   const [challenges, setChallenges] = useState<challenge[]>([])
   const challenge = {
-    publisher: "",
     title: "",
     description: "",
-    category: "",
+    level: "",
     location: "",
     date: "",
     time: "",
@@ -139,7 +138,6 @@ function Challenges() {
           */}
           <div className="mb-4">
             {/*
-
            
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
