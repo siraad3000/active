@@ -227,7 +227,7 @@ function Challenges() {
                 />
                 <label
                   htmlFor="level"
-                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/lätt:bg-red-500 border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center "
+                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/lätt:bg-green-500 border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center "
                 >
                   Lätt
                 </label>
