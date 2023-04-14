@@ -61,7 +61,8 @@ function Challenges() {
     const challengeForm = document.getElementById("challengeForm")
     const showForm = document.getElementById("show-form-btn")
     const cards = document.getElementById("cards")
-    if (challengeForm && showForm && cards) {
+    const footer = document.getElementById("footer")
+    if (challengeForm && showForm && cards && footer) {
       if (
         challengeForm.style.display === "none" ||
         challengeForm.style.display === ""
@@ -73,10 +74,12 @@ function Challenges() {
         challengeForm.style.display = "block"
         showForm.style.display = "none"
         cards.style.display = "none"
+        footer.style.display = "none"
       } else {
         challengeForm.style.display = "none"
         showForm.style.display = "block"
         cards.style.display = "block"
+        footer.style.display = "block"
       }
     }
   }
@@ -91,23 +94,25 @@ function Challenges() {
       </Head>
       <main className="">
         <div>
-          <header className=" head fixed top-0 flex justify-center w-full h-30 bg-white border-t ">
-            <div className="active flex items-center">
-              <Image
-                src={"/activelogga.png"}
-                alt={"#"}
-                width={"170"}
-                height={"170"}
-              ></Image>
-            </div>
+          <header className="fixed inset-x-0 top-0 flex justify-center w-full h-16 bg-white border-t border-gray-200">
+            <div className="w-full h-full">
+              <div className="active flex items-center">
+                <Image
+                  src={"/activelogga.png"}
+                  alt={"#"}
+                  width={"170"}
+                  height={"170"}
+                ></Image>
+              </div>
 
-            <div className="profil">
-              <Image
-                src="/user-avatar.png"
-                alt="Avatar"
-                width={35}
-                height={35}
-              />
+              <div className="profil">
+                <Image
+                  src="/user-avatar.png"
+                  alt="Avatar"
+                  width={35}
+                  height={35}
+                />
+              </div>
             </div>
           </header>
           <br />
@@ -195,8 +200,8 @@ function Challenges() {
               <Image
                 src={"/Location-Icon-Filled.png"}
                 alt={"#"}
-                width={"20"}
-                height={"20"}
+                width={"28"}
+                height={"18"}
               ></Image>
               <input
                 className=" shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ml-4"
@@ -227,7 +232,7 @@ function Challenges() {
                 />
                 <label
                   htmlFor="level"
-                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/lätt:bg-green-500 border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center "
+                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/lätt:bg-red-500 border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center "
                 >
                   Lätt
                 </label>
@@ -386,17 +391,25 @@ function Challenges() {
         </form>
         {/* Fetch challenges component */}
         <DisplayChallenges />
-        <div className="w-full flex justify-end items-center relative bottom-16 right-0">
+        <div className="w-14 h-14 flex justify-end fixed bottom-20 right-5 rounded-full ml-6">
           <button
-            className="purple1 hover:bg-purple-700 text-white w-28 h-28 rounded-full "
+            className="flex justify-center items-center purple1 hover:bg-purple-700 text-white w-full h-full rounded-full "
             type="button"
             id="show-form-btn"
             onClick={hideForm}
           >
-            Create a new challenge
+            {" "}
+            <Image
+              src={"/Plus-Icon-Big-White.png"}
+              alt="#"
+              width={28}
+              height={28}
+            ></Image>
           </button>
         </div>
-        <FooterNavbar />
+        <div id="footer">
+          <FooterNavbar />
+        </div>
       </main>
     </div>
   )
