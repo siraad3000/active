@@ -9,4 +9,5 @@ export type challenge = {
   location: string
   date: string
   time: string
+  attending: string[]
 }

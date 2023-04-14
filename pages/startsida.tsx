@@ -16,6 +16,7 @@ function Challenges() {
     date: "",
     time: "",
     showFor: "",
+    attending: [],
   }
   function handleOptionChange(event) {
     setSelectedOption(event.target.value)
@@ -200,7 +201,7 @@ function Challenges() {
               <Image
                 src={"/Location-Icon-Filled.png"}
                 alt={"#"}
-                width={"28"}
+                width={"18"}
                 height={"18"}
               ></Image>
               <input
@@ -232,7 +233,7 @@ function Challenges() {
                 />
                 <label
                   htmlFor="level"
-                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/lätt:bg-red-500 border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center "
+                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/lätt:bg-red-500 peer-checked/lätt:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center "
                 >
                   Lätt
                 </label>
@@ -250,7 +251,7 @@ function Challenges() {
                 />
                 <label
                   htmlFor="level2"
-                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/medel:bg-red-500 border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
+                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/medel:bg-red-500 peer-checked/medel:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
                 >
                   medel
                 </label>
@@ -269,7 +270,7 @@ function Challenges() {
 
                 <label
                   htmlFor="level3"
-                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center  peer-checked/test:bg-red-500 border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
+                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center  peer-checked/test:bg-red-500 peer-checked/test:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
                 >
                   intensivt
                 </label>
@@ -314,7 +315,7 @@ function Challenges() {
                 />
                 <label
                   htmlFor="vänner"
-                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/vänner:bg-red-500 border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
+                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/vänner:bg-red-500 peer-checked/vänner:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
                 >
                   {" "}
                   Vänner{" "}
@@ -333,7 +334,7 @@ function Challenges() {
                 />
                 <label
                   htmlFor="grupper"
-                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/grupper:bg-red-500 border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
+                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/grupper:bg-red-500 peer-checked/grupper:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
                 >
                   Grupper
                 </label>
@@ -351,7 +352,7 @@ function Challenges() {
                 />
                 <label
                   htmlFor="all"
-                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/all:bg-red-500 border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
+                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/all:bg-red-500 peer-checked/all:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
                 >
                   Offentligt
                 </label>
@@ -390,15 +391,17 @@ function Challenges() {
           </div>
         </form>
         {/* Fetch challenges component */}
+
         <DisplayChallenges />
-        <div className="w-14 h-14 flex justify-end fixed bottom-20 right-5 rounded-full ml-6">
+        <div
+          className="w-14 h-14 flex justify-end fixed bottom-20 right-5 rounded-ful "
+          id="show-form-btn"
+        >
           <button
-            className="flex justify-center items-center purple1 hover:bg-purple-700 text-white w-full h-full rounded-full "
+            className="flex justify-center items-center purple1 hover:bg-purple-700 w-full h-full rounded-full "
             type="button"
-            id="show-form-btn"
             onClick={hideForm}
           >
-            {" "}
             <Image
               src={"/Plus-Icon-Big-White.png"}
               alt="#"
