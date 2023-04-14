@@ -197,15 +197,23 @@ function Challenges() {
             >
               Location
             </label>
-             
+
             <div className="flex flex-row items-center">
-            
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
-              <path fill="#000" fill-rule="evenodd" d="m9.94 12.646-2.248-.749c-2.353-.784-3.53-1.176-3.53-1.897 0-.72 1.177-1.113 3.53-1.897l8.513-2.838c1.656-.552 2.484-.828 2.921-.391.437.437.161 1.265-.39 2.92l-2.839 8.514c-.784 2.353-1.176 3.53-1.897 3.53-.72 0-1.113-1.177-1.897-3.53l-.75-2.247 4.354-4.354a1 1 0 0 0-1.414-1.414l-4.354 4.353Z" 
-              clip-rule="evenodd"/>
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+              >
+                <path
+                  fill="#000"
+                  fill-rule="evenodd"
+                  d="m9.94 12.646-2.248-.749c-2.353-.784-3.53-1.176-3.53-1.897 0-.72 1.177-1.113 3.53-1.897l8.513-2.838c1.656-.552 2.484-.828 2.921-.391.437.437.161 1.265-.39 2.92l-2.839 8.514c-.784 2.353-1.176 3.53-1.897 3.53-.72 0-1.113-1.177-1.897-3.53l-.75-2.247 4.354-4.354a1 1 0 0 0-1.414-1.414l-4.354 4.353Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
               <input
-                className=" shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ml-4"
+                className=" shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ml-4 text-sm "
                 id="location"
                 type="text"
                 placeholder="Årstaskogen Naturreservat 120 59 Årsta"
@@ -233,7 +241,7 @@ function Challenges() {
                 />
                 <label
                   htmlFor="level"
-                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/lätt:bg-red-500 peer-checked/lätt:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center "
+                  className="w-full h-full py-3 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/lätt:bg-red-500 peer-checked/lätt:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center "
                 >
                   Lätt
                 </label>
@@ -251,7 +259,7 @@ function Challenges() {
                 />
                 <label
                   htmlFor="level2"
-                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/medel:bg-red-500 peer-checked/medel:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
+                  className="w-full h-full py-3 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/medel:bg-red-500 peer-checked/medel:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
                 >
                   medel
                 </label>
@@ -270,7 +278,7 @@ function Challenges() {
 
                 <label
                   htmlFor="level3"
-                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center  peer-checked/test:bg-red-500 peer-checked/test:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
+                  className="w-full h-full py-3 text-sm font-medium peer-cheaked:text-red-500 text-center  peer-checked/test:bg-red-500 peer-checked/test:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
                 >
                   intensivt
                 </label>
@@ -315,7 +323,7 @@ function Challenges() {
                 />
                 <label
                   htmlFor="vänner"
-                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/vänner:bg-red-500 peer-checked/vänner:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
+                  className="w-full h-full py-3  text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/vänner:bg-red-500 peer-checked/vänner:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
                 >
                   {" "}
                   Vänner{" "}
@@ -334,7 +342,7 @@ function Challenges() {
                 />
                 <label
                   htmlFor="grupper"
-                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/grupper:bg-red-500 peer-checked/grupper:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
+                  className="w-full h-full py-3  text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/grupper:bg-red-500 peer-checked/grupper:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
                 >
                   Grupper
                 </label>
@@ -352,7 +360,7 @@ function Challenges() {
                 />
                 <label
                   htmlFor="all"
-                  className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/all:bg-red-500 peer-checked/all:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
+                  className="w-full h-full py-3 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/all:bg-red-500 peer-checked/all:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
                 >
                   Offentligt
                 </label>
@@ -360,18 +368,18 @@ function Challenges() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between">
-            <button
-              className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="reset"
-              id="button"
-              onClick={() => {
-                handleSubmit()
-                hideForm()
-              }}
-            >
-              Submit challenge
-            </button>
+          <button
+            className=" w-full purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
+            type="reset"
+            id="button"
+            onClick={() => {
+              handleSubmit()
+              hideForm()
+            }}
+          >
+            Publicera
+          </button>
+          <div className="flex items-center justify-between mt-3">
             <button
               className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline block"
               type="button"
