@@ -26,22 +26,17 @@ main {
   width: 30%;
   justify-items: center;
   left: 35%;
-  height: 80;
+  height: 80px;
 }
 .head {
-  height: auto;
   width: 100%;
   height: 4.3em;
 }
 
 .profil {
-  position: sticky;
+  position: fixed;
   width: 25px;
   height: 25px;
   left: 355px;
   top: 35px;
-}
-
-.fil {
-  background-color: #f0f0f0;
 }
