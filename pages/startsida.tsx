@@ -101,33 +101,8 @@ function Challenges() {
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 hidden"
         >
           <h1>Skapa aktivitet</h1>
-          {/** 
-           
+
           <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="publisher"
-            >
-              Publisher
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="publisher"
-              type="text"
-              placeholder="Author name"
-            />
-          </div>
-          */}
-          <div className="mb-4">
-            {/*
-           
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="challengeTitle"
-            >
-              Title
-            </label>
-             */}
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="challengeTitle"
