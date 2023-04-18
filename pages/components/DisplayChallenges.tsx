@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function DisplayChallenges() {
   const challenges = FetchChallenges();
   return (
-    <div id="cards" className=" mb-20">
+    <div id="cards" className=" mb-20 mt-32">
       {challenges.map((challenge) => (
         <div
           className="flex justify-center items-center m-5 relative w-auto"
@@ -30,7 +30,7 @@ export default function DisplayChallenges() {
                 }
               }
             }}
-            className="max-w-sm rounded-lg overflow-hidden shadow-lg flex cards-size cursor-pointer"
+            className="max-w-sm rounded-lg overflow-hidden shadow-lg flex cards-size cursor-pointer bg-active-white"
           >
             <div className="w-16 flex-shrink-0 m-2">
               <Image
