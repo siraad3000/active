@@ -10,13 +10,18 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        Urbanist: ["Urbanist", "sans-serif"],
-        inter: ["Inter', sans-serif"],
-
+    colors: {
+      active: {
+        white: "#FFFFFF",
+        offWHite: "#F0F0F0",
+      },
+      extend: {
+        fontFamily: {
+          Urbanist: ["Urbanist", "sans-serif"],
+          inter: ["Inter', sans-serif"],
+        },
       },
     },
+    plugins: [],
   },
-  plugins: [],
-}
+};

@@ -21,13 +21,6 @@ main {
 .text-purp {
   color: #611087;
 }
-.active {
-  position: fixed;
-  width: 30%;
-  justify-items: center;
-  left: 35%;
-  height: 80px;
-}
 .head {
   width: 100%;
   height: 4.3em;
