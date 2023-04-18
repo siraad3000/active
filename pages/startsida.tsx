@@ -93,31 +93,8 @@ function Challenges() {
         <link rel="icon" href="/Activeicon.ico" />
       </Head>
       <main className="">
-        <div>
-          <header className="fixed inset-x-0 top-0 flex justify-center w-full h-16 bg-white border-t border-gray-200">
-            <div className="w-full h-full">
-              <div className="active flex items-center">
-                <Image
-                  src={"/activelogga.png"}
-                  alt={"#"}
-                  width={"170"}
-                  height={"170"}
-                ></Image>
-              </div>
-
-              <div className="profil">
-                <Image
-                  src="/user-avatar.png"
-                  alt="Avatar"
-                  width={35}
-                  height={35}
-                />
-              </div>
-            </div>
-          </header>
-          <br />
-        </div>
-
+        <br />
+        <br />
         <br />
         <form
           id="challengeForm"
@@ -391,11 +368,13 @@ function Challenges() {
         </form>
         {/* Fetch challenges component */}
         <DisplayChallenges />
-        <div className="w-14 h-14 flex justify-end fixed bottom-20 right-5 rounded-full ml-6">
+        <div
+          className="w-14 h-14 flex justify-end fixed bottom-20 right-5 rounded-full ml-6"
+          id="show-form-btn"
+        >
           <button
             className="flex justify-center items-center purple1 hover:bg-purple-700 text-white w-full h-full rounded-full "
             type="button"
-            id="show-form-btn"
             onClick={hideForm}
           >
             {" "}
@@ -409,6 +388,25 @@ function Challenges() {
         </div>
         <div id="footer">
           <FooterNavbar />
+        </div>
+        <div className=" ">
+          <header className="header fixed top-0 justify-center bg-white h-16 border-t pt-16">
+            <Image
+              className="active"
+              src={"/activelogga.png"}
+              alt={"#"}
+              width={"100"}
+              height={"100"}
+            ></Image>
+            <div className="profil">
+              <Image
+                src="/user-avatar.png"
+                alt="Avatar"
+                width={35}
+                height={35}
+              />
+            </div>
+          </header>
         </div>
       </main>
     </div>
