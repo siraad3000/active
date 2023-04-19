@@ -14,7 +14,7 @@ module.exports = {
       active: {
         white: "#FFFFFF",
         offWHite: "#F0F0F0",
-        red: "#FF0000",
+        purple: "#611087",
       },
       extend: {
         fontFamily: {
@@ -25,4 +25,4 @@ module.exports = {
     },
     plugins: [],
   },
-};
+}

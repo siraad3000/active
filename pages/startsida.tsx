@@ -1,14 +1,15 @@
-import Head from "next/head";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import { challenge } from "@/types/challengeTemp";
-import DisplayChallenges from "./components/DisplayChallenges";
-import FooterNavbar from "./components/FooterNavbar";
-import Header from "./components/Header";
+import Head from "next/head"
+import Image from "next/image"
+import { useEffect, useState } from "react"
+import { challenge } from "@/types/challengeTemp"
+import DisplayChallenges from "./components/DisplayChallenges"
+import FooterNavbar from "./components/FooterNavbar"
+import Header from "./components/Header"
+import ChallengeForm from "./components/ChallengeForm"
 function Challenges() {
-  const [selectedOption, setSelectedOption] = useState("");
-  const [selectedFor, setSelectedFor] = useState("");
-  const [challenges, setChallenges] = useState<challenge[]>([]);
+  const [selectedOption, setSelectedOption] = useState("")
+  const [selectedFor, setSelectedFor] = useState("")
+  const [challenges, setChallenges] = useState<challenge[]>([])
   const challenge = {
     title: "",
     description: "",
@@ -18,7 +19,7 @@ function Challenges() {
     time: "",
     showFor: "",
     attending: [],
-  };
+  }
   // function handleOptionChange(event) {
   //   setSelectedOption(event.target.value);
   // }
@@ -53,17 +54,17 @@ function Challenges() {
 
   useEffect(() => {
     async function fetchChallenges() {
-      const res = await fetch("/api/challenges");
-      const data = await res.json();
-      setChallenges(data);
+      const res = await fetch("/api/challenges")
+      const data = await res.json()
+      setChallenges(data)
     }
-    fetchChallenges();
-  }, []);
+    fetchChallenges()
+  }, [])
   function hideForm() {
-    const challengeForm = document.getElementById("challengeForm");
-    const showForm = document.getElementById("show-form-btn");
-    const cards = document.getElementById("cards");
-    const footer = document.getElementById("footer");
+    const challengeForm = document.getElementById("challengeForm")
+    const showForm = document.getElementById("show-form-btn")
+    const cards = document.getElementById("cards")
+    const footer = document.getElementById("footer")
     if (challengeForm && showForm && cards && footer) {
       if (
         challengeForm.style.display === "none" ||
@@ -72,16 +73,16 @@ function Challenges() {
         window.scrollTo({
           top: 0,
           behavior: "smooth",
-        });
-        challengeForm.style.display = "block";
-        showForm.style.display = "none";
-        cards.style.display = "none";
-        footer.style.display = "none";
+        })
+        challengeForm.style.display = "block"
+        showForm.style.display = "none"
+        cards.style.display = "none"
+        footer.style.display = "none"
       } else {
-        challengeForm.style.display = "none";
-        showForm.style.display = "block";
-        cards.style.display = "block";
-        footer.style.display = "block";
+        challengeForm.style.display = "none"
+        showForm.style.display = "block"
+        cards.style.display = "block"
+        footer.style.display = "block"
       }
     }
   }
@@ -96,7 +97,8 @@ function Challenges() {
       </Head>
       <main>
         <Header />
-        <form
+        <ChallengeForm></ChallengeForm>
+        {/*<form
           id="challengeForm"
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 hidden"
         >
@@ -374,7 +376,7 @@ function Challenges() {
         </div>
       </main>
     </div>
-  );
+  )
 }
 
-export default Challenges;
+export default Challenges

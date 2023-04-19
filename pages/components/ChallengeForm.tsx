@@ -1,15 +1,15 @@
-import { useState } from "react";
-import Image from "next/image";
+import { useState } from "react"
+import Image from "next/image"
 
 export default function ChallengeForm() {
-  const [challengeTitle, setChallengeTitle] = useState<string>();
-  const [description, setdescription] = useState<string>();
-  const [level, setlevel] = useState<string>();
-  const [location, setlocation] = useState<string>();
-  const [startTime, setStartTime] = useState<string>();
-  const [finishTime, setFinishTime] = useState<string>();
-  const [showFor, setShowFor] = useState<string>();
-  const [date, setDate] = useState<string>();
+  const [challengeTitle, setChallengeTitle] = useState<string>()
+  const [description, setdescription] = useState<string>()
+  const [level, setlevel] = useState<string>()
+  const [location, setlocation] = useState<string>()
+  const [startTime, setStartTime] = useState<string>()
+  const [finishTime, setFinishTime] = useState<string>()
+  const [showFor, setShowFor] = useState<string>()
+  const [date, setDate] = useState<string>()
   const handleSubmit = async () => {
     const challenge = {
       title: challengeTitle,
@@ -19,22 +19,22 @@ export default function ChallengeForm() {
       time: startTime + "-" + finishTime,
       showFor: showFor,
       date: date,
-    };
+    }
     const res = await fetch("/api/challenges", {
       method: "POST",
       body: JSON.stringify(challenge),
       headers: {
         "Content-Type": "application/json",
       },
-    });
-    const data = await res.json();
-    console.log(data);
-  };
+    })
+    const data = await res.json()
+    console.log(data)
+  }
   function hideForm() {
-    const challengeForm = document.getElementById("challengeForm");
-    const showForm = document.getElementById("show-form-btn");
-    const cards = document.getElementById("cards");
-    const footer = document.getElementById("footer");
+    const challengeForm = document.getElementById("challengeForm")
+    const showForm = document.getElementById("show-form-btn")
+    const cards = document.getElementById("cards")
+    const footer = document.getElementById("footer")
     if (challengeForm && showForm && cards && footer) {
       if (
         challengeForm.style.display === "none" ||
@@ -43,16 +43,16 @@ export default function ChallengeForm() {
         window.scrollTo({
           top: 0,
           behavior: "smooth",
-        });
-        challengeForm.style.display = "block";
-        showForm.style.display = "none";
-        cards.style.display = "none";
-        footer.style.display = "none";
+        })
+        challengeForm.style.display = "block"
+        showForm.style.display = "none"
+        cards.style.display = "none"
+        footer.style.display = "none"
       } else {
-        challengeForm.style.display = "none";
-        showForm.style.display = "block";
-        cards.style.display = "block";
-        footer.style.display = "block";
+        challengeForm.style.display = "none"
+        showForm.style.display = "block"
+        cards.style.display = "block"
+        footer.style.display = "block"
       }
     }
   }
@@ -164,8 +164,8 @@ export default function ChallengeForm() {
               />
               <label
                 htmlFor="level"
-                className="w-full h-full py-3 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/lätt:bg-red-500
-           peer-checked/lätt:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center "
+                className="w-full h-full py-3 text-sm font-medium text-center peer-checked/lätt:bg-active-purple
+           peer-checked/lätt:text-active-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center "
               >
                 Lätt
               </label>
@@ -182,8 +182,8 @@ export default function ChallengeForm() {
               />
               <label
                 htmlFor="level2"
-                className="w-full h-full py-3 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/medel:bg-red-500
-           peer-checked/medel:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
+                className="w-full h-full py-3 text-sm font-medium text-center peer-checked/medel:bg-active-purple 
+           peer-checked/medel:text-active-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
               >
                 medel
               </label>
@@ -193,7 +193,7 @@ export default function ChallengeForm() {
               <input
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 2 dark:bg-gray-700 dark:border-gray-600 hidden peer/test"
                 type="radio"
-                name="leve"
+                name="level"
                 id="level3"
                 value={"intensivt"}
                 onChange={(event) => setlevel(event.target.value)}
@@ -201,8 +201,8 @@ export default function ChallengeForm() {
 
               <label
                 htmlFor="level3"
-                className="w-full h-full py-3 text-sm font-medium peer-cheaked:text-red-500 text-center  peer-checked/test:
-                  bg-red-500 peer-checked/test:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
+                className="w-full h-full py-3 text-sm font-medium text-center  peer-checked/test:bg-active-purple
+                 peer-checked/test:text-active-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
               >
                 intensivt
               </label>
@@ -235,9 +235,9 @@ export default function ChallengeForm() {
             Visas för
           </label>
           <div className="flex-row items-center justify-center content-center">
-            {/* <div className="flex items-center pl-4 w-32 h-7">
+            <div className="flex items-center pl-4 w-32 h-7">
               <input
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 2 dark:bg-gray-700 dark:border-gray-600 peer/friends"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 2 dark:bg-gray-700 dark:border-gray-600 peer/friends hidden"
                 type="radio"
                 name="showFor"
                 id="friends"
@@ -246,20 +246,13 @@ export default function ChallengeForm() {
               />
               <label
                 htmlFor="friends"
-                className="checked:bg-purple-500"
-                // className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked:bg-red-500 border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
+                className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/friends:bg-active-purple peer-checked/friends:text-active-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
               >
                 Vänner
               </label>
-            </div> */}
-            <input type="radio" id="radio1" />
-            <label htmlFor="radio1" className="checked:bg-purple-500">
-              My Label
-            </label>
-            <label
-              htmlFor="grupper"
-              className="flex items-center pl-4 w-32 h-7"
-            >
+            </div>
+
+            <div className="flex items-center pl-4 w-32 h-7">
               <input
                 className="text-blue-600 bg-gray-100 border-gray-300 2 dark:bg-gray-700 dark:border-gray-600 hidden peer/grupper"
                 type="radio"
@@ -268,11 +261,13 @@ export default function ChallengeForm() {
                 value={"Grupper"}
                 onChange={(event) => setShowFor(event.target.value)}
               />
-              <span className="h-full py-3 text-sm font-medium peer-checked:text-red-500 text-center peer-checked/grupper:bg-red-500 peer-checked/grupper:text-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center">
+              <label
+                htmlFor="grupper"
+                className="w-full h-full py-3 ml-2 text-sm font-medium peer-cheaked:text-red-500 text-center peer-checked/grupper:bg-active-purple peer-checked/grupper:text-active-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
+              >
                 Grupper
-              </span>
-            </label>
-
+              </label>
+            </div>
             <div className="flex items-center pl-4  w-32 h-7 ">
               <input
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 2 dark:bg-gray-700 dark:border-gray-600 hidden peer/all"
@@ -284,9 +279,8 @@ export default function ChallengeForm() {
               />
               <label
                 htmlFor="all"
-                className="w-full h-full py-3 text-sm font-medium peer-cheaked:text
-          -red-500 text-center peer-checked/all:bg-red-500
-                   peer-checked/all:text-white border border-gray-200 
+                className="w-full h-full py-3 text-sm font-medium  text-center peer-checked/all:bg-active-purple
+                   peer-checked/all:text-active-white border border-gray-200 
                    rounded dark:border-gray-700 flex items-center justify-center"
               >
                 Offentligt
@@ -296,18 +290,18 @@ export default function ChallengeForm() {
         </div>
 
         <button
-          className=" w-full purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
+          className=" w-full purple1 hover:bg-purple-700 text-active-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
           type="submit"
           id="button"
           onClick={() => {
-            hideForm();
+            hideForm()
           }}
         >
           Publicera
         </button>
         <div className="flex items-center justify-between mt-3">
           <button
-            className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline block"
+            className="purple1 hover:bg-purple-700 text-active-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline block"
             type="button"
             id="hide-form-btn"
             onClick={hideForm}
@@ -315,7 +309,7 @@ export default function ChallengeForm() {
             return
           </button>
           <button
-            className="purple1 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline block"
+            className="purple1 hover:bg-purple-700 text-active-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline block"
             type="reset"
             id="hide-form-btn"
             onClick={hideForm}
@@ -325,7 +319,7 @@ export default function ChallengeForm() {
         </div>
       </form>
       <div
-        className="w-14 h-14 flex justify-end fixed bottom-20 right-5 rounded-ful "
+        className="w-14 h-14 flex justify-end fixed bottom-20 right-5 rounded-ful"
         id="show-form-btn"
       >
         <button
@@ -342,5 +336,5 @@ export default function ChallengeForm() {
         </button>
       </div>
     </div>
-  );
+  )
 }
