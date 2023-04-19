@@ -6,7 +6,7 @@ interface Props {
 }
 const DisplayChallenges = ({ challenges }: Props) => {
   return (
-    <div id="cards" className=" mb-20 mt-32">
+    <div id="cards" className=" mb-20">
       {challenges.map((challenge) => (
         <div
           className="flex justify-center items-center m-5 relative w-auto"
@@ -32,7 +32,7 @@ const DisplayChallenges = ({ challenges }: Props) => {
                 }
               }
             }}
-            className="max-w-sm rounded-lg overflow-hidden shadow-lg flex cards-size cursor-pointer bg-active-white"
+            className="max-w-sm rounded-lg overflow-hidden shadow-lg flex cards-size cursor-pointer"
           >
             <div className="w-16 flex-shrink-0 m-2">
               <Image

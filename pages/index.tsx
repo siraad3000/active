@@ -10,6 +10,7 @@ const Index = () => {
       router.push("/startsida");
     }, 3000);
 
+    // Clean up the timeout when the component unmounts
     return () => clearTimeout(timeoutId);
   }, []);
 

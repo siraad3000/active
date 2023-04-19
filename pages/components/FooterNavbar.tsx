@@ -2,7 +2,7 @@ export default function FooterNavbar() {
   return (
     <div>
       <footer>
-        <div className=" fixed inset-x-0 bottom-0 flex justify-center w-full h-16 border-t border-gray-200 bg-active-white">
+        <div className=" fixed inset-x-0 bottom-0 flex justify-center w-full h-16 bg-white border-t border-gray-200">
           <div className="grid h-full max-w-lg grid-cols-3 mx-auto font-medium">
             <button
               type="button"
@@ -95,5 +95,5 @@ export default function FooterNavbar() {
         </div>
       </footer>
     </div>
-  );
+  )
 }
