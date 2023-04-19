@@ -1,21 +1,12 @@
-import React from "react";
 import Image from "next/image";
-
-interface Props {
-  avatarLink?: string;
-}
-
-const UserAvatar = ({ avatarLink }: Props) => {
+export default function Avatar() {
   return (
-    <div className="flex items-end justify-end mr-5">
-      <Image
-        src={avatarLink || "/user-avatar.png"}
-        alt="Avatar"
-        width={35}
-        height={35}
-      />
-    </div>
+    <Image
+      src="/user-avatar.png"
+      alt="Avatar"
+      width={35}
+      height={35}
+      className="flex items-end justify-end mr-5"
+    />
   );
-};
-
-export default UserAvatar;
+}

@@ -1,12 +1,10 @@
-import { challenge } from "@/types/challengeTemp";
+import { FetchChallenges } from "./FetchChallenges";
 import Image from "next/image";
 
-interface Props {
-  challenges: challenge[];
-}
-const DisplayChallenges = ({ challenges }: Props) => {
+export default function DisplayChallenges() {
+  const challenges = FetchChallenges();
   return (
-    <div id="cards" className=" mb-20">
+    <div id="cards" className=" mb-20 mt-32">
       {challenges.map((challenge) => (
         <div
           className="flex justify-center items-center m-5 relative w-auto"
@@ -32,7 +30,7 @@ const DisplayChallenges = ({ challenges }: Props) => {
                 }
               }
             }}
-            className="max-w-sm rounded-lg overflow-hidden shadow-lg flex cards-size cursor-pointer"
+            className="max-w-sm rounded-lg overflow-hidden shadow-lg flex cards-size cursor-pointer bg-active-white"
           >
             <div className="w-16 flex-shrink-0 m-2">
               <Image
@@ -102,5 +100,4 @@ const DisplayChallenges = ({ challenges }: Props) => {
       ))}
     </div>
   );
-};
-export default DisplayChallenges;
+}
