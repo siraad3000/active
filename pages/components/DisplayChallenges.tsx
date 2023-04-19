@@ -4,7 +4,7 @@ import Image from "next/image";
 interface Props {
   challenges: Challenge[];
 }
-const DisplayChallenges = ({ challenges }: Props) => {
+export const DisplayChallenges = ({ challenges }: Props) => {
   return (
     <div id="cards" className=" mb-20">
       {challenges.map((challenge) => (
@@ -63,7 +63,10 @@ const DisplayChallenges = ({ challenges }: Props) => {
                 {challenge.location}
               </p>
               <p>{challenge.time}</p>
-              <div id={`description_${challenge._id}`} className="hidden">
+              <div
+                id={`description_${challenge._id}`}
+                className="hidden w-3/4 break-words"
+              >
                 <p>{challenge.description}</p>
               </div>
               <div id={`btn_${challenge._id}`} className="hidden">
@@ -94,10 +97,10 @@ const DisplayChallenges = ({ challenges }: Props) => {
                   );
                   if (description && challengeCard && arrowIcon && joinBtn) {
                     if ((description.style.display = "block")) {
-                      description.style.display = "none";
+                      description.style.display === "none";
                       challengeCard.style.cursor = "pointer";
                       arrowIcon.classList.remove("rotate-180");
-                      joinBtn.style.display = "none";
+                      joinBtn.style.display === "none";
                     }
                   }
                 }}
