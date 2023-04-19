@@ -19,37 +19,37 @@ function Challenges() {
     showFor: "",
     attending: [],
   };
-  function handleOptionChange(event) {
-    setSelectedOption(event.target.value);
-  }
-  function handleForChange(event) {
-    setSelectedFor(event.target.value);
-  }
+  // function handleOptionChange(event) {
+  //   setSelectedOption(event.target.value);
+  // }
+  // function handleForChange(event) {
+  //   setSelectedFor(event.target.value);
+  // }
 
-  const handleSubmit = async () => {
-    const challenge = {
-      title: (document.getElementById("challengeTitle") as HTMLInputElement)
-        .value,
-      description: (document.getElementById("description") as HTMLInputElement)
-        .value,
-      level: selectedOption,
-      location: (document.getElementById("location") as HTMLInputElement).value,
-      time:
-        (document.getElementById("time") as HTMLInputElement).value +
-        "-" +
-        (document.getElementById("finished_time") as HTMLInputElement).value,
-      showFor: selectedFor,
-    };
-    const res = await fetch("/api/challenges", {
-      method: "POST",
-      body: JSON.stringify(challenge),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await res.json();
-    setChallenges([challenge, ...challenges]);
-  };
+  // const handleSubmit = async () => {
+  //   const challenge = {
+  //     title: (document.getElementById("challengeTitle") as HTMLInputElement)
+  //       .value,
+  //     description: (document.getElementById("description") as HTMLInputElement)
+  //       .value,
+  //     level: selectedOption,
+  //     location: (document.getElementById("location") as HTMLInputElement).value,
+  //     time:
+  //       (document.getElementById("time") as HTMLInputElement).value +
+  //       "-" +
+  //       (document.getElementById("finished_time") as HTMLInputElement).value,
+  //     showFor: selectedFor,
+  //   };
+  //   const res = await fetch("/api/challenges", {
+  //     method: "POST",
+  //     body: JSON.stringify(challenge),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  //   const data = await res.json();
+  //   setChallenges([challenge, ...challenges]);
+  // };
 
   useEffect(() => {
     async function fetchChallenges() {
