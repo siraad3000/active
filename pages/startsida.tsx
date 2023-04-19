@@ -5,6 +5,7 @@ import { challenge } from "@/types/challengeTemp";
 import DisplayChallenges from "./components/DisplayChallenges";
 import FooterNavbar from "./components/FooterNavbar";
 import Header from "./components/Header";
+import ChallengeForm from "./components/ChallengeForm";
 function Challenges() {
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedFor, setSelectedFor] = useState("");
@@ -96,11 +97,17 @@ function Challenges() {
       </Head>
       <main>
         <Header />
-        <form
+        <ChallengeForm />
+        {/* <form
           id="challengeForm"
-          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 hidden"
+          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 hidden mt-28"
         >
-          <h1>Skapa aktivitet</h1>
+          <label
+            className="block text-gray-700 text-xl font-bold mb-2"
+            htmlFor="time"
+          >
+            Skapa aktivitet
+          </label>
 
           <div className="mb-4">
             <input
@@ -348,11 +355,10 @@ function Challenges() {
               exit
             </button>
           </div>
-        </form>
+        </form> */}
         {/* Fetch challenges component */}
-
-        <DisplayChallenges />
-        <div
+        <DisplayChallenges challenges={challenges} />
+        {/* <div
           className="w-14 h-14 flex justify-end fixed bottom-20 right-5 rounded-ful "
           id="show-form-btn"
         >
@@ -368,7 +374,7 @@ function Challenges() {
               height={28}
             ></Image>
           </button>
-        </div>
+        </div> */}
         <div id="footer">
           <FooterNavbar />
         </div>

@@ -1,8 +1,10 @@
-import { FetchChallenges } from "./FetchChallenges";
+import { challenge } from "@/types/challengeTemp";
 import Image from "next/image";
 
-export default function DisplayChallenges() {
-  const challenges = FetchChallenges();
+interface Props {
+  challenges: challenge[];
+}
+const DisplayChallenges = ({ challenges }: Props) => {
   return (
     <div id="cards" className=" mb-20 mt-32">
       {challenges.map((challenge) => (
@@ -100,4 +102,5 @@ export default function DisplayChallenges() {
       ))}
     </div>
   );
-}
+};
+export default DisplayChallenges;
