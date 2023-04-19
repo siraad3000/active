@@ -15,6 +15,9 @@ module.exports = {
         white: "#FFFFFF",
         offWHite: "#F0F0F0",
         purple: "#611087",
+       bluelight: "#6ED8D33D",
+       purplelight: "#6110873D",
+       goldlight : "#FFD93A3D",
       },
       extend: {
         fontFamily: {
@@ -26,3 +29,4 @@ module.exports = {
     plugins: [],
   },
 }
+

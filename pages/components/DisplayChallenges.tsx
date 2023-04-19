@@ -24,11 +24,13 @@ const DisplayChallenges = ({ challenges }: Props) => {
               const arrowIcon = document.getElementById(
                 `arrowIcon_${challenge._id}`
               );
-              if (description && challengeCard && arrowIcon) {
+              const joinBtn = document.getElementById(`btn_${challenge._id}`);
+              if (description && challengeCard && arrowIcon && joinBtn) {
                 if ((description.style.display = "none")) {
                   description.style.display = "block";
                   challengeCard.style.cursor = "auto";
                   arrowIcon.classList.add("rotate-180");
+                  joinBtn.style.display = "block";
                 }
               }
             }}
@@ -64,6 +66,14 @@ const DisplayChallenges = ({ challenges }: Props) => {
               <div id={`description_${challenge._id}`} className="hidden">
                 <p>{challenge.description}</p>
               </div>
+              <div id={`btn_${challenge._id}`} className="hidden">
+                <button
+                  className="w-full h-full bg-active-purple text-active-white"
+                  disabled
+                >
+                  Skicka förfrågan
+                </button>
+              </div>
             </div>
             <div className=" w-1/6 right-0 cursor-pointer">
               <div
@@ -79,11 +89,15 @@ const DisplayChallenges = ({ challenges }: Props) => {
                   const arrowIcon = document.getElementById(
                     `arrowIcon_${challenge._id}`
                   );
-                  if (description && challengeCard && arrowIcon) {
+                  const joinBtn = document.getElementById(
+                    `btn_${challenge._id}`
+                  );
+                  if (description && challengeCard && arrowIcon && joinBtn) {
                     if ((description.style.display = "block")) {
                       description.style.display = "none";
                       challengeCard.style.cursor = "pointer";
                       arrowIcon.classList.remove("rotate-180");
+                      joinBtn.style.display = "none";
                     }
                   }
                 }}
@@ -103,4 +117,3 @@ const DisplayChallenges = ({ challenges }: Props) => {
     </div>
   );
 };
-export default DisplayChallenges;
