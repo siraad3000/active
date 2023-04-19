@@ -78,7 +78,7 @@ export const DisplayChallenges = ({ challenges }: Props) => {
                 </button>
               </div>
             </div>
-            <div className=" w-1/6 right-0 cursor-pointer">
+            <div className=" w-1/6 right-0 cursor-pointer flex justify-center ">
               <div
                 className="absolute bottom-2 "
                 onClick={(e) => {
@@ -97,10 +97,10 @@ export const DisplayChallenges = ({ challenges }: Props) => {
                   );
                   if (description && challengeCard && arrowIcon && joinBtn) {
                     if ((description.style.display = "block")) {
-                      description.style.display === "none";
+                      description.style.display = "none";
                       challengeCard.style.cursor = "pointer";
                       arrowIcon.classList.remove("rotate-180");
-                      joinBtn.style.display === "none";
+                      joinBtn.style.display = "none";
                     }
                   }
                 }}
