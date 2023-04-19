@@ -1,10 +1,12 @@
-import { FetchChallenges } from "./FetchChallenges";
+import { Challenge } from "@/types/challengeTemp";
 import Image from "next/image";
 
-export default function DisplayChallenges() {
-  const challenges = FetchChallenges();
+interface Props {
+  challenges: Challenge[];
+}
+const DisplayChallenges = ({ challenges }: Props) => {
   return (
-    <div id="cards" className=" mb-20 mt-32">
+    <div id="cards" className=" mb-20">
       {challenges.map((challenge) => (
         <div
           className="flex justify-center items-center m-5 relative w-auto"
@@ -32,7 +34,7 @@ export default function DisplayChallenges() {
             }}
             className="max-w-sm rounded-lg overflow-hidden shadow-lg flex cards-size cursor-pointer bg-active-white"
           >
-            <div className="w-16 flex-shrink-0 m-2">
+            <div className="w-14 flex-shrink-0 m-2">
               <Image
                 src="/user-avatar.png"
                 alt="Avatar"
@@ -40,7 +42,7 @@ export default function DisplayChallenges() {
                 height={50}
               />
             </div>
-            <div className="px-6 py-4 mr-10 ml-4 w-10/12">
+            <div className="py-4 w-4/5 flex-col items-center">
               <p className="text-urbanist text-black-700 text-lg body-font font-Urbanist">
                 {challenge.publisher}
               </p>
@@ -100,4 +102,5 @@ export default function DisplayChallenges() {
       ))}
     </div>
   );
-}
+};
+export default DisplayChallenges;

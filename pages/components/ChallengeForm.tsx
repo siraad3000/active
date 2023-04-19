@@ -1,16 +1,23 @@
-import { useState } from "react"
-import Image from "next/image"
+import { useState } from "react";
+import Image from "next/image";
+import { Challenge } from "@/types/challengeTemp";
 
-export default function ChallengeForm() {
-  const [challengeTitle, setChallengeTitle] = useState<string>()
-  const [description, setdescription] = useState<string>()
-  const [level, setlevel] = useState<string>()
-  const [location, setlocation] = useState<string>()
-  const [startTime, setStartTime] = useState<string>()
-  const [finishTime, setFinishTime] = useState<string>()
-  const [showFor, setShowFor] = useState<string>()
-  const [date, setDate] = useState<string>()
-  const handleSubmit = async () => {
+type ChallengeFormProps = {
+  onSubmit: (challenge: Challenge) => void;
+};
+
+export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
+  const [challengeTitle, setChallengeTitle] = useState<string>("");
+  const [description, setdescription] = useState<string>("");
+  const [level, setlevel] = useState<string>("");
+  const [location, setlocation] = useState<string>("");
+  const [startTime, setStartTime] = useState<string>("");
+  const [finishTime, setFinishTime] = useState<string>("");
+  const [showFor, setShowFor] = useState<string>("");
+  const [date, setDate] = useState<string>("");
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     const challenge = {
       title: challengeTitle,
       description: description,
@@ -19,22 +26,15 @@ export default function ChallengeForm() {
       time: startTime + "-" + finishTime,
       showFor: showFor,
       date: date,
-    }
-    const res = await fetch("/api/challenges", {
-      method: "POST",
-      body: JSON.stringify(challenge),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-    const data = await res.json()
-    console.log(data)
-  }
+    };
+
+    onSubmit(challenge);
+  };
   function hideForm() {
-    const challengeForm = document.getElementById("challengeForm")
-    const showForm = document.getElementById("show-form-btn")
-    const cards = document.getElementById("cards")
-    const footer = document.getElementById("footer")
+    const challengeForm = document.getElementById("challengeForm");
+    const showForm = document.getElementById("show-form-btn");
+    const cards = document.getElementById("cards");
+    const footer = document.getElementById("footer");
     if (challengeForm && showForm && cards && footer) {
       if (
         challengeForm.style.display === "none" ||
@@ -43,16 +43,16 @@ export default function ChallengeForm() {
         window.scrollTo({
           top: 0,
           behavior: "smooth",
-        })
-        challengeForm.style.display = "block"
-        showForm.style.display = "none"
-        cards.style.display = "none"
-        footer.style.display = "none"
+        });
+        challengeForm.style.display = "block";
+        showForm.style.display = "none";
+        cards.style.display = "none";
+        footer.style.display = "none";
       } else {
-        challengeForm.style.display = "none"
-        showForm.style.display = "block"
-        cards.style.display = "block"
-        footer.style.display = "block"
+        challengeForm.style.display = "none";
+        showForm.style.display = "block";
+        cards.style.display = "block";
+        footer.style.display = "block";
       }
     }
   }
@@ -73,6 +73,8 @@ export default function ChallengeForm() {
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="challengeTitle"
+            required
+            value={challengeTitle}
             onChange={(event) => setChallengeTitle(event.target.value)}
             type="text"
             placeholder="Namnnge din aktivitet"
@@ -294,7 +296,7 @@ export default function ChallengeForm() {
           type="submit"
           id="button"
           onClick={() => {
-            hideForm()
+            hideForm();
           }}
         >
           Publicera
@@ -319,13 +321,13 @@ export default function ChallengeForm() {
         </div>
       </form>
       <div
-        className="w-14 h-14 flex justify-end fixed bottom-20 right-5 rounded-ful"
+        className="w-14 h-14 flex justify-center items-center rounded-full fixed bottom-20 right-5 rounded-ful bg-active-purple z-10"
         id="show-form-btn"
+        onClick={hideForm}
       >
         <button
-          className="flex justify-center items-center purple1 hover:bg-purple-700 w-full h-full rounded-full "
+          className="flex justify-center items-center  hover:bg-purple-700 w-full h-full rounded-full "
           type="button"
-          onClick={hideForm}
         >
           <Image
             src={"/Plus-Icon-Big-White.png"}
@@ -336,5 +338,5 @@ export default function ChallengeForm() {
         </button>
       </div>
     </div>
-  )
+  );
 }
