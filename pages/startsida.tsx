@@ -1,21 +1,21 @@
-import Head from "next/head"
-import { useEffect, useState } from "react"
-import { Challenge } from "@/types/challengeTemp"
-import { DisplayChallenges } from "./components/DisplayChallenges"
-import FooterNavbar from "./components/FooterNavbar"
-import Header from "./components/Header"
-import ChallengeForm from "./components/ChallengeForm"
+import Head from "next/head";
+import { useEffect, useState } from "react";
+import { Challenge } from "@/types/challengeTemp";
+import { DisplayChallenges } from "./components/DisplayChallenges";
+import FooterNavbar from "./components/FooterNavbar";
+import Header from "./components/Header";
+import ChallengeForm from "./components/ChallengeForm";
 function Challenges() {
-  const [challenges, setChallenges] = useState<Challenge[]>([])
+  const [challenges, setChallenges] = useState<Challenge[]>([]);
 
   useEffect(() => {
     async function fetchChallenges() {
-      const res = await fetch("/api/challenges")
-      const data = await res.json()
-      setChallenges(data)
+      const res = await fetch("/api/challenges");
+      const data = await res.json();
+      setChallenges(data);
     }
-    fetchChallenges()
-  }, [])
+    fetchChallenges();
+  }, []);
 
   const handleChallengeSubmit = async (challenge: Challenge) => {
     const res = await fetch("/api/challenges", {
@@ -24,12 +24,12 @@ function Challenges() {
       headers: {
         "Content-Type": "application/json",
       },
-    })
-    const data = await res.json()
+    });
+    const data = await res.json();
 
-    console.log(challenge)
-    setChallenges([challenge, ...challenges])
-  }
+    console.log(challenge);
+    setChallenges([challenge, ...challenges]);
+  };
 
   return (
     <div>
@@ -45,12 +45,12 @@ function Challenges() {
         <ChallengeForm onSubmit={handleChallengeSubmit} />
         {/* Display challenges component */}
         <DisplayChallenges challenges={challenges} />
-       
+        <div id="footer">
           <FooterNavbar />
-        
+        </div>
       </main>
     </div>
-  )
+  );
 }
 
-export default Challenges
+export default Challenges;

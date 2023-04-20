@@ -57,7 +57,7 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
     }
   }
   return (
-    <div className="mt-28">
+    <div className="mt-24 bg-active-white">
       <form
         id="challengeForm"
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 hidden"
@@ -74,6 +74,7 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="challengeTitle"
             required
+            maxLength={15}
             value={challengeTitle}
             onChange={(event) => setChallengeTitle(event.target.value)}
             type="text"
@@ -98,6 +99,7 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  w-40"
                 id="start_time"
                 type="time"
+                required
                 onChange={(event) => setStartTime(event.target.value)}
                 placeholder="Time"
               />
@@ -106,6 +108,7 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  w-40"
                 id="finished_time"
                 type="time"
+                required
                 onChange={(event) => setFinishTime(event.target.value)}
                 placeholder="Time"
               />
@@ -141,6 +144,8 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
               className=" shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ml-4 text-sm "
               id="location"
               type="text"
+              required
+              maxLength={75}
               onChange={(event) => setlocation(event.target.value)}
               placeholder="Årstaskogen Naturreservat 120 59 Årsta"
             />
@@ -154,7 +159,7 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
           >
             Välj nivå
           </label>
-          <div className="flex-row items-center justify-center ">
+          <div className="flex flex-row items-center justify-start ">
             <div className="flex items-center pl-4  w-32 h-7">
               <input
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 2 dark:bg-gray-700 dark:border-gray-600 hidden peer/lätt"
@@ -223,8 +228,9 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="description"
             rows={5}
-            placeholder="Description"
+            required
             maxLength={500}
+            placeholder="Description"
             onChange={(event) => setdescription(event.target.value)}
           ></textarea>
         </div>
@@ -236,7 +242,7 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
           >
             Visas för
           </label>
-          <div className="flex-row items-center justify-center content-center">
+          <div className="flex flex-row items-center justify-start content-center">
             <div className="flex items-center pl-4 w-32 h-7">
               <input
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 2 dark:bg-gray-700 dark:border-gray-600 peer/friends hidden"

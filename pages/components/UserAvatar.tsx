@@ -6,7 +6,7 @@ export default function Avatar() {
       alt="Avatar"
       width={35}
       height={35}
-      className="flex items-end justify-end mr-5"
+      className="mr-5"
     />
   );
 }

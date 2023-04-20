@@ -1,12 +1,13 @@
-import { Challenge } from "@/types/challengeTemp"
-import Image from "next/image"
+import { Challenge } from "@/types/challengeTemp";
+import Image from "next/image";
+import Avatar from "./UserAvatar";
 
 interface Props {
-  challenges: Challenge[]
+  challenges: Challenge[];
 }
 export const DisplayChallenges = ({ challenges }: Props) => {
   return (
-    <div id="cards" className=" mb-20">
+    <div id="cards" className="mb-20 mt-32">
       {challenges.map((challenge) => (
         <div
           className="flex justify-center items-center m-5 relative w-auto"
@@ -17,44 +18,36 @@ export const DisplayChallenges = ({ challenges }: Props) => {
             onClick={() => {
               const challengeCard = document.getElementById(
                 `challengeCard_${challenge._id}`
-              )
+              );
               const description = document.getElementById(
                 `description_${challenge._id}`
-              )
+              );
               const arrowIcon = document.getElementById(
                 `arrowIcon_${challenge._id}`
-              )
-              const joinBtn = document.getElementById(`btn_${challenge._id}`)
-              if (description && challengeCard && arrowIcon && joinBtn) {
+              );
+
+              if (description && challengeCard && arrowIcon) {
                 if ((description.style.display = "none")) {
-                  description.style.display = "block"
-                  challengeCard.style.cursor = "auto"
-                  arrowIcon.classList.add("rotate-180")
-                  joinBtn.style.display = "block"
+                  description.style.display = "block";
+                  challengeCard.style.cursor = "auto";
+                  arrowIcon.classList.add("rotate-180");
                 }
               }
             }}
             className="max-w-sm rounded-lg overflow-hidden shadow-lg flex cards-size cursor-pointer bg-active-white"
           >
-            <div className="w-14 flex-shrink-0 m-2">
-              <Image
-                src="/user-avatar.png"
-                alt="Avatar"
-                width={50}
-                height={50}
-              />
-            </div>
-            <div className="py-4 w-4/5 flex-col items-center">
-              <p className="text-urbanist text-black-700 text-lg body-font font-Urbanist">
-                {challenge.publisher}
+            <div className="p-5 w-10/12 flex-col justify-center">
+              <p className="text-purp mb-2 text-2xl font-extrabold body-font font-Inter break-words">
+                {challenge.title}
               </p>
-              <div>
-                <p className="text-purp text-2xl font-extrabold body-font font-Inter break-words">
-                  {challenge.title}
+              <div className="flex">
+                <Avatar />
+                <p className="text-urbanist text-black-700 text-lg body-font font-Urbanist">
+                  {challenge.publisher}
                 </p>
               </div>
 
-              <p>
+              <p className="w-4/5 break-words">
                 <span className="inline-flex mr-2">
                   <Image
                     src="/location-pin.png"
@@ -66,44 +59,40 @@ export const DisplayChallenges = ({ challenges }: Props) => {
                 {challenge.location}
               </p>
               <p>{challenge.time}</p>
-              <div
-                id={`description_${challenge._id}`}
-                className="hidden w-3/4 break-words"
-              >
-                <p>{challenge.description}</p>
-              </div>
-              <div id={`btn_${challenge._id}`} className="hidden">
+              <div id={`description_${challenge._id}`} className="hidden mt-3">
+                <div className="w-4/5 break-words mt-2">
+                  <h3 className="text-sm">Beskrivning:</h3>
+                  <p className="text-xs ">{challenge.description}</p>
+                </div>
+
                 <button
-                  className="w-full h-full bg-active-purple text-active-white"
+                  className="w-full h-1/6 rounded mt-2 bg-active-purple text-active-white"
                   disabled
                 >
                   Skicka förfrågan
                 </button>
               </div>
             </div>
-            <div className=" w-1/6 right-0 cursor-pointer flex justify-center ">
+            <div className=" w-2/12 right-0 cursor-pointer flex justify-center ">
               <div
                 className="absolute bottom-2 "
                 onClick={(e) => {
-                  e.stopPropagation()
+                  e.stopPropagation();
                   const description = document.getElementById(
                     `description_${challenge._id}`
-                  )
+                  );
                   const challengeCard = document.getElementById(
                     `challengeCard_${challenge._id}`
-                  )
+                  );
                   const arrowIcon = document.getElementById(
                     `arrowIcon_${challenge._id}`
-                  )
-                  const joinBtn = document.getElementById(
-                    `btn_${challenge._id}`
-                  )
-                  if (description && challengeCard && arrowIcon && joinBtn) {
+                  );
+
+                  if (description && challengeCard && arrowIcon) {
                     if ((description.style.display = "block")) {
-                      description.style.display = "none"
-                      challengeCard.style.cursor = "pointer"
-                      arrowIcon.classList.remove("rotate-180")
-                      joinBtn.style.display = "none"
+                      description.style.display = "none";
+                      challengeCard.style.cursor = "pointer";
+                      arrowIcon.classList.remove("rotate-180");
                     }
                   }
                 }}
@@ -121,5 +110,5 @@ export const DisplayChallenges = ({ challenges }: Props) => {
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
