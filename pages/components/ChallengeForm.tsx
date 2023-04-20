@@ -60,7 +60,7 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
     <div className="mt-24 bg-active-white">
       <form
         id="challengeForm"
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 hidden"
+        className="h-full bg-white p-8 hidden"
         onSubmit={handleSubmit}
       >
         <label
@@ -327,7 +327,7 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
         </div>
       </form>
       <div
-        className="w-14 h-14 flex justify-center items-center rounded-full fixed bottom-20 right-5 rounded-ful bg-active-purple z-10"
+        className="w-14 h-14 flex justify-center items-center rounded-full fixed bottom-40 right-5 rounded-ful bg-active-purple z-10"
         id="show-form-btn"
         onClick={hideForm}
       >
