@@ -38,14 +38,12 @@ export const DisplayChallenges = ({ challenges }: Props) => {
           >
             <div className="p-5 w-10/12 flex-col">
               <div id="content" className="flex-col">
-                <p className="align-middle text-purp mb-2 text-2xl font-extrabold body-font font-Inter break-words">
+                <p className="text-active-purple mb-2 text-2xl font-extrabold break-words font-['Inter']">
                   {challenge.title}
                 </p>
                 <div className="flex mb-3">
                   <Avatar />
-                  <p className="text-urbanist text-black-700 text-lg body-font font-Urbanist">
-                    {challenge.publisher}
-                  </p>
+                  <p className=" text-lg ">{challenge.publisher}</p>
                 </div>
                 <p className="w-4/5 break-words">
                   <span className="inline-flex mr-2">
@@ -72,13 +70,15 @@ export const DisplayChallenges = ({ challenges }: Props) => {
               </div>
 
               <div id={`description_${challenge._id}`} className="hidden mt-3">
-                <div className="w-4/5 break-words mt-2">
-                  <h3 className="text-sm text-purp">Beskrivning:</h3>
+                <div className="w-4/5 break-words my-3">
+                  <h3 className="text-sm text-active-purple font-bold mb-1">
+                    Beskrivning:
+                  </h3>
                   <p className="text-xs ">{challenge.description}</p>
                 </div>
 
                 <button
-                  className="w-full h-1/6 rounded mt-2 bg-active-purple text-active-white"
+                  className="w-full h-1/6 rounded mt-2 bg-active-purple text-active-white font-['Inter'] p-2"
                   disabled
                 >
                   Skicka förfrågan
