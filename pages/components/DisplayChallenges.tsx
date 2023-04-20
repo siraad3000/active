@@ -36,32 +36,44 @@ export const DisplayChallenges = ({ challenges }: Props) => {
             }}
             className="max-w-sm rounded-lg overflow-hidden shadow-lg flex cards-size cursor-pointer bg-active-white"
           >
-            <div className="p-5 w-10/12 flex-col justify-center">
-              <p className="text-purp mb-2 text-2xl font-extrabold body-font font-Inter break-words">
-                {challenge.title}
-              </p>
-              <div className="flex">
-                <Avatar />
-                <p className="text-urbanist text-black-700 text-lg body-font font-Urbanist">
-                  {challenge.publisher}
+            <div className="p-5 w-10/12 flex-col">
+              <div id="content" className="flex-col">
+                <p className="align-middle text-purp mb-2 text-2xl font-extrabold body-font font-Inter break-words">
+                  {challenge.title}
+                </p>
+                <div className="flex mb-3">
+                  <Avatar />
+                  <p className="text-urbanist text-black-700 text-lg body-font font-Urbanist">
+                    {challenge.publisher}
+                  </p>
+                </div>
+                <p className="w-4/5 break-words">
+                  <span className="inline-flex mr-2">
+                    <Image
+                      src="/location-pin-small.png"
+                      alt="Avatar"
+                      width={15}
+                      height={15}
+                    />
+                  </span>
+                  {challenge.location}
+                </p>
+                <p>
+                  <span className="inline-flex mr-2">
+                    <Image
+                      src="/Clock-icon-small.png"
+                      alt="Avatar"
+                      width={15}
+                      height={15}
+                    />
+                  </span>
+                  {challenge.time}
                 </p>
               </div>
 
-              <p className="w-4/5 break-words">
-                <span className="inline-flex mr-2">
-                  <Image
-                    src="/location-pin.png"
-                    alt="Avatar"
-                    width={10}
-                    height={10}
-                  />
-                </span>
-                {challenge.location}
-              </p>
-              <p>{challenge.time}</p>
               <div id={`description_${challenge._id}`} className="hidden mt-3">
                 <div className="w-4/5 break-words mt-2">
-                  <h3 className="text-sm">Beskrivning:</h3>
+                  <h3 className="text-sm text-purp">Beskrivning:</h3>
                   <p className="text-xs ">{challenge.description}</p>
                 </div>
 
@@ -73,9 +85,10 @@ export const DisplayChallenges = ({ challenges }: Props) => {
                 </button>
               </div>
             </div>
-            <div className=" w-2/12 right-0 cursor-pointer flex justify-center ">
+            <div className=" w-2/12 right-0 flex justify-center">
+              <div></div>
               <div
-                className="absolute bottom-2 "
+                className="absolute bottom-2 cursor-pointer"
                 onClick={(e) => {
                   e.stopPropagation();
                   const description = document.getElementById(
@@ -99,6 +112,7 @@ export const DisplayChallenges = ({ challenges }: Props) => {
               >
                 <Image
                   id={`arrowIcon_${challenge._id}`}
+                  className="mb-4"
                   src="/down-arrow.png"
                   alt="Avatar"
                   width={17}
