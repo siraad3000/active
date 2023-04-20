@@ -5,5 +5,6 @@ export type Users = {
   name: string
   password: string
   description: string
+  location: string
   friends: string[]
 }
