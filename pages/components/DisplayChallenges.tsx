@@ -1,8 +1,8 @@
-import { Challenge } from "@/types/challengeTemp";
-import Image from "next/image";
+import { Challenge } from "@/types/challengeTemp"
+import Image from "next/image"
 
 interface Props {
-  challenges: Challenge[];
+  challenges: Challenge[]
 }
 export const DisplayChallenges = ({ challenges }: Props) => {
   return (
@@ -17,20 +17,20 @@ export const DisplayChallenges = ({ challenges }: Props) => {
             onClick={() => {
               const challengeCard = document.getElementById(
                 `challengeCard_${challenge._id}`
-              );
+              )
               const description = document.getElementById(
                 `description_${challenge._id}`
-              );
+              )
               const arrowIcon = document.getElementById(
                 `arrowIcon_${challenge._id}`
-              );
-              const joinBtn = document.getElementById(`btn_${challenge._id}`);
+              )
+              const joinBtn = document.getElementById(`btn_${challenge._id}`)
               if (description && challengeCard && arrowIcon && joinBtn) {
                 if ((description.style.display = "none")) {
-                  description.style.display = "block";
-                  challengeCard.style.cursor = "auto";
-                  arrowIcon.classList.add("rotate-180");
-                  joinBtn.style.display = "block";
+                  description.style.display = "block"
+                  challengeCard.style.cursor = "auto"
+                  arrowIcon.classList.add("rotate-180")
+                  joinBtn.style.display = "block"
                 }
               }
             }}
@@ -48,9 +48,12 @@ export const DisplayChallenges = ({ challenges }: Props) => {
               <p className="text-urbanist text-black-700 text-lg body-font font-Urbanist">
                 {challenge.publisher}
               </p>
-              <p className="text-purp text-xl font-extrabold body-font font-Inter">
-                {challenge.title}
-              </p>
+              <div>
+                <p className="text-purp text-2xl font-extrabold body-font font-Inter break-words">
+                  {challenge.title}
+                </p>
+              </div>
+
               <p>
                 <span className="inline-flex mr-2">
                   <Image
@@ -82,25 +85,25 @@ export const DisplayChallenges = ({ challenges }: Props) => {
               <div
                 className="absolute bottom-2 "
                 onClick={(e) => {
-                  e.stopPropagation();
+                  e.stopPropagation()
                   const description = document.getElementById(
                     `description_${challenge._id}`
-                  );
+                  )
                   const challengeCard = document.getElementById(
                     `challengeCard_${challenge._id}`
-                  );
+                  )
                   const arrowIcon = document.getElementById(
                     `arrowIcon_${challenge._id}`
-                  );
+                  )
                   const joinBtn = document.getElementById(
                     `btn_${challenge._id}`
-                  );
+                  )
                   if (description && challengeCard && arrowIcon && joinBtn) {
                     if ((description.style.display = "block")) {
-                      description.style.display = "none";
-                      challengeCard.style.cursor = "pointer";
-                      arrowIcon.classList.remove("rotate-180");
-                      joinBtn.style.display = "none";
+                      description.style.display = "none"
+                      challengeCard.style.cursor = "pointer"
+                      arrowIcon.classList.remove("rotate-180")
+                      joinBtn.style.display = "none"
                     }
                   }
                 }}
@@ -118,5 +121,5 @@ export const DisplayChallenges = ({ challenges }: Props) => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
