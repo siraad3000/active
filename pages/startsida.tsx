@@ -45,9 +45,9 @@ function Challenges() {
         <ChallengeForm onSubmit={handleChallengeSubmit} />
         {/* Display challenges component */}
         <DisplayChallenges challenges={challenges} />
-        <div id="footer">
+       
           <FooterNavbar />
-        </div>
+        
       </main>
     </div>
   )

@@ -1,9 +1,8 @@
 export default function FooterNavbar() {
   return (
-    <div id="footer">
-      <footer>
-        <div className=" fixed inset-x-0 bottom-0 flex justify-center w-full h-16 border-t border-gray-200 bg-active-white">
-          <div className="grid h-full max-w-lg grid-cols-3 mx-auto font-medium">
+   
+      <footer className=" fixed bottom-0 z-10 flex justify-center w-full h-16 bg-active-white">
+        
             <button
               type="button"
               className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
@@ -88,12 +87,11 @@ export default function FooterNavbar() {
                 />
               </svg>
               <span className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-purple-600 dark:group-hover:text-purple-500">
-                Vänner
+              <a href="/friends">Vänner</a>
               </span>
             </button>
-          </div>
-        </div>
+          
       </footer>
-    </div>
+   
   );
 }
