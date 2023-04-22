@@ -1,21 +1,21 @@
-import { NextPage } from "next"
-import Header from "./components/Header"
-import { Users } from "../types/usersTemp"
-import FooterNavbar from "./components/FooterNavbar"
-import Avatar from "./components/UserAvatar"
-import { useEffect, useState } from "react"
+import { NextPage } from "next";
+import Header from "../components/Header";
+import { Users } from "../types/usersTemp";
+import FooterNavbar from "../components/FooterNavbar";
+import Avatar from "../components/UserAvatar";
+import { useEffect, useState } from "react";
 interface Props {}
 
 const Profile = () => {
-  const [users, setUsers] = useState<Users[]>([])
+  const [users, setUsers] = useState<Users[]>([]);
   useEffect(() => {
     async function fetchUsers() {
-      const res = await fetch("/api/users")
-      const data = await res.json()
-      setUsers(data)
+      const res = await fetch("/api/users");
+      const data = await res.json();
+      setUsers(data);
     }
-    fetchUsers()
-  }, [])
+    fetchUsers();
+  }, []);
   return (
     <div>
       <Header />
@@ -39,7 +39,7 @@ const Profile = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;
