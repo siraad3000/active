@@ -5,7 +5,7 @@ import Avatar from "./UserAvatar";
 interface Props {
   challenges: Challenge[];
 }
-export const DisplayChallenges = ({ challenges }: Props) => {
+const DisplayChallenges = ({ challenges }: Props) => {
   return (
     <div id="cards" className="mb-20 mt-32">
       {challenges.map((challenge) => (
@@ -126,3 +126,4 @@ export const DisplayChallenges = ({ challenges }: Props) => {
     </div>
   );
 };
+export default DisplayChallenges;
