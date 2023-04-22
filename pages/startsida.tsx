@@ -5,7 +5,8 @@ import DisplayChallenges from "../components/DisplayChallenges";
 import FooterNavbar from "../components/FooterNavbar";
 import Header from "../components/Header";
 import ChallengeForm from "../components/ChallengeForm";
-function Challenges() {
+
+function Startsida() {
   const [challenges, setChallenges] = useState<Challenge[]>([]);
 
   useEffect(() => {
@@ -53,4 +54,4 @@ function Challenges() {
   );
 }
 
-export default Challenges;
+export default Startsida;
