@@ -1,7 +1,5 @@
-import { useEffect } from "react"
-import { useRouter } from "next/router"
-import Head from "next/head"
-import Image from "next/image"
+import Image from "next/image";
+import Link from "next/link";
 
 const Index = () => {
   return (
@@ -37,9 +35,9 @@ const Index = () => {
           id="password"
           placeholder="Lösenord..."
         />
-        <a className=" text-xs " href="/startsida">
-          Glömt lösenord?
-        </a>
+        <Link href="/startsida">
+          <a>Glömt lösenord</a>
+        </Link>
 
         <div className="flex justify-center items-center mt-8">
           <button
@@ -51,7 +49,7 @@ const Index = () => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;
