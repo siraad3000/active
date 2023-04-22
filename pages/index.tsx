@@ -35,9 +35,7 @@ const Index = () => {
           id="password"
           placeholder="Lösenord..."
         />
-        <Link href="/startsida">
-          <a>Glömt lösenord</a>
-        </Link>
+        <Link href="/startsida">Glömt lösenord</Link>
 
         <div className="flex justify-center items-center mt-8">
           <button

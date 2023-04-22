@@ -87,9 +87,7 @@ export default function FooterNavbar() {
           />
         </svg>
         <span className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-purple-600 dark:group-hover:text-purple-500">
-          <Link href="/friends">
-            <a>Vänner</a>
-          </Link>
+          <Link href="/friends">Vänner</Link>
         </span>
       </button>
     </footer>

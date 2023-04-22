@@ -1,26 +1,26 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { ObjectId } from "mongodb";
 import clientPromise from "../../lib/mongodb";
-import { challenge } from "../../types/challengeTemp";
+import { Challenge } from "../../types/challengeTemp";
 
-export const getChallenges = async (): Promise<challenge[]> => {
+export const getChallenges = async (): Promise<Challenge[]> => {
   const mongoClient = await clientPromise;
   const challenges = (await mongoClient
     .db("active")
     .collection("challenges")
     .find()
-    .toArray()) as challenge[];
+    .toArray()) as Challenge[];
   return challenges;
 };
 
-export const addChallenge = async (challenge: challenge): Promise<ObjectId> => {
+export const addChallenge = async (challenge: Challenge): Promise<ObjectId> => {
   const mongoClient = await clientPromise;
 
   const response = await mongoClient
     .db("active")
     .collection("challenges")
     .insertOne(challenge);
-  
+
   return response.insertedId;
 };
 
@@ -29,7 +29,7 @@ export const challengesHandler = async (
   res: NextApiResponse
 ) => {
   if (req.method === "POST") {
-    const newChallenge = req.body as challenge;
+    const newChallenge = req.body as Challenge;
     const createdChallenge = await addChallenge(newChallenge);
     res.status(201).json(createdChallenge);
   } else if (req.method === "GET") {
