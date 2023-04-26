@@ -17,7 +17,9 @@ const Profile = () => {
     fetchUsers()
   }, [])
   return (
-    <div>
+    
+    <div className="  flex-wrap bg-active-offWHite h-screen ">
+    
       <Header />
       <div className="bg-active-white mt-24 ">
         <div className="bg-active-purple h-40">
@@ -37,6 +39,11 @@ const Profile = () => {
           </div>
         </div>
       </div>
+      <div className="text-active-purple flex absolute left-2 font-[Urbanistbold]"> Mina skapade aktiviteter</div>
+      <div className=" flex absolute right-2 font-[Urbanistbold]"> Redigera</div>
+      <br />
+      <br />
+      <div className="flex absolute left-2 font-[Urbanistbold]">Idag</div>
     </div>
   )
 }
