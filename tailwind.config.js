@@ -23,6 +23,7 @@ module.exports = {
         fontFamily: {
           Urbanist: ["Urbanist", "sans-serif"],
           inter: ["Inter', sans-serif"],
+         
         },
       },
     },
