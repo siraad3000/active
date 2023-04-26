@@ -4,6 +4,7 @@ import { Users } from "../types/usersTemp"
 import FooterNavbar from "../components/FooterNavbar"
 import Avatar from "../components/UserAvatar"
 import { useEffect, useState } from "react"
+import Profileheader from "@/components/Headerprofile"
 interface Props {}
 
 const Profile = () => {
@@ -20,7 +21,7 @@ const Profile = () => {
     
     <div className="  flex-wrap bg-active-offWHite h-screen ">
     
-      <Header />
+      <Profileheader />
       <div className="bg-active-white mt-24 ">
         <div className="bg-active-purple h-40">
           <img src="profileback.jpg" alt="" className="w-full h-full" />
@@ -39,10 +40,10 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <div className="text-active-purple mt-3 flex absolute left-2 font-[Urbanistbold]"> Mina skapade aktiviteter</div>
-      <div className=" flex absolute right-2  mt-3 font-[Urbanistbold]"> Redigera</div>
+      <div className="text-active-purple mt-3 flex absolute left-2 font-extrabold font-['Urbanist']"> Mina skapade aktiviteter</div>
+      <div className=" flex absolute right-2  mt-3 font-[Urbanist]"> Redigera</div>
       
-      <div className="flex absolute mt-12 left-2 font-[Urbanistbold]">Idag</div>
+      <div className="flex absolute mt-12 left-2 font-[Urbanist]">Idag</div>
     </div>
   )
 }

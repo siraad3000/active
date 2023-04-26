@@ -6,7 +6,7 @@ export default function Avatar() {
       alt="Avatar"
       width={35}
       height={35}
-      className="mr-5"
+      className=""
     />
   );
 }
