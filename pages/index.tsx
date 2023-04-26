@@ -1,9 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";
+import router from "next/router";
+import { useEffect } from "react";
 
 const Index = () => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+  useEffect(() => {
+    if (session) {
+      setTimeout(() => {
+        router.push("/startsida");
+      }, 2000); // Change to the desired duration of the transition
+    }
+  }, [session]);
   async function handleGoogleSignin() {
     signIn("google", { callbackUrl: "http://localhost:3000" });
   }
@@ -11,21 +20,24 @@ const Index = () => {
   async function handleSignOut() {
     signOut();
   }
-  if (session) {
+  if (status === "loading") {
+    return <div className="w-screen h-screen"></div>;
+  } else if (session) {
     return (
-      <div>
-        Welcome {session.user?.name}
-        <br />
-        {session.user?.email}
-        <br />
-        {session.user?.image}
-        <button
-          className=" purple1 hover:bg-purple-700  text-active-offWHite font-bold py-2 px-4 rounded "
-          type="button"
-          onClick={handleSignOut}
-        >
-          Logga ut
-        </button>
+      <div className="flex justify-center items-center w-screen h-screen">
+        <div className="flex-col">
+          <p>
+            Välkommen tillbaka
+            <span className="font-extrabold"> {session.user?.name}</span>
+          </p>
+          <br />
+          <br />
+          <div className="flex w-auto">
+            <div className="w-3 h-3 bg-active-offWHite rounded-full mr-1 animate-pulse"></div>
+            <div className="w-3 h-3 bg-active-offWHite rounded-full mr-1 animate__animated animate__fadeIn animate__delay-2s"></div>
+            <div className="w-3 h-3 bg-active-offWHite rounded-full animate__animated animate__fadeIn animate__delay-3s"></div>
+          </div>
+        </div>
       </div>
     );
   } else
@@ -68,9 +80,7 @@ const Index = () => {
             <button
               className=" purple1 hover:bg-purple-700  text-active-offWHite font-bold py-2 px-4 rounded "
               type="button"
-              onClick={() =>
-                (window.location.href = "http://www.w3schools.com")
-              }
+              onClick={() => router.push("/startsida")}
             >
               Logga in
             </button>

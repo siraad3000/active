@@ -5,18 +5,14 @@ import DisplayChallenges from "../components/DisplayChallenges";
 import FooterNavbar from "../components/FooterNavbar";
 import Header from "../components/Header";
 import ChallengeForm from "../components/ChallengeForm";
+import clientPromise from "@/lib/mongodb";
 
-function Startsida() {
-  const [challenges, setChallenges] = useState<Challenge[]>([]);
+interface Props {
+  challenges: Challenge[];
+}
 
-  useEffect(() => {
-    async function fetchChallenges() {
-      const res = await fetch("/api/challenges");
-      const data = await res.json();
-      setChallenges(data);
-    }
-    fetchChallenges();
-  }, []);
+function Startsida({ challenges }: Props) {
+  const [challengeList, setChallengeList] = useState<Challenge[]>(challenges);
 
   const handleChallengeSubmit = async (challenge: Challenge) => {
     const res = await fetch("/api/challenges", {
@@ -27,9 +23,7 @@ function Startsida() {
       },
     });
     const data = await res.json();
-
-    console.log(challenge);
-    setChallenges([challenge, ...challenges]);
+    setChallengeList([challenge, ...challengeList]);
   };
 
   return (
@@ -45,7 +39,7 @@ function Startsida() {
         {/* challenge form component */}
         <ChallengeForm onSubmit={handleChallengeSubmit} />
         {/* Display challenges component */}
-        <DisplayChallenges challenges={challenges} />
+        <DisplayChallenges challenges={challengeList} />
         <div id="footer">
           <FooterNavbar />
         </div>
@@ -54,4 +48,19 @@ function Startsida() {
   );
 }
 
+export async function getServerSideProps() {
+  const mongoClient = await clientPromise;
+  const challenges = await mongoClient
+    .db("active")
+    .collection("challenges")
+    .find()
+    .toArray();
+
+  const serializedChallenges = challenges.map((challenge) => {
+    const { _id, ...rest } = challenge;
+    return { ...rest, _id: _id.toString() };
+  });
+
+  return { props: { challenges: serializedChallenges } };
+}
 export default Startsida;
