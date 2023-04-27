@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Avatar from "./UserAvatar";
+import { useSession, signOut } from "next-auth/react";
 export default function Header() {
+  const { data: session } = useSession();
   return (
     <header className="fixed top-0 flex items-end w-full h-24 border-t border-gray-200 bg-active-white z-10">
       <div className="w-1/4 pl-2"></div>
@@ -13,8 +15,17 @@ export default function Header() {
             height={"120"}
           />
         </div>
-        <div className=" w-1/4 flex justify-end">
-        <Avatar />
+        <div
+          className=" w-1/4 flex justify-end cursor-pointer"
+          onClick={() => signOut}
+        >
+          <Avatar
+            src={session?.user?.image}
+            alt="avatar"
+            width={30}
+            height={30}
+            className="rounded-full"
+          />
         </div>
       </div>
     </header>

@@ -43,7 +43,13 @@ export default function DisplayChallenges({ challenges }: Props): JSX.Element {
                   {challenge.title}
                 </p>
                 <div className="flex mb-3">
-                  <Avatar />
+                  <Avatar
+                    src=""
+                    alt="avatar"
+                    width={30}
+                    height={30}
+                    className="rounded-full mr-2"
+                  />
                   <p className=" text-lg ">{challenge.publisher}</p>
                 </div>
                 <p className="w-4/5 break-words">

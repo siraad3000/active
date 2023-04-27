@@ -1,12 +1,20 @@
 import Image from "next/image";
-export default function Avatar() {
+
+interface Props {
+  alt: string;
+  width: number;
+  height: number;
+  className?: string;
+  src?: string | null;
+}
+export default function Avatar({ src, alt, width, height, className }: Props) {
   return (
     <Image
-      src="/user-avatar.png"
-      alt="Avatar"
-      width={35}
-      height={35}
-      className=""
+      src={src || "/user-avatar.png"}
+      alt={alt}
+      width={width}
+      height={height}
+      className={className}
     />
   );
 }
