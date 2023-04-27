@@ -19,9 +19,10 @@ const Friends = () => {
   }, [])
   return (
     <div className=" bg-active-white min-h-screen friends">
-      <div className="-mt-5">
+      <div className="-mt-6">
         <Header />
         <div className=" text-lg"> 
+        <br />
         <hr />
         <p>{users[0]?.friends[0]}</p>
         <hr />
