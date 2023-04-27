@@ -64,7 +64,7 @@ export default function DisplayChallenges({ challenges }: Props): JSX.Element {
                 </p>
                 <p className="flex items-center">
                   <Image
-                    src="/Clock-icon-small.png"
+                    src="/clock-icon-small.png"
                     alt="Avatar"
                     width={15}
                     height={15}
@@ -77,7 +77,7 @@ export default function DisplayChallenges({ challenges }: Props): JSX.Element {
                 <p className="flex items-center">
                   <span className="inline-flex mr-2">
                     <Image
-                      src="/Calendar-icon.png"
+                      src="/calendar-icon.png"
                       alt="Avatar"
                       width={15}
                       height={15}
