@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head />
 
-      <body className="  bg-gradient-to-t from-active-bluelight via-active-purplelight to-active-goldlight font-['Urbanist']">
+      <body className="  ">
         <Main />
 
         <NextScript />

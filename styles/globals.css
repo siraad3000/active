@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Urbanist&display=swap%27");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap");
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -40,4 +39,7 @@
     rgba(97, 16, 135, 1) 63%,
     rgba(192, 232, 229, 1) 100%
   );
+}
+.friends {
+  margin-top: 30%;
 }

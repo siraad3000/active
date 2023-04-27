@@ -1,10 +1,11 @@
-import { ObjectId } from "mongodb";
+import { ObjectId } from "mongodb"
 
 export type Users = {
-  _id?: ObjectId;
-  name: string;
-  email: string;
-  image: string;
-  location: string;
-  description: string;
-};
+  _id?: ObjectId
+  name: string
+  email: string
+  image: string
+  location: string
+  description: string
+  friends: Array<string>
+}
