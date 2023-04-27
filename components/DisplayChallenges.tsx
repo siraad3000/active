@@ -8,7 +8,7 @@ interface Props {
 
 export default function DisplayChallenges({ challenges }: Props): JSX.Element {
   return (
-    <div id="cards" className="mb-20 mt-32">
+    <div id="cards" className="mb-40 mt-32">
       {challenges.map((challenge) => (
         <div
           className="flex justify-center items-center m-5 relative w-auto"
@@ -44,7 +44,7 @@ export default function DisplayChallenges({ challenges }: Props): JSX.Element {
                 </p>
                 <div className="flex mb-3">
                   <Avatar
-                    src=""
+                    src= {challenge.idpicture}
                     alt="avatar"
                     width={30}
                     height={30}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Challenge } from "@/types/challengeTemp";
+import { useSession } from "next-auth/react";
 
 type ChallengeFormProps = {
   onSubmit: (challenge: Challenge) => void;
@@ -15,10 +16,13 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
   const [finishTime, setFinishTime] = useState<string>("");
   const [showFor, setShowFor] = useState<string>("");
   const [date, setDate] = useState<string>("");
+  const { data: session, status } = useSession();
+  
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const challenge = {
+      publisher: session?.user?.name,
       title: challengeTitle,
       description: description,
       level: level,
@@ -26,6 +30,8 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
       time: startTime + "-" + finishTime,
       showFor: showFor,
       date: date,
+      idpicture: session?.user?.image,
+    
     };
 
     onSubmit(challenge);
@@ -327,7 +333,7 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
         </div>
       </form>
       <div
-        className="w-14 h-14 flex justify-center items-center rounded-full fixed bottom-40 right-5 rounded-ful bg-active-purple z-10"
+        className="w-14 h-14 flex justify-center items-center rounded-full fixed bottom-20 right-5 bg-active-purple z-10"
         id="show-form-btn"
         onClick={hideForm}
       >

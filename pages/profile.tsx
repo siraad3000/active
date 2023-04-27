@@ -29,7 +29,7 @@ const Profile = () => {
         <div className="mx-3">
           <div>
             <div className="z-10 h-10 w-10">
-              <Avatar />
+              <Avatar width={20} height={20} alt="" className="rounded-full"/>
             </div>
             <p className="text-lg leading-6 font-bold">{users[2]?.name}</p>
             <p>{users[2]?.location}</p>

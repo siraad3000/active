@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Avatar from "./UserAvatar";
 import { useSession, signOut } from "next-auth/react";
+import { redirect } from "next/dist/server/api-utils";
+import { profile } from "console";
+
 export default function Header() {
   const { data: session } = useSession();
   return (
@@ -17,7 +20,7 @@ export default function Header() {
         </div>
         <div
           className=" w-1/4 flex justify-end cursor-pointer"
-          onClick={() => signOut}
+          onClick={() => "/profile"}
         >
           <Avatar
             src={session?.user?.image}

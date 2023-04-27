@@ -5,4 +5,6 @@ export type Users = {
   name: string;
   email: string;
   image: string;
+  location: string;
+  description: string;
 };
