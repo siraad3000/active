@@ -5,6 +5,7 @@ import { Users } from "../types/usersTemp"
 import { useEffect, useState } from "react"
 import FooterNavbar from "../components/FooterNavbar"
 import Header from "../components/Header"
+import Avatar from "@/components/UserAvatar"
 
 const Friends = () => {
   const [users, setUsers] = useState<Users[]>([])
@@ -17,16 +18,28 @@ const Friends = () => {
     fetchUsers()
   }, [])
   return (
-    <div>
-      <Header />
-      <div className="friends">
+    <div className=" bg-active-white min-h-screen friends">
+      <div className="-mt-5">
+        <Header />
+        <div className=" text-lg"> 
+        <hr />
         <p>{users[0]?.friends[0]}</p>
         <hr />
         <p>{users[0]?.friends[1]}</p>
         <hr />
         <p>{users[0]?.friends[2]}</p>
         <hr />
-      </div>
+        <p>{users[0]?.friends[3]}</p>
+        <hr />
+        <p>{users[0]?.friends[4]}</p>
+        <hr />
+        <p>{users[0]?.friends[5]}</p>
+        <hr />
+        <p>{users[0]?.friends[6]}</p>
+        <hr />
+        </div>
+        </div>
+        
 
       <FooterNavbar />
     </div>
