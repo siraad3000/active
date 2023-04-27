@@ -2,6 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Challenge } from "@/types/challengeTemp";
 import { useSession } from "next-auth/react";
+import HideForm from "./HideForm";
 
 type ChallengeFormProps = {
   onSubmit: (challenge: Challenge) => void;
@@ -17,7 +18,6 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
   const [showFor, setShowFor] = useState<string>("");
   const [date, setDate] = useState<string>("");
   const { data: session, status } = useSession();
-  
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -31,37 +31,11 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
       showFor: showFor,
       date: date,
       idpicture: session?.user?.image,
-    
     };
 
     onSubmit(challenge);
   };
-  function hideForm() {
-    const challengeForm = document.getElementById("challengeForm");
-    const showForm = document.getElementById("show-form-btn");
-    const cards = document.getElementById("cards");
-    const footer = document.getElementById("footer");
-    if (challengeForm && showForm && cards && footer) {
-      if (
-        challengeForm.style.display === "none" ||
-        challengeForm.style.display === ""
-      ) {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-        challengeForm.style.display = "block";
-        showForm.style.display = "none";
-        cards.style.display = "none";
-        footer.style.display = "none";
-      } else {
-        challengeForm.style.display = "none";
-        showForm.style.display = "block";
-        cards.style.display = "block";
-        footer.style.display = "block";
-      }
-    }
-  }
+
   return (
     <div className="mt-24 bg-active-white">
       <form
@@ -308,7 +282,7 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
           type="submit"
           id="button"
           onClick={() => {
-            hideForm();
+            HideForm();
           }}
         >
           Publicera
@@ -318,7 +292,7 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
             className="purple1 hover:bg-purple-700 text-active-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline block"
             type="button"
             id="hide-form-btn"
-            onClick={hideForm}
+            onClick={HideForm}
           >
             return
           </button>
@@ -326,7 +300,7 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
             className="purple1 hover:bg-purple-700 text-active-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline block"
             type="reset"
             id="hide-form-btn"
-            onClick={hideForm}
+            onClick={HideForm}
           >
             exit
           </button>
@@ -335,7 +309,7 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
       <div
         className="w-14 h-14 flex justify-center items-center rounded-full fixed bottom-20 right-5 bg-active-purple z-10"
         id="show-form-btn"
-        onClick={hideForm}
+        onClick={HideForm}
       >
         <button
           className="flex justify-center items-center  hover:bg-purple-700 w-full h-full rounded-full "
