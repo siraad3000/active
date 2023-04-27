@@ -5,7 +5,6 @@ import Avatar from "./UserAvatar";
 interface Props {
   challenges: Challenge[];
 }
-
 export default function DisplayChallenges({ challenges }: Props): JSX.Element {
   return (
     <div id="cards" className="mb-40 mt-32">
@@ -39,12 +38,12 @@ export default function DisplayChallenges({ challenges }: Props): JSX.Element {
           >
             <div className="p-5 w-10/12 flex-col">
               <div id="content" className="flex-col">
-                <p className="text-active-purple mb-2 text-2xl font-extrabold break-words font-['Inter']">
+                <p className="text-active-purple mb-4 text-2xl font-extrabold break-words font-['Inter']">
                   {challenge.title}
                 </p>
                 <div className="flex mb-3">
                   <Avatar
-                    src= {challenge.idpicture}
+                    src={challenge.idpicture}
                     alt="avatar"
                     width={30}
                     height={30}
@@ -63,20 +62,29 @@ export default function DisplayChallenges({ challenges }: Props): JSX.Element {
                   </span>
                   {challenge.location}
                 </p>
-                <p>
+                <p className="flex items-center">
+                  <Image
+                    src="/Clock-icon-small.png"
+                    alt="Avatar"
+                    width={15}
+                    height={15}
+                  />
+                  <span className="mx-2">{challenge.time}</span>
+                </p>
+              </div>
+
+              <div id={`description_${challenge._id}`} className="hidden mt-3">
+                <p className="flex items-center">
                   <span className="inline-flex mr-2">
                     <Image
-                      src="/Clock-icon-small.png"
+                      src="/Calendar-icon.png"
                       alt="Avatar"
                       width={15}
                       height={15}
                     />
                   </span>
-                  {challenge.time}
+                  {challenge.date}
                 </p>
-              </div>
-
-              <div id={`description_${challenge._id}`} className="hidden mt-3">
                 <div className="w-4/5 break-words my-3">
                   <h3 className="text-sm text-active-purple font-bold mb-1">
                     Beskrivning:
@@ -88,12 +96,19 @@ export default function DisplayChallenges({ challenges }: Props): JSX.Element {
                   className="w-full h-1/6 rounded mt-2 bg-active-purple text-active-white font-['Inter'] p-2"
                   disabled
                 >
-                  Skicka förfrågan
+                  Delta
                 </button>
               </div>
             </div>
             <div className=" w-2/12 right-0 flex justify-center">
-              <div></div>
+              <div className="mt-4">
+                <Image
+                  src="/Bookmark-Icon-Yellow-unfilled.png"
+                  alt="Avatar"
+                  width={30}
+                  height={30}
+                />
+              </div>
               <div
                 className="absolute bottom-2 cursor-pointer"
                 onClick={(e) => {
