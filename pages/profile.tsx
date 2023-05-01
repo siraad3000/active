@@ -1,51 +1,77 @@
-import { NextPage } from "next"
-import Header from "../components/Header"
-import { Users } from "../types/usersTemp"
-import FooterNavbar from "../components/FooterNavbar"
-import Avatar from "../components/UserAvatar"
-import { useEffect, useState } from "react"
-import Profileheader from "@/components/Headerprofile"
-interface Props {}
+import Image from "next/image";
+import { Users } from "../types/usersTemp";
+import Avatar from "../components/UserAvatar";
+import { useEffect, useState } from "react";
+import Profileheader from "@/components/Headerprofile";
+import { useSession } from "next-auth/react";
 
 const Profile = () => {
-  const [users, setUsers] = useState<Users[]>([])
+  const [users, setUsers] = useState<Users[]>([]);
+  const { data: session } = useSession();
+
   useEffect(() => {
     async function fetchUsers() {
-      const res = await fetch("/api/users")
-      const data = await res.json()
-      setUsers(data)
+      const res = await fetch("/api/users");
+      const data = await res.json();
+      setUsers(data);
     }
-    fetchUsers()
-  }, [])
+    fetchUsers();
+  }, []);
   return (
-    
-    <div className="  flex-wrap bg-active-offWHite h-screen ">
-    
+    <div className="flex-wrap bg-active-offWHite h-screen">
       <Profileheader />
-      <div className="bg-active-white mt-24 ">
-        <div className="bg-active-purple h-40">
-          <img src="profileback.jpg" alt="" className="w-full h-full" />
-        </div>
-        <div className="mx-3">
+      <div className="lg:flex justify-center shadow-lg h-full">
+        <div className="bg-active-white mt-24 shadow-lg">
           <div>
-            <div className="z-10 h-10 w-10">
-              <Avatar width={20} height={20} alt="" className="rounded-full"/>
+            <Image
+              src="/profileback.jpg"
+              alt=""
+              width={0}
+              height={0}
+              sizes="100vw"
+              style={{ width: "100%" }}
+            />
+            <div className="px-4">
+              <Avatar
+                width={80}
+                height={80}
+                alt=""
+                className="rounded-full"
+                src={session?.user?.image}
+              />
             </div>
-            <p className="text-lg leading-6 font-bold">{users[2]?.name}</p>
-            <p>{users[2]?.location}</p>
-            <div className="h-10 mt-4 "> Här kommer bilder sen</div>
+          </div>
+          <div className="p-4 ">
             <div>
-              <p>{users[2]?.description}</p>
+              <div>
+                <div>
+                  <p className="text-lg leading-6 font-bold">
+                    {session?.user?.name}
+                  </p>
+                  <p>{users[2]?.location}</p>
+                  <div className="h-10 mt-4 "> Här kommer bilder sen</div>
+                </div>
+
+                <div>
+                  <p>{users[2]?.description}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="text-active-purple mt-3 flex absolute left-2 font-extrabold font-['Urbanist']"> Mina skapade aktiviteter</div>
-      <div className=" flex absolute right-2  mt-3 font-[Urbanist]"> Redigera</div>
-      
-      <div className="flex absolute mt-12 left-2 font-[Urbanist]">Idag</div>
-    </div>
-  )
-}
+        <div className="bg-active-offWHite px-4">
+          <div className="flex items-center justify-between py-3">
+            <p className="text-active-purple font-extrabold">
+              Mina skapade aktiviteter
+            </p>
+            <p>Redigera</p>
+          </div>
 
-export default Profile
+          <div className="mt-5">Idag</div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Profile;

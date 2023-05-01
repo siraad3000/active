@@ -1,16 +1,19 @@
 import Image from "next/image";
+import router from "next/router";
 
 export default function BackButton() {
   return (
-    <p className="flex items-center ">
-      <Image
-        src={"/Arrow-Icon-Small-Left-Purple.png"}
-        alt={"#"}
-        width={"20"}
-        height={"20"}
-        className=""
-      />
-      Tillbaka
-    </p>
+    <div className="cursor-pointer" onClick={() => router.back()}>
+      <p className="flex items-center ">
+        <Image
+          src={"/Arrow-Icon-Small-Left-Purple.png"}
+          alt={"#"}
+          width={"20"}
+          height={"20"}
+          className=""
+        />
+        Tillbaka
+      </p>
+    </div>
   );
 }
