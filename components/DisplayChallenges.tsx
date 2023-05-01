@@ -54,7 +54,7 @@ export default function DisplayChallenges({ challenges }: Props): JSX.Element {
                 <p className="w-4/5 break-words">
                   <span className="inline-flex mr-2">
                     <Image
-                      src="/location-pin-small.png"
+                      src="/location-pin-small-svg.svg"
                       alt="Avatar"
                       width={15}
                       height={15}
@@ -64,7 +64,7 @@ export default function DisplayChallenges({ challenges }: Props): JSX.Element {
                 </p>
                 <p className="flex items-center">
                   <Image
-                    src="/clock-icon-small.png"
+                    src="/clock-icon-small-svg.svg"
                     alt="Avatar"
                     width={15}
                     height={15}
@@ -77,7 +77,7 @@ export default function DisplayChallenges({ challenges }: Props): JSX.Element {
                 <p className="flex items-center">
                   <span className="inline-flex mr-2">
                     <Image
-                      src="/calendar-icon.png"
+                      src="/Calendar-Icon-svg.svg"
                       alt="Avatar"
                       width={15}
                       height={15}
