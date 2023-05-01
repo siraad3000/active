@@ -6,10 +6,10 @@ export default function ProfileMenu() {
   const Menu = () => (
     <div
       id="dropdown"
-      className="z-10 mt-7 bg-active-white absolute right-0 rounded-sm  w-44 dark:bg-gray-700 flex justify-center "
+      className="z-10 mt-7 bg-active-white absolute right-0 rounded-sm  w-36 dark:bg-gray-700 flex justify-center lg:w-80 "
     >
       <ul
-        className="py-2 text-sm text-gray-700 dark:text-gray-200 "
+        className="py-2 text-sm text-gray-700 dark:text-gray-200 lg:text-xl "
         aria-labelledby="dropdownDefaultButton"
       >
         <li>
