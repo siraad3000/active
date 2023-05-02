@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "next/link"
 
 export default function FooterNavbar() {
   return (
@@ -21,7 +21,7 @@ export default function FooterNavbar() {
           />
         </svg>
         <span className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-purple-600 dark:group-hover:text-purple-500">
-          Hem
+          <Link href={"/startsida"}>Hem</Link>
         </span>
       </button>
       <button
@@ -91,5 +91,5 @@ export default function FooterNavbar() {
         </span>
       </button>
     </footer>
-  );
+  )
 }
