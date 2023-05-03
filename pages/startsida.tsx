@@ -6,6 +6,7 @@ import FooterNavbar from "../components/FooterNavbar";
 import Header from "../components/Header";
 import ChallengeForm from "../components/ChallengeForm";
 import clientPromise from "@/lib/mongodb";
+import { getSession, GetSessionParams } from "next-auth/react";
 
 interface Props {
   challenges: Challenge[];
@@ -48,7 +49,17 @@ function Startsida({ challenges }: Props) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context: GetSessionParams) {
+  const session = await getSession(context);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
   const mongoClient = await clientPromise;
   const challenges = await mongoClient
     .db("active")

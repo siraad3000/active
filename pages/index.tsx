@@ -4,9 +4,20 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import router from "next/router";
 import { useEffect } from "react";
 import Head from "next/head";
+import { useFormik } from "formik";
 
 const Index = () => {
   const { data: session, status } = useSession();
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      password: "",
+    },
+    onSubmit,
+  });
+  async function onSubmit(values: any) {
+    console.log(values);
+  }
   useEffect(() => {
     if (session) {
       setTimeout(() => {
@@ -14,13 +25,7 @@ const Index = () => {
       }, 2000); // Waiting time before redirecting
     }
   }, [session]);
-  async function handleGoogleSignin() {
-    signIn();
-  }
 
-  async function handleSignOut() {
-    signOut();
-  }
   if (status === "loading") {
     return (
       <div className="w-screen h-screen">
@@ -71,12 +76,14 @@ const Index = () => {
         <form
           id="loginForm"
           className="bg-white rounded px-24 pt-56 pb-8 mb-4 round flex flex-col"
+          onSubmit={formik.handleSubmit}
         >
           <input
             className=" mb-2 shadow appearance-none border rounded py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline"
-            type="text"
+            type="username"
             id="username"
             placeholder="Användarnamn..."
+            {...formik.getFieldProps("username")}
           />
 
           <input
@@ -84,14 +91,14 @@ const Index = () => {
             type="text"
             id="password"
             placeholder="Lösenord..."
+            {...formik.getFieldProps("password")}
           />
           <Link href="/startsida">Glömt lösenord</Link>
 
           <div className="flex flex-col justify-center items-center mt-8">
             <button
               className=" mb-16 purple1 hover:bg-purple-700  text-active-offWHite font-bold py-2 px-4 rounded "
-              type="button"
-              onClick={() => router.push("/startsida")}
+              type="submit"
             >
               Logga in
             </button>

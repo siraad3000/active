@@ -1,8 +1,21 @@
 import Head from "next/head";
 import Image from "next/image";
 import router from "next/router";
-
+import { useFormik } from "formik";
 const Register = () => {
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      email: "",
+      password: "",
+      cpassword: "",
+      terms: "",
+    },
+    onSubmit,
+  });
+  async function onSubmit(values: any) {
+    console.log(values);
+  }
   return (
     <div className=" flex flex-col h-screen bg-gradient-to-b from-active-bluelight via-active-purplelight to-active-goldlight">
       <Head>
@@ -22,7 +35,10 @@ const Register = () => {
             />
           </div>
           <div id="registerFormContainer" className="flex justify-center">
-            <form className="space-y-4 md:space-y-6 " action="#">
+            <form
+              className="space-y-4 md:space-y-6 "
+              onSubmit={formik.handleSubmit}
+            >
               <div>
                 <label
                   htmlFor="userName"
@@ -32,10 +48,10 @@ const Register = () => {
                 </label>
                 <input
                   type="username"
-                  name="userName"
                   id="userName"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Användarnamn..."
+                  {...formik.getFieldProps("username")}
                   required
                 />
               </div>
@@ -48,10 +64,10 @@ const Register = () => {
                 </label>
                 <input
                   type="email"
-                  name="email"
                   id="email"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="name@company.com"
+                  {...formik.getFieldProps("email")}
                   required
                 />
               </div>
@@ -64,10 +80,10 @@ const Register = () => {
                 </label>
                 <input
                   type="password"
-                  name="password"
                   id="password"
                   placeholder="••••••••"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  {...formik.getFieldProps("password")}
                   required
                 />
               </div>
@@ -80,10 +96,10 @@ const Register = () => {
                 </label>
                 <input
                   type="confirm-password"
-                  name="confirm-password"
                   id="confirm-password"
                   placeholder="••••••••"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  {...formik.getFieldProps("cpassword")}
                   required
                 />
               </div>
@@ -94,6 +110,7 @@ const Register = () => {
                     aria-describedby="terms"
                     type="checkbox"
                     className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+                    {...formik.getFieldProps("terms")}
                     required
                   />
                 </div>
@@ -102,7 +119,7 @@ const Register = () => {
                     htmlFor="terms"
                     className="font-light text-gray-500 dark:text-gray-300"
                   >
-                    I accept the{" "}
+                    I accept the
                     <a
                       className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                       href="#"
