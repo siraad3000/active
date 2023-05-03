@@ -1,22 +1,22 @@
-import Image from "next/image";
-import { Users } from "../types/usersTemp";
-import Avatar from "../components/UserAvatar";
-import { useEffect, useState } from "react";
-import Profileheader from "@/components/Headerprofile";
-import { useSession } from "next-auth/react";
+import Image from "next/image"
+import { Users } from "../types/usersTemp"
+import Avatar from "../components/UserAvatar"
+import { useEffect, useState } from "react"
+import Profileheader from "@/components/Headerprofile"
+import { useSession } from "next-auth/react"
 
 const Profile = () => {
-  const [users, setUsers] = useState<Users[]>([]);
-  const { data: session } = useSession();
+  const [users, setUsers] = useState<Users[]>([])
+  const { data: session } = useSession()
 
   useEffect(() => {
     async function fetchUsers() {
-      const res = await fetch("/api/users");
-      const data = await res.json();
-      setUsers(data);
+      const res = await fetch("/api/users")
+      const data = await res.json()
+      setUsers(data)
     }
-    fetchUsers();
-  }, []);
+    fetchUsers()
+  }, [])
   return (
     <div className="flex-wrap bg-active-offWHite h-screen">
       <Profileheader />
@@ -32,7 +32,7 @@ const Profile = () => {
                 sizes="100vw"
                 style={{ width: "100%" }}
               />
-              <div className="px-4">
+              <div className="px-4 relative bottom-10">
                 <Avatar
                   width={80}
                   height={80}
@@ -73,7 +73,7 @@ const Profile = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile
