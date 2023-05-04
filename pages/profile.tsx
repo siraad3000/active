@@ -1,22 +1,13 @@
 import Image from "next/image";
-import { Users } from "../types/userTemp";
+
 import Avatar from "../components/UserAvatar";
-import { useEffect, useState } from "react";
 import Profileheader from "@/components/Headerprofile";
 import { useSession } from "next-auth/react";
 
 const Profile = () => {
-  const [users, setUsers] = useState<Users[]>([]);
   const { data: session } = useSession();
+  console.log(session);
 
-  useEffect(() => {
-    async function fetchUsers() {
-      const res = await fetch("/api/users");
-      const data = await res.json();
-      setUsers(data);
-    }
-    fetchUsers();
-  }, []);
   return (
     <div className="flex-wrap bg-active-offWHite h-screen">
       <Profileheader />
@@ -38,23 +29,16 @@ const Profile = () => {
                   height={80}
                   alt=""
                   className="rounded-full"
-                  src={session?.user?.image}
                 />
               </div>
             </div>
             <div className="p-4 ">
               <div>
+                {session?.user?.fname} {session?.user?.lname}{" "}
+                {session?.user?.name}
                 <div>
                   <div>
-                    <p className="text-lg leading-6 font-bold">
-                      {session?.user?.name}
-                    </p>
-                    <p>{users[2]?.location}</p>
                     <div className="h-10 mt-4 "> Här kommer bilder sen</div>
-                  </div>
-
-                  <div>
-                    <p>{users[2]?.description}</p>
                   </div>
                 </div>
               </div>

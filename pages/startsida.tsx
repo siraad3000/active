@@ -1,18 +1,19 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Challenge } from "@/types/challengeTemp";
 import DisplayChallenges from "../components/DisplayChallenges";
 import FooterNavbar from "../components/FooterNavbar";
 import Header from "../components/Header";
 import ChallengeForm from "../components/ChallengeForm";
 import clientPromise from "@/lib/mongodb";
-import { getSession, GetSessionParams } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 
 interface Props {
   challenges: Challenge[];
 }
 
 function Startsida({ challenges }: Props) {
+  const { data: session, status } = useSession();
   const [challengeList, setChallengeList] = useState<Challenge[]>(challenges);
 
   const handleChallengeSubmit = async (challenge: Challenge) => {
@@ -26,7 +27,6 @@ function Startsida({ challenges }: Props) {
     const data = await res.json();
     setChallengeList([challenge, ...challengeList]);
   };
-
   return (
     <div>
       <Head>
@@ -48,9 +48,8 @@ function Startsida({ challenges }: Props) {
     </div>
   );
 }
-export async function getServerSideProps(context: GetSessionParams) {
+export async function getServerSideProps(context: any) {
   const session = await getSession(context);
-
   if (!session) {
     return {
       redirect: {
@@ -70,7 +69,6 @@ export async function getServerSideProps(context: GetSessionParams) {
     const { _id, ...rest } = challenge;
     return { ...rest, _id: _id.toString() };
   });
-  console.log("guego" + session);
   return { props: { challenges: serializedChallenges } };
 }
 export default Startsida;

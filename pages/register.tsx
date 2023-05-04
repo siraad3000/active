@@ -1,41 +1,43 @@
-import Head from "next/head"
-import Image from "next/image"
-import router from "next/router"
-import { useFormik } from "formik"
-import { newUser } from "@/types/userTemp"
+import Head from "next/head";
+import Image from "next/image";
+import router from "next/router";
+import { useFormik } from "formik";
+import { newUser } from "@/types/userTemp";
 
 const Register = () => {
   const formik = useFormik({
     initialValues: {
       username: "",
       email: "",
-      fname: "",
+      name: "",
       lname: "",
       password: "",
       cpassword: "",
       terms: "",
     },
     onSubmit,
-  })
+  });
   async function onSubmit(values: any) {
-    const newUser: any = {
+    const newUser: newUser = {
       username: values.username,
       password: values.password,
+      email: values.email,
+      name: values.fname + " " + values.lname,
       terms: values.terms,
-    }
+    };
     const response = await fetch("/api/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newUser),
-    })
+    });
 
     if (response.ok) {
-      router.push("/")
+      router.push("/");
       // Registration successful
     } else {
-      alert("Tagga")
+      alert("Tagga");
       // Registration failed
     }
   }
@@ -207,6 +209,6 @@ const Register = () => {
         </div>
       </main>
     </div>
-  )
-}
-export default Register
+  );
+};
+export default Register;

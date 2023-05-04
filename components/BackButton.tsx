@@ -3,7 +3,7 @@ import router from "next/router";
 
 export default function BackButton() {
   return (
-    <div className="cursor-pointer" onClick={() => router.back()}>
+    <div className="cursor-pointer" onClick={() => router.push("/startsida")}>
       <p className="flex items-center ">
         <Image
           src={"/Arrow-Icon-Small-Left-Purple.png"}

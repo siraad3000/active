@@ -3,7 +3,6 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import clientPromise from "@/lib/mongodb";
 import { authUser } from "@/types/userTemp";
-import { ObjectId } from "mongodb";
 
 if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
   throw new Error(
@@ -32,9 +31,11 @@ export default NextAuth({
             username: credentials?.username,
             password: credentials?.password,
           });
+
         if (user) {
-          user._id = new ObjectId(user._id.toString());
-          return user;
+          const id = user._id.toString();
+          const { _id, ...rest } = user;
+          return { ...rest, id };
         } else {
           throw new Error("Invalid username or password");
         }

@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 export type authUser = {
-  _id: string | ObjectId;
+  id: string;
   name?: string;
   email?: string;
   image?: string;
@@ -19,10 +19,9 @@ export type User = {
 };
 
 export type newUser = {
-username: string;
-email: string;
-fname:string;
-lname:string;
-password: string;
-terms: boolean;
+  username: string;
+  email: string;
+  name: string;
+  password: string;
+  terms: boolean;
 };
