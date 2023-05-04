@@ -33,6 +33,7 @@ export default NextAuth({
           });
 
         if (user) {
+          delete user.password;
           const id = user._id.toString();
           const { _id, ...rest } = user;
           return { ...rest, id };
