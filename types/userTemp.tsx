@@ -21,6 +21,8 @@ export type User = {
 export type newUser = {
 username: string;
 email: string;
+fname:string;
+lname:string;
 password: string;
 terms: boolean;
 };
