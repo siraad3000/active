@@ -1,8 +1,9 @@
 import Link from "next/link"
 
+
 export default function FooterNavbar() {
   return (
-    <footer className=" fixed bottom-0 z-10 flex justify-center w-full h-16 bg-active-white">
+    <footer className="boxshadow fixed bottom-0  flex justify-center w-full h-16 bg-active-white">
       <button
         type="button"
         className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
