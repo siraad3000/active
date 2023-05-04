@@ -99,7 +99,7 @@ const Index = () => {
 
           <input
             className=" mb-2 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text"
+            type="password"
             id="password"
             placeholder="Lösenord..."
             required
