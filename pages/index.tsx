@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 import router from "next/router";
 import { useEffect } from "react";
 import Head from "next/head";
@@ -16,7 +16,17 @@ const Index = () => {
     onSubmit,
   });
   async function onSubmit(values: any) {
-    console.log(values);
+    const result = await signIn("credentials", {
+      username: values.username,
+      password: values.password,
+      redirect: false,
+    });
+
+    if (result?.error) {
+      console.log(result);
+    } else {
+      router.push("/startsida");
+    }
   }
   useEffect(() => {
     if (session) {
@@ -83,6 +93,7 @@ const Index = () => {
             type="username"
             id="username"
             placeholder="Användarnamn..."
+            required
             {...formik.getFieldProps("username")}
           />
 
@@ -91,6 +102,7 @@ const Index = () => {
             type="text"
             id="password"
             placeholder="Lösenord..."
+            required
             {...formik.getFieldProps("password")}
           />
           <Link href="/startsida">Glömt lösenord</Link>

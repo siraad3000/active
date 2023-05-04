@@ -48,7 +48,6 @@ function Startsida({ challenges }: Props) {
     </div>
   );
 }
-
 export async function getServerSideProps(context: GetSessionParams) {
   const session = await getSession(context);
 
@@ -71,7 +70,7 @@ export async function getServerSideProps(context: GetSessionParams) {
     const { _id, ...rest } = challenge;
     return { ...rest, _id: _id.toString() };
   });
-
+  console.log("guego" + session);
   return { props: { challenges: serializedChallenges } };
 }
 export default Startsida;

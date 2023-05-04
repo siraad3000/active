@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { ObjectId } from "mongodb";
 import clientPromise from "../../lib/mongodb";
-import { Users } from "../../types/usersTemp";
+import { Users } from "../../types/userTemp";
 
 export const getUsers = async (): Promise<Users[]> => {
   const mongoClient = await clientPromise;
