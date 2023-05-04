@@ -1,51 +1,50 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { ObjectId } from "mongodb";
 import clientPromise from "../../lib/mongodb";
-import { Users } from "../../types/userTemp";
+import { User, newUser } from "../../types/userTemp";
 
-export const getUsers = async (): Promise<Users[]> => {
+export const getUsers = async (): Promise<User[]> => {
   const mongoClient = await clientPromise;
   const users = (await mongoClient
     .db("active")
     .collection("users")
     .find()
-    .toArray()) as Users[];
+    .toArray()) as User[];
   return users;
 };
-export const verifyUser = async (email: string): Promise<Users[]> => {
+export const verifyUser = async (email: string): Promise<User[]> => {
   const mongoClient = await clientPromise;
   const users = (await mongoClient
     .db("active")
     .collection("users")
     .find({ email: email })
-    .toArray()) as Users[];
+    .toArray()) as User[];
   return users;
 };
 
-export const addUsers = async (users: Users): Promise<ObjectId> => {
+export const addUsers = async (newUser: newUser): Promise<ObjectId> => {
   const mongoClient = await clientPromise;
 
   const response = await mongoClient
     .db("active")
     .collection("users")
-    .insertOne(users);
+    .insertOne(newUser);
 
   return response.insertedId;
 };
 
-export const usersHandler = async (
+export const userHandler = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
   if (req.method === "POST") {
-    const newUsers = req.body as Users;
-    const createdUser = await addUsers(newUsers);
+    const newUser = req.body as newUser;
+    const createdUser = await addUsers(newUser);
     res.status(201).json(createdUser);
   } else if (req.method === "GET") {
-    const Users = await getUsers();
-    res.status(200).json(Users);
+    
   } else {
     res.status(405).end();
   }
 };
-export default usersHandler;
+export default userHandler;

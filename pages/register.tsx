@@ -2,6 +2,8 @@ import Head from "next/head";
 import Image from "next/image";
 import router from "next/router";
 import { useFormik } from "formik";
+import { newUser } from "@/types/userTemp";
+
 const Register = () => {
   const formik = useFormik({
     initialValues: {
@@ -14,8 +16,29 @@ const Register = () => {
     onSubmit,
   });
   async function onSubmit(values: any) {
-    console.log(values);
+    const newUser: any = {
+      username: values.username,
+      password: values.password,
+      terms: values.terms,
+    };
+    const response = await fetch("/api/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    });
+
+    if (response.ok) {
+      router.push("/")
+      // Registration successful
+    } else {
+      alert("Tagga")
+      // Registration failed
+    }
   }
+  
+
   return (
     <div className=" flex flex-col h-screen bg-gradient-to-b from-active-bluelight via-active-purplelight to-active-goldlight">
       <Head>

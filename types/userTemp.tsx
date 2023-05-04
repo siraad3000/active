@@ -17,3 +17,10 @@ export type User = {
   description?: string;
   friends?: Array<string>;
 };
+
+export type newUser = {
+username: string;
+email: string;
+password: string;
+terms: boolean;
+};
