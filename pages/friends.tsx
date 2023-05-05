@@ -9,15 +9,20 @@ import Avatar from "@/components/UserAvatar"
 
 const Friends = () => {
   return (
-    <div className=" bg-active-white min-h-screen friends">
-      <div className="-mt-6">
+    <div className="h-screen w-screen bg-active-white ">
+      <main className="lg:flex justify-center ">
         <Header />
-        <div className=" text-lg"></div>
-        <div className="v">Vänner</div>
-        <div className="g">Grupper</div>
-      </div>
+        <div className="pt-28 flex justify-center lg:w-1/2">
+          <div className="w-1/2 flex justify-center headershadow border-b-2 border-active-purple font-bold  ">
+            Vänner
+          </div>
+          <div className=" w-1/2 flex justify-center headershadow ">
+            Grupper
+          </div>
+        </div>
 
-      <FooterNavbar />
+        <FooterNavbar />
+      </main>
     </div>
   )
 }
