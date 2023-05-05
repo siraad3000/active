@@ -39,6 +39,9 @@ const Profile = ({ challenges }: Props) => {
                   alt=""
                   className="rounded-full"
                 />
+                <div className="font-[Inter] text-xl text-active-purple pt-2 ">
+                  {session?.user?.name}
+                </div>
               </div>
             </div>
             <div className="p-2 ">
