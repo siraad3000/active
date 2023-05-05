@@ -11,14 +11,20 @@ export default function Header() {
     <header className="fixed top-0 flex items-end w-full h-24 border-t border-gray-200 bg-active-white z-10">
       <div className="w-1/4 h-1/2">
         <div
-          id="backButton"
-          className="cursor-pointer pl-4 "
-         
-        
+          id=""
+          className=" pl-4 flex space-x-5"
+    
         >
         
           <Image
                       src="/notice.svg"
+                      alt="Avatar"
+                      width={25}
+                      height={25}
+                    />
+            
+                 <Image
+                 src="/search.svg"
                       alt="Avatar"
                       width={25}
                       height={25}
