@@ -1,26 +1,26 @@
-import { useState } from "react";
-import Image from "next/image";
-import { Challenge } from "@/types/challengeTemp";
-import { useSession } from "next-auth/react";
-import HideForm from "./HideForm";
+import { useState } from "react"
+import Image from "next/image"
+import { Challenge } from "@/types/challengeTemp"
+import { useSession } from "next-auth/react"
+import HideForm from "./HideForm"
 
 type ChallengeFormProps = {
-  onSubmit: (challenge: Challenge) => void;
-};
+  onSubmit: (challenge: Challenge) => void
+}
 
 export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
-  const [challengeTitle, setChallengeTitle] = useState<string>("");
-  const [description, setdescription] = useState<string>("");
-  const [level, setlevel] = useState<string>("");
-  const [location, setlocation] = useState<string>("");
-  const [startTime, setStartTime] = useState<string>("");
-  const [finishTime, setFinishTime] = useState<string>("");
-  const [showFor, setShowFor] = useState<string>("");
-  const [date, setDate] = useState<string>("");
-  const { data: session, status } = useSession();
+  const [challengeTitle, setChallengeTitle] = useState<string>("")
+  const [description, setdescription] = useState<string>("")
+  const [level, setlevel] = useState<string>("")
+  const [location, setlocation] = useState<string>("")
+  const [startTime, setStartTime] = useState<string>("")
+  const [finishTime, setFinishTime] = useState<string>("")
+  const [showFor, setShowFor] = useState<string>("")
+  const [date, setDate] = useState<string>("")
+  const { data: session, status } = useSession()
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+    event.preventDefault()
     const challenge = {
       publisher: session?.user?.name,
       title: challengeTitle,
@@ -31,10 +31,11 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
       showFor: showFor,
       date: date,
       idpicture: session?.user?.image,
-    };
+      idPublisher: session?.user.id,
+    }
 
-    onSubmit(challenge);
-  };
+    onSubmit(challenge)
+  }
 
   return (
     <div className="mt-24 bg-active-white">
@@ -273,7 +274,7 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
           type="submit"
           id="button"
           onClick={() => {
-            HideForm();
+            HideForm()
           }}
         >
           Publicera
@@ -315,5 +316,5 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
         </button>
       </div>
     </div>
-  );
+  )
 }

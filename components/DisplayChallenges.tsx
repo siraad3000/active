@@ -1,13 +1,17 @@
-import { Challenge } from "@/types/challengeTemp";
-import Image from "next/image";
-import Avatar from "./UserAvatar";
+import { Challenge } from "@/types/challengeTemp"
+import Image from "next/image"
+import Avatar from "./UserAvatar"
 
 interface Props {
-  challenges: Challenge[];
+  challenges: Challenge[]
+  className: string
 }
-export default function DisplayChallenges({ challenges }: Props): JSX.Element {
+export default function DisplayChallenges({
+  challenges,
+  className,
+}: Props): JSX.Element {
   return (
-    <div id="cards" className="mb-40 mt-32">
+    <div id="cards" className={className}>
       {challenges.map((challenge) => (
         <div
           className="flex justify-center items-center m-5 relative w-auto"
@@ -18,19 +22,19 @@ export default function DisplayChallenges({ challenges }: Props): JSX.Element {
             onClick={() => {
               const challengeCard = document.getElementById(
                 `challengeCard_${challenge._id}`
-              );
+              )
               const description = document.getElementById(
                 `description_${challenge._id}`
-              );
+              )
               const arrowIcon = document.getElementById(
                 `arrowIcon_${challenge._id}`
-              );
+              )
 
               if (description && challengeCard && arrowIcon) {
                 if ((description.style.display = "none")) {
-                  description.style.display = "block";
-                  challengeCard.style.cursor = "auto";
-                  arrowIcon.classList.add("rotate-180");
+                  description.style.display = "block"
+                  challengeCard.style.cursor = "auto"
+                  arrowIcon.classList.add("rotate-180")
                 }
               }
             }}
@@ -112,22 +116,22 @@ export default function DisplayChallenges({ challenges }: Props): JSX.Element {
               <div
                 className="absolute bottom-2 cursor-pointer"
                 onClick={(e) => {
-                  e.stopPropagation();
+                  e.stopPropagation()
                   const description = document.getElementById(
                     `description_${challenge._id}`
-                  );
+                  )
                   const challengeCard = document.getElementById(
                     `challengeCard_${challenge._id}`
-                  );
+                  )
                   const arrowIcon = document.getElementById(
                     `arrowIcon_${challenge._id}`
-                  );
+                  )
 
                   if (description && challengeCard && arrowIcon) {
                     if ((description.style.display = "block")) {
-                      description.style.display = "none";
-                      challengeCard.style.cursor = "pointer";
-                      arrowIcon.classList.remove("rotate-180");
+                      description.style.display = "none"
+                      challengeCard.style.cursor = "pointer"
+                      arrowIcon.classList.remove("rotate-180")
                     }
                   }
                 }}
@@ -146,5 +150,5 @@ export default function DisplayChallenges({ challenges }: Props): JSX.Element {
         </div>
       ))}
     </div>
-  );
+  )
 }

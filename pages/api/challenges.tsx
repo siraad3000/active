@@ -20,7 +20,7 @@ export const getOneUsersChallenges = async (
   const challenges = (await mongoClient
     .db("active")
     .collection("challenges")
-    .find({ title: x })
+    .find({ idPublisher: x })
     .toArray()) as Challenge[]
   return challenges
 }
@@ -45,13 +45,10 @@ export const challengesHandler = async (
     const createdChallenge = await addChallenge(newChallenge)
     res.status(201).json(createdChallenge)
   } else if (req.method === "GET") {
-    
-   
-      const challenges = await getChallenges()
-      res.status(200).json(challenges)
-    }
+    const challenges = await getChallenges()
+    res.status(200).json(challenges)
+  }
 
-    res.status(405).end()
-  
+  res.status(405).end()
 }
 export default challengesHandler
