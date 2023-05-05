@@ -12,14 +12,20 @@ export default function Header() {
       <div className="w-1/4 h-1/2">
         <div
           id="backButton"
-          className="cursor-pointer pl-4 hidden"
-          onClick={() => {
-            HideForm();
-          }}
+          className="cursor-pointer pl-4 "
+         
+        
         >
-          <BackButton />
+        
+          <Image
+                      src="/notice.svg"
+                      alt="Avatar"
+                      width={25}
+                      height={25}
+                    />
         </div>
       </div>
+      
       <div className="flex justify-center mb-5 w-full">
         <div className="w-1/2 h-1/2 flex justify-center">
           <Image
