@@ -45,7 +45,21 @@ const Profile = ({ challenges }: Props) => {
               <div className="font-[Inter] text-xl text-active-purple">
                 {session?.user?.name}
               </div>
-              <div className="h-10 mt-4 "> Här kommer bilder sen</div>
+              <div className=" mt-4 flex space-x-6"> 
+              <Image
+                      src="/pingis.svg"
+                      alt="Avatar"
+                      width={80}
+                      height={80}
+                    />
+                      <Image
+                      src="/simning.svg"
+                      alt="Avatar"
+                      width={80}
+                      height={60}
+                    />
+            
+              </div>
             </div>
           </div>
           <div className="bg-active-offWHite px-4 lg:shadow-lg">
