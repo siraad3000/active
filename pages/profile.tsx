@@ -39,12 +39,12 @@ const Profile = ({ challenges }: Props) => {
                   alt=""
                   className="rounded-full"
                 />
+                <div className="font-[Inter] text-xl text-active-purple pt-2 ">
+                  {session?.user?.name}
+                </div>
               </div>
             </div>
             <div className="p-2 ">
-              <div className="font-[Inter] text-xl text-active-purple">
-                {session?.user?.name}
-              </div>
               <div className="h-10 mt-4 "> Här kommer bilder sen</div>
             </div>
           </div>
