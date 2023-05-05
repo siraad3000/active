@@ -8,24 +8,15 @@ import { User } from "next-auth"
 import { useEffect, useState } from "react"
 import challenges from "./api/challenges"
 import DisplayChallenges from "@/components/DisplayChallenges"
+import { Session } from "inspector"
 
 interface Props {
   challenges: Challenge[]
 }
 
 const Profile = ({ challenges }: Props) => {
-  const [users, setUsers] = useState<User[]>([])
   const { data: session } = useSession()
-  const [challengeList, setChallengeList] = useState<Challenge[]>(challenges)
 
-  useEffect(() => {
-    async function fetchUsers() {
-      const res = await fetch("/api/users")
-      const data = await res.json()
-      setUsers(data)
-    }
-    fetchUsers()
-  }, [])
   return (
     <div className="flex-wrap bg-active-offWHite h-screen">
       <Profileheader />
@@ -41,7 +32,7 @@ const Profile = ({ challenges }: Props) => {
                 sizes="100vw"
                 style={{ width: "100%" }}
               />
-              <div className="px-4 relative bottom-10">
+              <div className="px-4 relative bottom-11">
                 <Avatar
                   width={80}
                   height={80}
@@ -69,11 +60,9 @@ const Profile = ({ challenges }: Props) => {
               </p>
               <p>Redigera</p>
             </div>
-
-            <div className="mt-5">Idag</div>
+            <DisplayChallenges challenges={challenges} className="" />
           </div>
         </div>
-        <DisplayChallenges challenges={challenges} />
       </div>
     </div>
   )
@@ -94,7 +83,7 @@ export async function getServerSideProps(context: GetSessionParams) {
   const challenges = await mongoClient
     .db("active")
     .collection("challenges")
-    .find({ idPublisher: session?.user?._id })
+    .find({ idPublisher: session?.user?.id })
     .toArray()
 
   const serializedChallenges = challenges.map((challenge) => {
