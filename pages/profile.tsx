@@ -32,23 +32,37 @@ const Profile = ({ challenges }: Props) => {
                 sizes="100vw"
                 style={{ width: "100%" }}
               />
+              
               <div className="px-4 relative bottom-11">
                 <Avatar
                   width={80}
                   height={80}
                   alt=""
-                  className="rounded-full"
+                  className="rounded-full border border-active-black"
                 />
-                <div className="font-[Inter] text-xl text-active-purple pt-2 ">
-                  {session?.user?.name}
+                <div className=" absolute right-2 top-12">
+               
+                    <Image
+                      src="/penna.svg"
+                      alt="Avatar"
+                      width={25}
+                      height={10}
+                    />
+                  
+
                 </div>
-              </div>
-            </div>
-            <div className="p-2 ">
-              <div className="font-[Inter] text-xl text-active-purple">
-                {session?.user?.name}
-              </div>
-              <div className=" mt-4 flex space-x-6"> 
+                <p className="font-[Inter] text-xl text-active-purple pt-2 flex justify-between ">
+                  {session?.user?.name}
+                  
+                  
+                </p>
+                <div className="flex justify-between">
+                <p>999 år, Stockholm </p>
+                
+                </div>
+                <div className="pt-2 font-[Inter] text-base text-active-purple  ">
+             <p>Mina Träningsintressen</p>
+              <div className=" mt-2 flex space-x-6"> 
               <Image
                       src="/pingis.svg"
                       alt="Avatar"
@@ -61,9 +75,15 @@ const Profile = ({ challenges }: Props) => {
                       width={80}
                       height={60}
                     />
+                    
             
               </div>
+           </div>
+            
+            <p className="pt-2">Jag gillar spela pingis och jag gillar äta kebab och jag gillar inte simma och jag gillar tennis sen gillar inte att handla men jag tycker det roligt att spela men annars så vet jag inte vad jag skriver hallooooooooooooo</p>
+              </div>
             </div>
+            
           </div>
           <div className="bg-active-offWHite px-4 lg:shadow-lg">
             <div className="flex items-center justify-between py-3">

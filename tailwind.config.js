@@ -18,6 +18,7 @@ module.exports = {
         bluelight: "#6ED8D33D",
         purplelight: "#6110873D",
         goldlight: "#FFD93A3D",
+        black: "#000000ff",
       },
       extend: {
         fontFamily: {
