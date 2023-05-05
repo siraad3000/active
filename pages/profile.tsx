@@ -1,13 +1,31 @@
-import Image from "next/image";
+import Image from "next/image"
+import Avatar from "../components/UserAvatar"
+import Profileheader from "@/components/Headerprofile"
+import { GetSessionParams, getSession, useSession } from "next-auth/react"
+import clientPromise from "@/lib/mongodb"
+import { Challenge } from "@/types/challengeTemp"
+import { User } from "next-auth"
+import { useEffect, useState } from "react"
+import challenges from "./api/challenges"
+import DisplayChallenges from "@/components/DisplayChallenges"
 
-import Avatar from "../components/UserAvatar";
-import Profileheader from "@/components/Headerprofile";
-import { useSession } from "next-auth/react";
+interface Props {
+  challenges: Challenge[]
+}
 
-const Profile = () => {
-  const { data: session } = useSession();
-  console.log(session);
+const Profile = ({ challenges }: Props) => {
+  const [users, setUsers] = useState<User[]>([])
+  const { data: session } = useSession()
+  const [challengeList, setChallengeList] = useState<Challenge[]>(challenges)
 
+  useEffect(() => {
+    async function fetchUsers() {
+      const res = await fetch("/api/users")
+      const data = await res.json()
+      setUsers(data)
+    }
+    fetchUsers()
+  }, [])
   return (
     <div className="flex-wrap bg-active-offWHite h-screen">
       <Profileheader />
@@ -55,9 +73,36 @@ const Profile = () => {
             <div className="mt-5">Idag</div>
           </div>
         </div>
+        <DisplayChallenges challenges={challenges} />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Profile;
+export async function getServerSideProps(context: GetSessionParams) {
+  const session = await getSession(context)
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    }
+  }
+  const mongoClient = await clientPromise
+  const challenges = await mongoClient
+    .db("active")
+    .collection("challenges")
+    .find({ idPublisher: session?.user?._id })
+    .toArray()
+
+  const serializedChallenges = challenges.map((challenge) => {
+    const { _id, ...rest } = challenge
+    return { ...rest, _id: _id.toString() }
+  })
+  console.log("guego" + session)
+  return { props: { challenges: serializedChallenges } }
+}
+
+export default Profile
