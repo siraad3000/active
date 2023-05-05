@@ -23,16 +23,13 @@
   height: 4.3em;
 }
 
-.boxshadow{
+.boxshadow {
   box-shadow: 0 -2px 4px rgb(0 0 0 / 0.1);
-
 }
 
-.headershadow{
-  box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
-
+.headershadow {
+  box-shadow: 0 2px 0px rgb(0 0 0 / 0.1);
 }
-
 
 .profil {
   position: fixed;
