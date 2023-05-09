@@ -38,7 +38,7 @@ function Startsida({ challenges }: Props) {
         {/* challenge form component */}
         <ChallengeForm onSubmit={handleChallengeSubmit} />
         {/* Display challenges component */}
-        <DisplayChallenges challenges={challengeList} className="mb-40 mt-32" />
+        <DisplayChallenges challenges={challengeList} className="mb-40 mt-10" />
         <div id="footer">
           <FooterNavbar />
         </div>
