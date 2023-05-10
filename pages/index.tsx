@@ -1,40 +1,40 @@
-import Image from "next/image";
-import Link from "next/link";
-import { useSession, signIn } from "next-auth/react";
-import router from "next/router";
-import { useEffect } from "react";
-import Head from "next/head";
-import { useFormik } from "formik";
+import Image from "next/image"
+import Link from "next/link"
+import { useSession, signIn } from "next-auth/react"
+import router from "next/router"
+import { useEffect } from "react"
+import Head from "next/head"
+import { useFormik } from "formik"
 
 const Index = () => {
-  const { data: session, status } = useSession();
+  const { data: session, status } = useSession()
   const formik = useFormik({
     initialValues: {
       username: "",
       password: "",
     },
     onSubmit,
-  });
+  })
   async function onSubmit(values: any) {
     const result = await signIn("credentials", {
       username: values.username,
       password: values.password,
       redirect: false,
-    });
+    })
 
     if (result?.error) {
-      console.log(result);
+      console.log(result)
     } else {
-      router.push("/startsida");
+      router.push("/startsida")
     }
   }
   useEffect(() => {
     if (session) {
       setTimeout(() => {
-        router.push("/startsida");
-      }, 2000); // Waiting time before redirecting
+        router.push("/startsida")
+      }, 2000) // Waiting time before redirecting
     }
-  }, [session]);
+  }, [session])
 
   if (status === "loading") {
     return (
@@ -45,7 +45,7 @@ const Index = () => {
           <div className="w-3 h-3 bg-active-offWHite rounded-full "></div>
         </div>
       </div>
-    );
+    )
   } else if (session) {
     return (
       <div className="flex justify-center items-center w-screen h-screen">
@@ -63,7 +63,7 @@ const Index = () => {
           </div>
         </div>
       </div>
-    );
+    )
   } else
     return (
       <div className="flex-col flex h-screen w-screen bg-gradient-to-b from-active-bluelight via-active-purplelight to-active-goldlight lg:items-center">
@@ -99,13 +99,15 @@ const Index = () => {
 
           <input
             className=" mb-2 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text"
+            type="password"
             id="password"
             placeholder="Lösenord..."
             required
             {...formik.getFieldProps("password")}
           />
-          <Link href="/startsida">Glömt lösenord</Link>
+          <Link href="/startsida" className="text-xs ml-2">
+            Glömt lösenord?
+          </Link>
 
           <div className="flex flex-col justify-center items-center mt-8">
             <button
@@ -144,7 +146,7 @@ const Index = () => {
           </button>
         </div>
       </div>
-    );
-};
+    )
+}
 
-export default Index;
+export default Index
