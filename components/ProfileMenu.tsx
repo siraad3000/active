@@ -6,7 +6,7 @@ export default function ProfileMenu() {
   const Menu = () => (
     <div
       id="dropdown"
-      className="z-10 mt-7 bg-active-white absolute right-0 rounded-sm  w-36 dark:bg-gray-700 flex justify-center lg:w-80 "
+      className="z-10 mt-7 p-1 bg-active-offWHite absolute right-0 rounded-sm shadow-lg  w-36 dark:bg-gray-700 flex justify-center lg:w-80 "
     >
       <ul
         className="py-2 text-sm text-gray-700 dark:text-gray-200 lg:text-xl "
@@ -29,17 +29,14 @@ export default function ProfileMenu() {
           </a>
         </li>
         <li>
-          <a
-            href="#"
-            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-          >
-            Placeholder
+          <a href="#" className="px-4 py-3 font-bold">
+            Redigera profil
           </a>
         </li>
         <li>
           <div
             onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}
-            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            className="px-4 py-3 font-bold"
           >
             Logga ut
           </div>
