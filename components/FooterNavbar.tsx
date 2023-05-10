@@ -35,9 +35,10 @@ export default function FooterNavbar() {
       <button
         type="button"
         className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
+        onClick={() => router.push("/aktiviteter")}
       >
         <Image
-          src="/Activity_icon.png"
+          src={activityIcon}
           alt="joined activity icon"
           width={25}
           height={25}

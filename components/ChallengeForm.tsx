@@ -40,10 +40,10 @@ export default function ChallengeForm({ onSubmit }: ChallengeFormProps) {
   };
 
   return (
-    <div className="pt-32 bg-active-white">
+    <div className="bg-active-white">
       <form
         id="challengeForm"
-        className="bg-white hidden"
+        className="bg-white hidden h-screen pt-24"
         onSubmit={handleSubmit}
       >
         <div className="p-8">

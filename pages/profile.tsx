@@ -14,9 +14,9 @@ const Profile = ({ challenges }: Props) => {
   const { data: session } = useSession();
 
   return (
-    <div className="flex-wrap bg-active-offWHite h-screen">
+    <div className="flex-wrap bg-active-offWHite ">
       <Profileheader />
-      <div className="lg:flex justify-center shadow-lg h-screen">
+      <div className="lg:flex justify-center shadow-lg ">
         <div className="lg:w-1/2">
           <div className="bg-active-white mt-24 shadow-lg">
             <div>
@@ -79,7 +79,7 @@ const Profile = ({ challenges }: Props) => {
               </p>
               <p>Redigera</p>
             </div>
-            <DisplayChallenges challenges={challenges} className="" />
+            <DisplayChallenges challenges={challenges} className="pb-10" />
           </div>
         </div>
       </div>
