@@ -1,6 +1,11 @@
 import { Challenge } from "@/types/challengeTemp";
 import Image from "next/image";
 import Avatar from "./UserAvatar";
+import { test } from "node:test";
+import { useSession } from "next-auth/react";
+import { ObjectId } from "mongodb";
+import { error } from "console";
+
 
 interface Props {
   challenges: Challenge[];
@@ -10,6 +15,32 @@ export default function DisplayChallenges({
   challenges,
   className,
 }: Props): JSX.Element {
+
+
+  function handleAttende(cardId: ObjectId|undefined, userId: string){
+    addAttendeeToChallenge(cardId, userId)
+    .then(() => {
+      console.log('Attendee added to challenge!');
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+    
+
+  }
+  const { data: session, status } = useSession()
+ 
+  async function addAttendeeToChallenge(cardId: ObjectId|undefined, userId: string) {
+    const response = await fetch(`/api/challenges?id=${cardId}&userId=${userId}`, {
+      method: 'PUT',
+    });
+  
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error);
+    }
+  }
+
   return (
     <div id="cards" className={className}>
       {challenges.map((challenge) => {
@@ -106,9 +137,21 @@ export default function DisplayChallenges({
                     <p className="text-xs ">{challenge.description}</p>
                   </div>
 
-                  <button
+                  <button id= {"attende_" + challenge._id}
                     className="w-full h-1/6 rounded mt-2 bg-active-purple text-active-white font-['Inter'] p-2"
-                    disabled
+                    onClick= {()=> 
+                   {
+                       const deltabutton = document.getElementById(`attende_${challenge._id}`)
+                       if( deltabutton 
+                        
+
+                       ){
+                        deltabutton.style.display="none"
+                       
+                       }
+                       
+                      
+                       handleAttende(challenge._id, session?.user.id)} }
                   >
                     Delta
                   </button>
