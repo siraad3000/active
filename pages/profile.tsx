@@ -16,7 +16,7 @@ const Profile = ({ challenges }: Props) => {
   return (
     <div className="flex-wrap bg-active-offWHite h-screen">
       <Profileheader />
-      <div className="lg:flex justify-center shadow-lg h-full">
+      <div className="lg:flex justify-center shadow-lg h-screen">
         <div className="lg:w-1/2">
           <div className="bg-active-white mt-24 shadow-lg">
             <div>
@@ -79,7 +79,7 @@ const Profile = ({ challenges }: Props) => {
               </p>
               <p>Redigera</p>
             </div>
-            <DisplayChallenges challenges={challenges} className="pb-10" />
+            <DisplayChallenges challenges={challenges} className="" />
           </div>
         </div>
       </div>
