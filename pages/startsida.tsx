@@ -61,6 +61,7 @@ export async function getServerSideProps(context: GetSessionParams) {
     .db("active")
     .collection("challenges")
     .find()
+    .sort({ date: 1 })
     .toArray();
 
   const serializedChallenges = challenges.map((challenge) => {
