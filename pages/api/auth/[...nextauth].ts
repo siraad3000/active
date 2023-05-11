@@ -39,7 +39,7 @@ export default NextAuth({
           const { _id, ...rest } = user;
           return { ...rest, id };
         } else {
-          throw new Error("Invalid username or password");
+          throw new Error();
         }
       },
     }),
