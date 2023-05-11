@@ -17,7 +17,7 @@ export default function FooterNavbar() {
         : setActivityIcon("/Activity_Icon.png");
       location.pathname === "/friends"
         ? setFriendsIcon("/Friends_Icon_Filled.png")
-        : setFriendsIcon("/Friends_icon.png");
+        : setFriendsIcon("/Friends_Icon.png");
     }
   }, []);
   return (
