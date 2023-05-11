@@ -5,6 +5,7 @@ import { test } from "node:test"
 import { useSession } from "next-auth/react"
 import { ObjectId } from "mongodb"
 import { error } from "console"
+import Attending from "./attending"
 
 interface Props {
   challenges: Challenge[]
@@ -136,30 +137,8 @@ export default function DisplayChallenges({
                     </h3>
                     <p className="text-xs ">{challenge.description}</p>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="profiles flex -space-x-4">
-                      <Avatar
-                        alt="avatar"
-                        width={30}
-                        height={30}
-                        className="z-30 inline-flex items-center justify-center h-[2.858em] w-[2.858em] rounded-full bg-gray-200 border border-active-black font-normal bg-white text-gray-700 shadow-sm align-middle text-sm dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-800 dark:text-gray-400 dark:hover:text-white"
-                      />
-                      <Avatar
-                        alt="avatar"
-                        width={30}
-                        height={30}
-                        className="z-20 inline-flex items-center justify-center h-[2.858em] w-[2.858em] rounded-full bg-gray-200 border border-active-black font-normal bg-white text-gray-700 shadow-sm align-middle text-sm dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-800 dark:text-gray-400 dark:hover:text-white"
-                      />
-                      <Avatar
-                        alt="avatar"
-                        width={30}
-                        height={30}
-                        className="z-10 inline-flex items-center justify-center h-[2.858em] w-[2.858em] rounded-full bg-gray-200 border border-active-black font-normal bg-white text-gray-700 shadow-sm align-middle text-sm dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-800 dark:text-gray-400 dark:hover:text-white"
-                      />
-                    </div>
 
-                    <p>+ 10 till</p>
-                  </div>
+                  <Attending challenge={challenge} className="" />
 
                   <button
                     id={"attende_" + challenge._id}
