@@ -136,26 +136,29 @@ export default function DisplayChallenges({
                     </h3>
                     <p className="text-xs ">{challenge.description}</p>
                   </div>
-                  <div className="profiles flex -space-x-2">
-                    <Avatar
-                      alt="avatar"
-                      width={30}
-                      height={30}
-                      className="inline-flex items-center justify-center h-[2.858em] w-[2.858em] rounded-full bg-gray-200 border border-active-black font-normal bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-300 focus:outline-none focus:bg-blue-100 focus:text-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-800 dark:text-gray-400 dark:hover:text-white dark:focus:bg-blue-100 dark:focus:text-blue-600 dark:focus:ring-offset-gray-800"
-                    />
-                    <Avatar
-                      alt="avatar"
-                      width={30}
-                      height={30}
-                      className="inline-flex items-center justify-center h-[2.858em] w-[2.858em] rounded-full bg-gray-200 border border-active-black font-normal bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-300 focus:outline-none focus:bg-blue-100 focus:text-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-800 dark:text-gray-400 dark:hover:text-white dark:focus:bg-blue-100 dark:focus:text-blue-600 dark:focus:ring-offset-gray-800"
-                    />
+                  <div className="flex items-center space-x-2">
+                    <div className="profiles flex -space-x-4">
+                      <Avatar
+                        alt="avatar"
+                        width={30}
+                        height={30}
+                        className="z-30 inline-flex items-center justify-center h-[2.858em] w-[2.858em] rounded-full bg-gray-200 border border-active-black font-normal bg-white text-gray-700 shadow-sm align-middle text-sm dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-800 dark:text-gray-400 dark:hover:text-white"
+                      />
+                      <Avatar
+                        alt="avatar"
+                        width={30}
+                        height={30}
+                        className="z-20 inline-flex items-center justify-center h-[2.858em] w-[2.858em] rounded-full bg-gray-200 border border-active-black font-normal bg-white text-gray-700 shadow-sm align-middle text-sm dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-800 dark:text-gray-400 dark:hover:text-white"
+                      />
+                      <Avatar
+                        alt="avatar"
+                        width={30}
+                        height={30}
+                        className="z-10 inline-flex items-center justify-center h-[2.858em] w-[2.858em] rounded-full bg-gray-200 border border-active-black font-normal bg-white text-gray-700 shadow-sm align-middle text-sm dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-800 dark:text-gray-400 dark:hover:text-white"
+                      />
+                    </div>
 
-                    <button
-                      id="hs-dropdown-avatar-more"
-                      className="hs-dropdown-toggle inline-flex items-center justify-center h-[2.858em] w-[2.858em] rounded-full bg-active-white border border-white font-normal bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-300 focus:outline-none focus:bg-blue-100 focus:text-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-800 dark:text-gray-400 dark:hover:text-white dark:focus:bg-blue-100 dark:focus:text-blue-600 dark:focus:ring-offset-gray-800"
-                    >
-                      <span className="font-medium leading-none">10+</span>
-                    </button>
+                    <p>+ 10 till</p>
                   </div>
 
                   <button
