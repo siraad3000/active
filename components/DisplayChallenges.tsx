@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react"
 import { ObjectId } from "mongodb"
 import { error } from "console"
 import Attending from "./attending"
+import AttendeeButton from "./DeltaButton"
 
 interface Props {
   challenges: Challenge[]
@@ -24,6 +25,7 @@ export default function DisplayChallenges({
         console.error(error)
       })
   }
+
   const { data: session, status } = useSession()
 
   async function addAttendeeToChallenge(
@@ -108,7 +110,7 @@ export default function DisplayChallenges({
                   </p>
                   <p className="flex items-center">
                     <Image
-                      src="/clock-Icon-Small-svg.svg"
+                      src="/clock-icon-small-svg.svg"
                       alt="Avatar"
                       width={15}
                       height={15}
@@ -116,6 +118,7 @@ export default function DisplayChallenges({
                     <span className="mx-2">{challenge.time}</span>
                   </p>
                 </div>
+
                 <div
                   id={`description_${challenge._id}`}
                   className="hidden mt-3"
@@ -139,23 +142,7 @@ export default function DisplayChallenges({
                   </div>
 
                   <Attending challenge={challenge} className="" />
-
-                  <button
-                    id={"attende_" + challenge._id}
-                    className="w-full h-1/6 rounded mt-2 bg-active-purple text-active-white font-['Inter'] p-2"
-                    onClick={() => {
-                      const deltabutton = document.getElementById(
-                        `attende_${challenge._id}`
-                      )
-                      if (deltabutton) {
-                        deltabutton.style.display = "none"
-                      }
-
-                      handleAttende(challenge._id, session?.user.id)
-                    }}
-                  >
-                    Delta
-                  </button>
+                  <AttendeeButton challenge={challenge} className="" />
                 </div>
               </div>
               <div className=" w-2/12 right-0 flex justify-center">
