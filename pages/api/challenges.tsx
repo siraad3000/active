@@ -21,6 +21,14 @@ export const updatechallenge = async (cardId: ObjectId, userId: string) => {
     .updateOne({ _id: cardId }, { $push: { attending: userId } })
 }
 
+export const updatechallengeMark = async (cardId: ObjectId, userId: string) => {
+  const mongoClient = await clientPromise
+  const challenges = await mongoClient
+    .db("active")
+    .collection("challenges")
+    .updateOne({ _id: cardId }, { $push: { marked: userId } })
+}
+
 export const getOneUsersChallenges = async (
   x: string
 ): Promise<Challenge[]> => {
@@ -67,7 +75,7 @@ export const challengesHandler = async (
       await updatechallenge(cardId, userId as string)
       res.status(200).json({ success: true })
     } catch (error) {
-      res.status(500).json({ error: error})
+      res.status(500).json({ error: error })
     }
   } else {
     res.status(405).end()

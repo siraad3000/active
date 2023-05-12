@@ -7,9 +7,9 @@ export type Challenge = {
   publisherId: string
   description: string
   location: string
-
   date: string
   time: string
   attending?: string[]
+  marked?: string[]
   pictureId?: string | null
 }

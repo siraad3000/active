@@ -4,6 +4,7 @@ import Avatar from "./UserAvatar"
 import { ObjectId } from "mongodb"
 import Attending from "./attending"
 import AttendeeButton from "./DeltaButton"
+import Bookmark from "./Bookmark"
 
 interface Props {
   challenges: Challenge[]
@@ -143,15 +144,7 @@ export default function DisplayChallenges({
                 </div>
               </div>
               <div className=" w-2/12 right-0 flex justify-center">
-                <div className="mt-4">
-                  <Image
-                    id="book"
-                    src="/Bookmark-Icon-Yellow-unfilled.png"
-                    alt="Avatar"
-                    width={30}
-                    height={30}
-                  />
-                </div>
+                <Bookmark challenge={challenge} />
                 <div
                   className="absolute bottom-2 cursor-pointer"
                   onClick={(e) => {

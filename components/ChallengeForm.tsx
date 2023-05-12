@@ -1,17 +1,17 @@
-import Image from "next/image";
-import { Challenge } from "@/types/challengeTemp";
-import { useSession } from "next-auth/react";
-import HideForm from "./HideForm";
-import { useFormik } from "formik";
+import Image from "next/image"
+import { Challenge } from "@/types/challengeTemp"
+import { useSession } from "next-auth/react"
+import HideForm from "./HideForm"
+import { useFormik } from "formik"
 
 type ChallengeFormProps = {
-  onSubmitChallenge: (challenge: Challenge) => void;
-};
+  onSubmitChallenge: (challenge: Challenge) => void
+}
 export default function ChallengeForm({
   onSubmitChallenge,
 }: ChallengeFormProps) {
-  const { data: session, status } = useSession();
-  const currentYear = new Date().getFullYear();
+  const { data: session, status } = useSession()
+  const currentYear = new Date().getFullYear()
 
   const formik = useFormik({
     initialValues: {
@@ -22,7 +22,7 @@ export default function ChallengeForm({
       time: "",
     },
     onSubmit,
-  });
+  })
   async function onSubmit(values: any) {
     const newChallenge: Challenge = {
       publisher: session?.user?.name,
@@ -34,8 +34,9 @@ export default function ChallengeForm({
       pictureId: session?.user?.image,
       publisherId: session?.user.id,
       attending: [],
-    };
-    onSubmitChallenge(newChallenge);
+      marked: [],
+    }
+    onSubmitChallenge(newChallenge)
   }
   return (
     <div className="bg-active-white">
@@ -148,7 +149,7 @@ export default function ChallengeForm({
             type="submit"
             id="button"
             onClick={() => {
-              HideForm();
+              HideForm()
             }}
           >
             Publicera
@@ -191,5 +192,5 @@ export default function ChallengeForm({
         </button>
       </div>
     </div>
-  );
+  )
 }
