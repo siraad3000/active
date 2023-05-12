@@ -26,6 +26,7 @@ export default function ChallengeForm({
     onSubmit,
   });
   async function onSubmit(values: any) {
+    HideForm();
     const newChallenge: Challenge = {
       publisher: session?.user?.name,
       title: values.title,
@@ -50,13 +51,30 @@ export default function ChallengeForm({
         onSubmit={formik.handleSubmit}
       >
         <div className="p-8">
-          <div></div>
-          <label
-            className="block text-gray-700 text-xl font-bold mb-2"
-            htmlFor="time"
-          >
-            Skapa aktivitet
-          </label>
+          <div className="flex justify-between">
+            <label
+              className="block text-gray-700 text-xl font-bold mb-2"
+              htmlFor="time"
+            >
+              Skapa aktivitet
+            </label>
+            <button
+              className="flex align-top mb-5 "
+              type="reset"
+              id="hide-form-btn"
+              onClick={() => {
+                formik.resetForm();
+                HideForm();
+              }}
+            >
+              <Image
+                src="/Cross-Icon-Purple.png"
+                alt="Avatar"
+                width={25}
+                height={25}
+              />
+            </button>
+          </div>
           <div className="mb-4">
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -125,6 +143,7 @@ export default function ChallengeForm({
                 id="location"
                 type="text"
                 required
+                minLength={5}
                 maxLength={75}
                 {...formik.getFieldProps("location")}
                 placeholder="Årstaskogen Naturreservat 120 59 Årsta"
@@ -187,7 +206,6 @@ export default function ChallengeForm({
                   checked={formik.values.level === "Hög"}
                   onChange={formik.handleChange}
                 />
-
                 <label
                   htmlFor="level3"
                   className="w-full h-full py-3 text-sm font-medium text-center  peer-checked/test:bg-active-purple
@@ -280,33 +298,12 @@ export default function ChallengeForm({
             </div>
           </div>
           <button
-            className=" w-full purple1 hover:bg-purple-700 text-active-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
+            className="w-full mt-5 purple1 hover:bg-purple-700 text-active-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
             type="submit"
             id="button"
-            onClick={() => {
-              HideForm();
-            }}
           >
             Publicera
           </button>
-          <div className="flex items-center justify-between mt-3">
-            <button
-              className="purple1 hover:bg-purple-700 text-active-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline block"
-              type="button"
-              id="hide-form-btn"
-              onClick={HideForm}
-            >
-              return
-            </button>
-            <button
-              className="purple1 hover:bg-purple-700 text-active-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline block"
-              type="reset"
-              id="hide-form-btn"
-              onClick={HideForm}
-            >
-              exit
-            </button>
-          </div>
         </div>
       </form>
       <div
