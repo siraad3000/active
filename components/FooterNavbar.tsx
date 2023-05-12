@@ -1,27 +1,26 @@
-import Image from "next/image";
-import router from "next/router";
-import { useEffect, useState } from "react";
+import Image from "next/image"
+import router from "next/router"
+import { useEffect, useState } from "react"
 
 export default function FooterNavbar() {
-  const [homePageIcon, setHomePageIcon] = useState<string>("/Home_Icon.png");
-  const [activityIcon, setActivityIcon] =
-    useState<string>("/Activity_Icon.png");
-  const [friendsIcon, setFriendsIcon] = useState<string>("/Friends_icon.png");
+  const [homePageIcon, setHomePageIcon] = useState<string>("/Home_Icon.png")
+  const [activityIcon, setActivityIcon] = useState<string>("/Activity_Icon.png")
+  const [friendsIcon, setFriendsIcon] = useState<string>("/Friends_icon.png")
   useEffect(() => {
     if (typeof window !== "undefined") {
       location.pathname === "/startsida"
         ? setHomePageIcon("/Home_Icon_Filled.png")
-        : setHomePageIcon("/Home_Icon.png");
+        : setHomePageIcon("/Home_Icon.png")
       location.pathname === "/aktiviteter"
         ? setActivityIcon("/Activity_Icon_Filled.png")
-        : setActivityIcon("/Activity_Icon.png");
+        : setActivityIcon("/Activity_Icon.png")
       location.pathname === "/friends"
         ? setFriendsIcon("/Friends_Icon_Filled.png")
-        : setFriendsIcon("/Friends_Icon.png");
+        : setFriendsIcon("/Friends_Icon.png")
     }
-  }, []);
+  }, [])
   return (
-    <footer className="boxshadow fixed bottom-0  flex justify-center w-full h-16 bg-active-white">
+    <footer className=" z-40 boxshadow fixed bottom-0  flex justify-center w-full h-16 bg-active-white">
       <button
         type="button"
         className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
@@ -58,5 +57,5 @@ export default function FooterNavbar() {
         </p>
       </button>
     </footer>
-  );
+  )
 }
