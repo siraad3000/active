@@ -26,6 +26,7 @@ export default function ChallengeForm({
     onSubmit,
   });
   async function onSubmit(values: any) {
+    formik.resetForm();
     HideForm();
     const newChallenge: Challenge = {
       publisher: session?.user?.name,

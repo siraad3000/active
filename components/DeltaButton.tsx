@@ -1,23 +1,23 @@
-import { Challenge } from "@/types/challengeTemp"
-import { ObjectId } from "mongodb"
-import { useSession } from "next-auth/react"
+import { Challenge } from "@/types/challengeTemp";
+import { ObjectId } from "mongodb";
+import { useSession } from "next-auth/react";
 
 interface Props {
-  challenge: Challenge
+  challenge: Challenge;
 }
 
 export default function AttendeeButton({ challenge }: Props): JSX.Element {
   function handleAttende(cardId: ObjectId | undefined, userId: string) {
     addAttendeeToChallenge(cardId, userId)
       .then(() => {
-        console.log("Attendee added to challenge!")
+        console.log("Attendee added to challenge!");
       })
       .catch((error) => {
-        console.error(error)
-      })
+        console.error(error);
+      });
   }
 
-  const { data: session, status } = useSession()
+  const { data: session, status } = useSession();
 
   async function addAttendeeToChallenge(
     cardId: ObjectId | undefined,
@@ -28,21 +28,24 @@ export default function AttendeeButton({ challenge }: Props): JSX.Element {
       {
         method: "PUT",
       }
-    )
+    );
 
     if (!response.ok) {
-      const errorData = await response.json()
-      throw new Error(errorData.error)
+      const errorData = await response.json();
+      throw new Error(errorData.error);
     }
   }
-  let attendingEvent = false
+  let attendingEvent = false;
   challenge.attending?.map((attendee) => {
-    if (session?.user.id == attendee) {
-      attendingEvent = true
+    if (
+      session?.user.id == attendee ||
+      challenge.publisherId == session?.user.id
+    ) {
+      attendingEvent = true;
     }
-  })
+  });
   if (attendingEvent) {
-    return <div></div>
+    return <div></div>;
   } else {
     return (
       <button
@@ -51,16 +54,16 @@ export default function AttendeeButton({ challenge }: Props): JSX.Element {
         onClick={() => {
           const deltabutton = document.getElementById(
             `attende_${challenge._id}`
-          )
+          );
           if (deltabutton) {
-            deltabutton.style.display = "none"
+            deltabutton.style.display = "none";
           }
 
-          handleAttende(challenge._id, session?.user.id)
+          handleAttende(challenge._id, session?.user.id);
         }}
       >
         Häng på!
       </button>
-    )
+    );
   }
 }
