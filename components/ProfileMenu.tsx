@@ -60,7 +60,7 @@ export default function ProfileMenu() {
           setMenuIcon("/Menu_Icon_Purple.png");
         } else {
           setShowMenu(true);
-          setMenuIcon("/More_icon_Purple.png");
+          setMenuIcon("/More_Icon_Purple.png");
         }
       }}
     >

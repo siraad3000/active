@@ -104,7 +104,7 @@ export default function DisplayChallenges({
                   </p>
                   <p className="flex items-center">
                     <Image
-                      src="/clock-icon-small-svg.svg"
+                      src="/clock-Icon-Small-svg.svg"
                       alt="Avatar"
                       width={15}
                       height={15}
