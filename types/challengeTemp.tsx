@@ -7,7 +7,7 @@ export type Challenge = {
   publisherId: string
   description: string
   location: string
-  level: string
+
   date: string
   time: string
   attending?: string[]
