@@ -19,7 +19,7 @@ const Aktiviteter = ({ challenges }: Props) => {
         <HeaderAktiviter />
 
         <div className="lg:flex justify-center p-5">
-          <DisplayChallenges challenges={challenges} className="pb-6" />
+          <DisplayChallenges challenges={challenges} className="pb-6 pt-32" />
         </div>
         <FooterNavbar />
       </main>
