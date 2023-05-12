@@ -33,7 +33,7 @@ export default function ChallengeForm({
       date: values.date,
       pictureId: session?.user?.image,
       publisherId: session?.user.id,
-      attending: [],
+      attending: [session?.user.id],
       marked: [],
     }
     onSubmitChallenge(newChallenge)
