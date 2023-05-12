@@ -14,8 +14,8 @@ interface Props {
 const Aktiviteter = ({ challenges }: Props) => {
   const { data: session } = useSession()
   return (
-    <div className="h-screen w-screen">
-      <main>
+    <div className="h-screen w-screen bg-active-offWHite ">
+      <main className="bg-active-offWHite">
         <HeaderLarge valueOne="Bokade" valueTwo="Sparade" />
 
         <div className="lg:flex justify-center p-5 h-full bg-active-offWHite">
