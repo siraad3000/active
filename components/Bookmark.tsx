@@ -48,9 +48,9 @@ export default function Bookmark({ challenge }: Props): JSX.Element {
         id={"marked_" + challenge._id}
         onClick={(e) => {
           e.stopPropagation()
-          if (bookmarkIcon != "/Bookmark-Icon-filled-Yellow.png") {
+          if (bookmarkIcon != "/Bookmark-Icon-Filled-Yellow.png") {
             handleBookmark(challenge._id, session?.user.id)
-            setBookmarkIcon("/Bookmark-Icon-filled-Yellow.png")
+            setBookmarkIcon("/Bookmark-Icon-Filled-Yellow.png")
           }
         }}
       >
@@ -68,7 +68,7 @@ export default function Bookmark({ challenge }: Props): JSX.Element {
       <div className="mt-4">
         <Image
           id="book"
-          src="/Bookmark-Icon-filled-Yellow.png"
+          src="/Bookmark-Icon-Filled-Yellow.png"
           alt="Avatar"
           width={30}
           height={30}
