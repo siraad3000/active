@@ -1,16 +1,13 @@
-import { Challenge } from "@/types/challengeTemp"
-import Image from "next/image"
-import Avatar from "./UserAvatar"
-import { test } from "node:test"
-import { useSession } from "next-auth/react"
-import { ObjectId } from "mongodb"
-import { error } from "console"
-import Attending from "./attending"
-import AttendeeButton from "./DeltaButton"
+import { Challenge } from "@/types/challengeTemp";
+import Image from "next/image";
+import Avatar from "./UserAvatar";
+import { ObjectId } from "mongodb";
+import Attending from "./attending";
+import AttendeeButton from "./DeltaButton";
 
 interface Props {
-  challenges: Challenge[]
-  className: string
+  challenges: Challenge[];
+  className: string;
 }
 export default function DisplayChallenges({
   challenges,
@@ -19,15 +16,12 @@ export default function DisplayChallenges({
   function handleAttende(cardId: ObjectId | undefined, userId: string) {
     addAttendeeToChallenge(cardId, userId)
       .then(() => {
-        console.log("Attendee added to challenge!")
+        console.log("Attendee added to challenge!");
       })
       .catch((error) => {
-        console.error(error)
-      })
+        console.error(error);
+      });
   }
-
-  const { data: session, status } = useSession()
-
   async function addAttendeeToChallenge(
     cardId: ObjectId | undefined,
     userId: string
@@ -37,23 +31,23 @@ export default function DisplayChallenges({
       {
         method: "PUT",
       }
-    )
+    );
 
     if (!response.ok) {
-      const errorData = await response.json()
-      throw new Error(errorData.error)
+      const errorData = await response.json();
+      throw new Error(errorData.error);
     }
   }
 
   return (
     <div id="cards" className={className}>
       {challenges.map((challenge) => {
-        const challengeDate = new Date(challenge.date)
+        const challengeDate = new Date(challenge.date);
         const options: Intl.DateTimeFormatOptions = {
           month: "long",
           day: "numeric",
-        }
-        const formattedDate = challengeDate.toLocaleString("sv-SE", options)
+        };
+        const formattedDate = challengeDate.toLocaleString("sv-SE", options);
         return (
           <div
             className="flex justify-center items-center m-5 relative w-auto"
@@ -64,19 +58,19 @@ export default function DisplayChallenges({
               onClick={() => {
                 const challengeCard = document.getElementById(
                   `challengeCard_${challenge._id}`
-                )
+                );
                 const description = document.getElementById(
                   `description_${challenge._id}`
-                )
+                );
                 const arrowIcon = document.getElementById(
                   `arrowIcon_${challenge._id}`
-                )
+                );
 
                 if (description && challengeCard && arrowIcon) {
                   if ((description.style.display = "none")) {
-                    description.style.display = "block"
-                    challengeCard.style.cursor = "auto"
-                    arrowIcon.classList.add("rotate-180")
+                    description.style.display = "block";
+                    challengeCard.style.cursor = "auto";
+                    arrowIcon.classList.add("rotate-180");
                   }
                 }
               }}
@@ -89,7 +83,7 @@ export default function DisplayChallenges({
                   </p>
                   <div className="flex mb-3">
                     <Avatar
-                      src={challenge.idpicture}
+                      src={challenge.pictureId}
                       alt="avatar"
                       width={30}
                       height={30}
@@ -141,8 +135,8 @@ export default function DisplayChallenges({
                     <p className="text-xs ">{challenge.description}</p>
                   </div>
 
-                  <Attending challenge={challenge} className="" />
-                  <AttendeeButton challenge={challenge} className="" />
+                  <Attending challenge={challenge} />
+                  <AttendeeButton challenge={challenge} />
                 </div>
               </div>
               <div className=" w-2/12 right-0 flex justify-center">
@@ -157,22 +151,22 @@ export default function DisplayChallenges({
                 <div
                   className="absolute bottom-2 cursor-pointer"
                   onClick={(e) => {
-                    e.stopPropagation()
+                    e.stopPropagation();
                     const description = document.getElementById(
                       `description_${challenge._id}`
-                    )
+                    );
                     const challengeCard = document.getElementById(
                       `challengeCard_${challenge._id}`
-                    )
+                    );
                     const arrowIcon = document.getElementById(
                       `arrowIcon_${challenge._id}`
-                    )
+                    );
 
                     if (description && challengeCard && arrowIcon) {
                       if ((description.style.display = "block")) {
-                        description.style.display = "none"
-                        challengeCard.style.cursor = "pointer"
-                        arrowIcon.classList.remove("rotate-180")
+                        description.style.display = "none";
+                        challengeCard.style.cursor = "pointer";
+                        arrowIcon.classList.remove("rotate-180");
                       }
                     }
                   }}
@@ -189,8 +183,8 @@ export default function DisplayChallenges({
               </div>
             </div>
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 }

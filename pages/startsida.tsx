@@ -36,7 +36,7 @@ function Startsida({ challenges }: Props) {
       <main>
         <Header />
         {/* challenge form component */}
-        <ChallengeForm onSubmit={handleChallengeSubmit} />
+        <ChallengeForm onSubmitChallenge={handleChallengeSubmit} />
         {/* Display challenges component */}
         <DisplayChallenges challenges={challengeList} className="pt-28 pb-36" />
         <div id="footer">
@@ -61,6 +61,7 @@ export async function getServerSideProps(context: GetSessionParams) {
     .db("active")
     .collection("challenges")
     .find()
+    .sort({ date: 1 })
     .toArray();
 
   const serializedChallenges = challenges.map((challenge) => {

@@ -1,23 +1,19 @@
-import { Challenge } from "@/types/challengeTemp"
-import Avatar from "./UserAvatar"
+import { Challenge } from "@/types/challengeTemp";
+import Avatar from "./UserAvatar";
 
 interface Props {
-  challenge: Challenge
-  className: string
+  challenge: Challenge;
 }
 
-export default function Attending({
-  challenge,
-  className,
-}: Props): JSX.Element {
-  let counter = 0
-  const attendingToRender = challenge.attending?.slice(0, 3) // Store attendees to be rendered in a separate variable
-  const remainingAttendees = challenge.attending?.slice(3) // Get the remaining attendees
+export default function Attending({ challenge }: Props): JSX.Element {
+  let counter = 0;
+  const attendingToRender = challenge.attending?.slice(0, 3); // Store attendees to be rendered in a separate variable
+  const remainingAttendees = challenge.attending?.slice(3); // Get the remaining attendees
 
   return (
     <div className="flex items-center -space-x-4">
       {attendingToRender?.map((attendee) => {
-        counter++
+        counter++;
 
         return (
           <Avatar
@@ -29,7 +25,7 @@ export default function Attending({
               40 - counter * 10
             } inline-flex items-center justify-center h-[2.858em] w-[2.858em] rounded-full bg-gray-200 border border-active-black font-normal bg-white text-gray-700 shadow-sm align-middle text-sm dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-800 dark:text-gray-400 dark:hover:text-white`}
           />
-        )
+        );
       })}
 
       {/* Render the remaining attendees */}
@@ -39,5 +35,5 @@ export default function Attending({
         </div>
       )}
     </div>
-  )
+  );
 }
