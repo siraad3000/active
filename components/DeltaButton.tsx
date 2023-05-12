@@ -63,7 +63,7 @@ export default function AttendeeButton({
           handleAttende(challenge._id, session?.user.id)
         }}
       >
-        Delta
+        Häng på!
       </button>
     )
   }
