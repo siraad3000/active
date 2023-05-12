@@ -87,7 +87,7 @@ export default function DisplayChallenges({
                       alt="avatar"
                       width={30}
                       height={30}
-                      className="rounded-full mr-2"
+                      className="rounded-full mr-2 border border-active-black"
                     />
                     <p className=" text-lg ">{challenge.publisher}</p>
                   </div>

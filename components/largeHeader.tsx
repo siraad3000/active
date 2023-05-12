@@ -4,7 +4,13 @@ import { useSession } from "next-auth/react"
 import router from "next/router"
 import BackButton from "./BackButton"
 import HideForm from "./HideForm"
-export default function HeaderAktiviter() {
+
+interface Props {
+  valueOne: string
+  valueTwo: string
+}
+
+export default function HeaderLarge({ valueOne, valueTwo }: Props) {
   const { data: session } = useSession()
 
   return (
@@ -44,9 +50,9 @@ export default function HeaderAktiviter() {
       <div className="fixed w-full lg:flex justify-center shadow-md z-40 bg-active-white">
         <div className="pt-28 flex justify-center lg:w-1/2 shadow-lg">
           <div className="w-1/2 flex justify-center border-b-2 border-active-purple font-bold  ">
-            Bokade
+            {valueOne}
           </div>
-          <div className=" w-1/2 flex justify-center  ">Sparade</div>
+          <div className=" w-1/2 flex justify-center  ">{valueTwo}</div>
         </div>
       </div>
     </div>

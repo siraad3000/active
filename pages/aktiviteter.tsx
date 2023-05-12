@@ -5,7 +5,7 @@ import clientPromise from "@/lib/mongodb"
 import { GetSessionParams, getSession, useSession } from "next-auth/react"
 import challenges from "./api/challenges"
 import { Challenge } from "@/types/challengeTemp"
-import HeaderAktiviter from "@/components/headerAttending"
+import HeaderLarge from "@/components/largeHeader"
 
 interface Props {
   challenges: Challenge[]
@@ -14,12 +14,12 @@ interface Props {
 const Aktiviteter = ({ challenges }: Props) => {
   const { data: session } = useSession()
   return (
-    <div className="h-screen w-screen bg-active-offWHite ">
+    <div className="h-screen w-screen">
       <main>
-        <HeaderAktiviter />
+        <HeaderLarge valueOne="Bokade" valueTwo="Sparade" />
 
-        <div className="lg:flex justify-center p-5">
-          <DisplayChallenges challenges={challenges} className="pb-6 pt-32" />
+        <div className="lg:flex justify-center p-5 h-full bg-active-offWHite">
+          <DisplayChallenges challenges={challenges} className="pb-14 pt-32" />
         </div>
         <FooterNavbar />
       </main>
