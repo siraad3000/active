@@ -19,7 +19,7 @@ export default function ProfileMenu() {
             href="#"
             className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
           >
-            Placeholder
+            Hjälpcenter
           </a>
         </li>
         <li>
@@ -27,7 +27,7 @@ export default function ProfileMenu() {
             href="#"
             className="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
           >
-            Placeholder
+            Tillgänglighet
           </a>
         </li>
         <li>
@@ -35,7 +35,7 @@ export default function ProfileMenu() {
             href="#"
             className="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
           >
-            Placeholder
+            Användaravtal
           </a>
         </li>
         <li>
