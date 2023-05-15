@@ -5,6 +5,8 @@ import { ObjectId } from "mongodb";
 import Attending from "./attending";
 import AttendeeButton from "./DeltaButton";
 import Bookmark from "./Bookmark";
+import { useSession } from "next-auth/react";
+import DeleteButton from "./deleteChallenge";
 
 interface Props {
   challenges: Challenge[];
@@ -14,6 +16,7 @@ export default function DisplayChallenges({
   challenges,
   className,
 }: Props): JSX.Element {
+  const { data: session, status } = useSession();
   function handleAttende(cardId: ObjectId | undefined, userId: string) {
     addAttendeeToChallenge(cardId, userId)
       .then(() => {
@@ -137,11 +140,19 @@ export default function DisplayChallenges({
                   </div>
 
                   <Attending challenge={challenge} />
-                  <AttendeeButton challenge={challenge} />
+                  {session?.user?.id == challenge.publisherId && (
+                    <DeleteButton challenge={challenge} />
+                  )}
+                  {session?.user?.id !== challenge.publisherId && (
+                    <AttendeeButton challenge={challenge} />
+                  )}
                 </div>
               </div>
               <div className=" w-2/12 right-0 flex justify-center">
-                <Bookmark challenge={challenge} />
+                {session?.user?.id !== challenge.publisherId && (
+                  <Bookmark challenge={challenge} />
+                )}
+
                 <div
                   className="absolute bottom-2 cursor-pointer"
                   onClick={(e) => {

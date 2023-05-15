@@ -9,7 +9,8 @@ interface Props {
   challenges: Challenge[];
 }
 
-const Aktiviteter = ({ challenges }: Props) => {
+const Bookmarked = ({ challenges }: Props) => {
+  const { data: session } = useSession();
   return (
     <div className="h-screen w-screen bg-active-offWHite ">
       <main className="bg-active-offWHite">
@@ -31,7 +32,6 @@ const Aktiviteter = ({ challenges }: Props) => {
 
 export async function getServerSideProps(context: GetSessionParams) {
   const session = await getSession(context);
-
   if (!session) {
     return {
       redirect: {
@@ -44,7 +44,7 @@ export async function getServerSideProps(context: GetSessionParams) {
   const challenges = await mongoClient
     .db("active")
     .collection("challenges")
-    .find({ attending: session?.user?.id })
+    .find({ marked: session?.user?.id })
     .toArray();
 
   const serializedChallenges = challenges.map((challenge) => {
@@ -55,4 +55,4 @@ export async function getServerSideProps(context: GetSessionParams) {
   return { props: { challenges: serializedChallenges } };
 }
 
-export default Aktiviteter;
+export default Bookmarked;

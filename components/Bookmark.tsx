@@ -37,7 +37,7 @@ export default function Bookmark({ challenge }: Props): JSX.Element {
   }
   let markedEvent = false;
   challenge.marked?.map((mark) => {
-    if (session?.user.id == mark) {
+    if (session?.user.id == mark || challenge.publisherId == session?.user.id) {
       markedEvent = true;
     }
   });

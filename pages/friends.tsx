@@ -1,17 +1,22 @@
-import { NextPage } from "next"
-import { useRouter } from "next/router"
-import Image from "next/image"
-import { useEffect, useState } from "react"
-import FooterNavbar from "../components/FooterNavbar"
-import Header from "../components/Header"
-import HeaderLarge from "@/components/largeHeader"
-import Avatar from "@/components/UserAvatar"
+import { NextPage } from "next";
+import { useRouter } from "next/router";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import FooterNavbar from "../components/FooterNavbar";
+import Header from "../components/Header";
+import HeaderLarge from "@/components/largeHeader";
+import Avatar from "@/components/UserAvatar";
 
 const Friends = () => {
   return (
     <div className="h-screen w-screen bg-active-white ">
       <main>
-        <HeaderLarge valueOne="Vänner" valueTwo="Grupper" />
+        <HeaderLarge
+          valueOne="Vänner"
+          valueTwo="Grupper"
+          valueOneLink="/friends"
+          valueTwoLink=""
+        />
         <div className="w-full lg:flex justify-center">
           <div className="lg:w-1/2 pt-36 w-full">
             <div className=" w-full p-2 flex justify-between items-center bg-active border-b">
@@ -74,7 +79,7 @@ const Friends = () => {
         <FooterNavbar />
       </main>
     </div>
-  )
-}
+  );
+};
 
-export default Friends
+export default Friends;

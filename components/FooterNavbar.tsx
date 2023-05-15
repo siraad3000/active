@@ -13,7 +13,8 @@ export default function FooterNavbar() {
       location.pathname === "/startsida"
         ? setHomePageIcon("/Home_Icon_Filled.png")
         : setHomePageIcon("/Home_Icon.png");
-      location.pathname === "/aktiviteter"
+      location.pathname === "/aktiviteter" ||
+      location.pathname === "/bookmarked"
         ? setActivityIcon("/Activity_Icon_Filled.png")
         : setActivityIcon("/Activity_Icon.png");
       location.pathname === "/friends"
