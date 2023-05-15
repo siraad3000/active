@@ -23,7 +23,6 @@ export default function DeleteButton({ challenge }: Props): JSX.Element {
       throw new Error(errorData.error);
     }
   }
-
   return (
     <button
       id={"delete_" + challenge._id}
@@ -32,7 +31,7 @@ export default function DeleteButton({ challenge }: Props): JSX.Element {
         deleteChallenge(challenge._id);
       }}
     >
-      Avboka!
+      Ta bort inlägg!
     </button>
   );
 }
