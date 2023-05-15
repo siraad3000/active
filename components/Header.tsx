@@ -2,8 +2,7 @@ import Image from "next/image";
 import Avatar from "./UserAvatar";
 import { useSession } from "next-auth/react";
 import router from "next/router";
-import BackButton from "./BackButton";
-import HideForm from "./HideForm";
+import Link from "next/link";
 export default function Header() {
   const { data: session } = useSession();
 
@@ -18,15 +17,17 @@ export default function Header() {
           </div>
         </div>
 
-        <div className="w-1/2 h-1/2 flex justify-center">
+        <div className="w-1/2  flex justify-center">
           <Image
             src={"/active-logo-medium.png"}
             alt={"#"}
             width={"120"}
             height={"120"}
+            style={{ width: "auto", height: "auto" }}
           />
         </div>
-        <div
+        <Link
+          href="/profile"
           className=" w-1/4 h-1/2 pr-4 flex justify-end cursor-pointer"
           onClick={() => router.push("/profile")}
         >
@@ -37,7 +38,7 @@ export default function Header() {
             height={40}
             className="rounded-full"
           />
-        </div>
+        </Link>
       </div>
     </header>
   );

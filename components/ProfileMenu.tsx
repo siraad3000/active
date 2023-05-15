@@ -1,10 +1,10 @@
-import { signOut } from "next-auth/react"
-import { useState } from "react"
-import Image from "next/image"
+import { signOut } from "next-auth/react";
+import { useState } from "react";
+import Image from "next/image";
 
 export default function ProfileMenu() {
-  const [showMenu, setShowMenu] = useState<boolean>(false)
-  const [menuIcon, setMenuIcon] = useState<string>("/Menu_Icon_Purple.png")
+  const [showMenu, setShowMenu] = useState<boolean>(false);
+  const [menuIcon, setMenuIcon] = useState<string>("/Menu_Icon_Purple.png");
   const Menu = () => (
     <div
       id="dropdown"
@@ -50,17 +50,17 @@ export default function ProfileMenu() {
         </li>
       </ul>
     </div>
-  )
+  );
   return (
     <div
       className="cursor-pointer"
       onClick={() => {
         if (showMenu) {
-          setShowMenu(false)
-          setMenuIcon("/Menu_Icon_Purple.png")
+          setShowMenu(false);
+          setMenuIcon("/Menu_Icon_Purple.png");
         } else {
-          setShowMenu(true)
-          setMenuIcon("/More_Icon_Purple.png")
+          setShowMenu(true);
+          setMenuIcon("/Cross-Icon-Purple.png");
         }
       }}
     >
@@ -70,5 +70,5 @@ export default function ProfileMenu() {
 
       {showMenu ? <Menu /> : null}
     </div>
-  )
+  );
 }
