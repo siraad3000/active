@@ -97,7 +97,7 @@ export default function ChallengeForm({
               Datum och tid
             </label>
             <div id="dateTime" className="flex">
-              <div className="w-1/2 mr-2">
+              <div className="w-4/12 mr-2">
                 <input
                   className=" shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
                   {...formik.getFieldProps("date")}
@@ -121,6 +121,7 @@ export default function ChallengeForm({
                 id="finished_time"
                 type="time"
                 required
+                min={formik.values.sTime}
                 {...formik.getFieldProps("fTime")}
                 placeholder="Time"
               />
