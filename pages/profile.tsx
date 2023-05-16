@@ -1,29 +1,29 @@
-import Image from "next/image"
-import Avatar from "../components/UserAvatar"
-import Profileheader from "@/components/Headerprofile"
-import { GetSessionParams, getSession, useSession } from "next-auth/react"
-import clientPromise from "@/lib/mongodb"
-import { Challenge } from "@/types/challengeTemp"
-import DisplayChallenges from "@/components/DisplayChallenges"
-import Head from "next/head"
-import Link from "next/link"
-import { useEffect, useState } from "react"
+import Image from "next/image";
+import Avatar from "../components/UserAvatar";
+import Profileheader from "@/components/Headerprofile";
+import { GetSessionParams, getSession, useSession } from "next-auth/react";
+import clientPromise from "@/lib/mongodb";
+import { Challenge } from "@/types/challengeTemp";
+import DisplayChallenges from "@/components/DisplayChallenges";
+import Head from "next/head";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 interface Props {
-  challenges: Challenge[]
+  challenges: Challenge[];
 }
 
 const Profile = ({ challenges }: Props) => {
-  const { data: session } = useSession()
-  const [showNoChallenges, setNoChallenges] = useState<boolean>(false)
-  const [showChallenges, setShowChallenges] = useState<boolean>(false)
+  const { data: session } = useSession();
+  const [showNoChallenges, setNoChallenges] = useState<boolean>(false);
+  const [showChallenges, setShowChallenges] = useState<boolean>(false);
   useEffect(() => {
     if (challenges.length === 0) {
-      setNoChallenges(true)
+      setNoChallenges(true);
     } else {
-      setShowChallenges(true)
+      setShowChallenges(true);
     }
-  }, [challenges])
+  }, [challenges]);
   const NoChallenges = () => (
     <div className="flex justify-center pb-5 text-sm">
       <p>
@@ -35,7 +35,7 @@ const Profile = ({ challenges }: Props) => {
         </span>
       </p>
     </div>
-  )
+  );
   return (
     <div className="flex-wrap bg-active-offWHite ">
       <Head>
@@ -92,10 +92,8 @@ const Profile = ({ challenges }: Props) => {
                   </div>
                 </div>
                 <p className="pt-2">
-                  Jag gillar spela pingis och jag gillar äta kebab och jag
-                  gillar inte simma och jag gillar tennis sen gillar inte att
-                  handla men jag tycker det roligt att spela men annars så vet
-                  jag inte vad jag skriver hallooooooooooooo
+                  Mina största intressen är pingis och simning, men är öppen att
+                  prova på nya aktiviteter!
                 </p>
               </div>
             </div>
@@ -115,11 +113,11 @@ const Profile = ({ challenges }: Props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export async function getServerSideProps(context: GetSessionParams) {
-  const session = await getSession(context)
+  const session = await getSession(context);
 
   if (!session) {
     return {
@@ -127,21 +125,21 @@ export async function getServerSideProps(context: GetSessionParams) {
         destination: "/",
         permanent: false,
       },
-    }
+    };
   }
-  const mongoClient = await clientPromise
+  const mongoClient = await clientPromise;
   const challenges = await mongoClient
     .db("active")
     .collection("challenges")
     .find({ publisherId: session?.user?.id })
-    .toArray()
+    .toArray();
 
   const serializedChallenges = challenges.map((challenge) => {
-    const { _id, ...rest } = challenge
-    return { ...rest, _id: _id.toString() }
-  })
-  console.log("guego" + session)
-  return { props: { challenges: serializedChallenges } }
+    const { _id, ...rest } = challenge;
+    return { ...rest, _id: _id.toString() };
+  });
+  console.log("guego" + session);
+  return { props: { challenges: serializedChallenges } };
 }
 
-export default Profile
+export default Profile;
