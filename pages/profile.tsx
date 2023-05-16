@@ -72,7 +72,7 @@ const Profile = ({ challenges }: Props) => {
                   {session?.user?.name}
                 </p>
                 <div className="flex justify-between">
-                  <p>999 år, Stockholm </p>
+                  <p>26 år, Stockholm </p>
                 </div>
                 <div className="pt-2 font-[Inter] text-base text-active-purple  ">
                   <p>Mina Träningsintressen</p>

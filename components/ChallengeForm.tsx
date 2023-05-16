@@ -1,17 +1,17 @@
-import Image from "next/image";
-import { Challenge } from "@/types/challengeTemp";
-import { useSession } from "next-auth/react";
-import HideForm from "./HideForm";
-import { useFormik } from "formik";
+import Image from "next/image"
+import { Challenge } from "@/types/challengeTemp"
+import { useSession } from "next-auth/react"
+import HideForm from "./HideForm"
+import { useFormik } from "formik"
 
 type ChallengeFormProps = {
-  onSubmitChallenge: (challenge: Challenge) => void;
-};
+  onSubmitChallenge: (challenge: Challenge) => void
+}
 export default function ChallengeForm({
   onSubmitChallenge,
 }: ChallengeFormProps) {
-  const { data: session, status } = useSession();
-  const currentYear = new Date().getFullYear();
+  const { data: session, status } = useSession()
+  const currentYear = new Date().getFullYear()
 
   const formik = useFormik({
     initialValues: {
@@ -25,10 +25,10 @@ export default function ChallengeForm({
       showFor: "",
     },
     onSubmit,
-  });
+  })
   async function onSubmit(values: any) {
-    formik.resetForm();
-    HideForm();
+    formik.resetForm()
+    HideForm()
     const newChallenge: Challenge = {
       publisher: session?.user?.name,
       title: values.title,
@@ -42,8 +42,8 @@ export default function ChallengeForm({
       publisherId: session?.user.id,
       attending: [],
       marked: [],
-    };
-    onSubmitChallenge(newChallenge);
+    }
+    onSubmitChallenge(newChallenge)
   }
   return (
     <div className="bg-active-white">
@@ -65,8 +65,8 @@ export default function ChallengeForm({
               type="reset"
               id="hide-form-btn"
               onClick={() => {
-                formik.resetForm();
-                HideForm();
+                formik.resetForm()
+                HideForm()
               }}
             >
               <Image
@@ -98,7 +98,7 @@ export default function ChallengeForm({
             </label>
             <div id="dateTime" className="flex">
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-40"
+                className=" mx-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-40 "
                 {...formik.getFieldProps("date")}
                 type="date"
                 min={`${currentYear}-01-01`}
@@ -106,7 +106,7 @@ export default function ChallengeForm({
                 placeholder="date"
               />
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  w-40"
+                className="mx-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  w-40"
                 id="start_time"
                 type="time"
                 required
@@ -115,7 +115,7 @@ export default function ChallengeForm({
               />
               _
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  w-40"
+                className="mx-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  w-40"
                 id="finished_time"
                 type="time"
                 required
@@ -326,5 +326,5 @@ export default function ChallengeForm({
         </button>
       </div>
     </div>
-  );
+  )
 }
