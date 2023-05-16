@@ -46,7 +46,7 @@ export default function ChallengeForm({
     onSubmitChallenge(newChallenge);
   }
   return (
-    <div className="bg-active-white">
+    <div className="bg-active-white lg:flex justify-center">
       <form
         id="challengeForm"
         className="bg-white hidden h-screen pt-24"
@@ -97,16 +97,18 @@ export default function ChallengeForm({
               Datum och tid
             </label>
             <div id="dateTime" className="flex">
+              <div className="w-1/2 mr-2">
+                <input
+                  className=" shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
+                  {...formik.getFieldProps("date")}
+                  type="date"
+                  min={`${currentYear}-01-01`}
+                  max={`${currentYear}-12-31`}
+                  placeholder="date"
+                />
+              </div>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-40"
-                {...formik.getFieldProps("date")}
-                type="date"
-                min={`${currentYear}-01-01`}
-                max={`${currentYear}-12-31`}
-                placeholder="date"
-              />
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  w-40"
+                className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  w-40"
                 id="start_time"
                 type="time"
                 required
@@ -115,7 +117,7 @@ export default function ChallengeForm({
               />
               _
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  w-40"
+                className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  w-40"
                 id="finished_time"
                 type="time"
                 required
@@ -130,7 +132,7 @@ export default function ChallengeForm({
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="location"
             >
-              Location
+              Plats
             </label>
 
             <div className="flex flex-row items-center">
@@ -157,7 +159,7 @@ export default function ChallengeForm({
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="level"
             >
-              Välj nivå
+              Välj intensitet
             </label>
             <div className="flex flex-row items-center justify-start ">
               <div className="flex items-center w-32 h-7">
@@ -166,8 +168,8 @@ export default function ChallengeForm({
                   type="radio"
                   name="level"
                   id="level"
-                  value={"Lätt"}
-                  checked={formik.values.level === "Lätt"}
+                  value={"Låg"}
+                  checked={formik.values.level === "Låg"}
                   onChange={formik.handleChange}
                 />
                 <label
@@ -175,7 +177,7 @@ export default function ChallengeForm({
                   className="w-full h-full py-3 text-sm font-medium text-center peer-checked/lätt:bg-active-purple
                     peer-checked/lätt:text-active-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center "
                 >
-                  Lätt
+                  Låg
                 </label>
               </div>
 
@@ -194,7 +196,7 @@ export default function ChallengeForm({
                   className="w-full h-full py-3 text-sm font-medium text-center peer-checked/medel:bg-active-purple 
            peer-checked/medel:text-active-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
                 >
-                  medel
+                  Medel
                 </label>
               </div>
 
@@ -213,7 +215,7 @@ export default function ChallengeForm({
                   className="w-full h-full py-3 text-sm font-medium text-center  peer-checked/test:bg-active-purple
                  peer-checked/test:text-active-white border border-gray-200 rounded dark:border-gray-700 flex items-center justify-center"
                 >
-                  intensivt
+                  Hög
                 </label>
               </div>
             </div>
@@ -231,7 +233,7 @@ export default function ChallengeForm({
               rows={5}
               required
               maxLength={500}
-              placeholder="Description"
+              placeholder="t.ex ta med egen utrustning..."
               {...formik.getFieldProps("description")}
             ></textarea>
           </div>
